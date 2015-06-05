@@ -1,0 +1,35 @@
+@font-face {
+    font-family: centurygothic;
+    src: url(../plugin/font/century-gothic.ttf);
+}
+body {
+    font-family:centurygothic;
+}
+@font-face {
+    font-family:tradegothic;
+    src: url(../plugin/font/trade-gothic.ttf);
+  }
+  .topbarcolor {
+    background:#333333;
+  }
+  .topbarcolor nav li{
+    border-right:solid 1px #86190b;
+  }
+  .logo {
+    background:#555555;
+  }
+  .menu {
+    background:#cccccc;
+  }
+  .menu2 {
+    background:#cccccc;padding: 0px;
+  }
+  .linkfooter a{
+    color:#777777;font-size: 12px;
+  }
+
+  .row.fullscreen {
+  width: 100%;
+  max-width: 100%;
+}
+  
