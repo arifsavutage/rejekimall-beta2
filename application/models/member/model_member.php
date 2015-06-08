@@ -21,13 +21,8 @@ class model_member extends CI_Model{
 	}
 	
 	#menampilkan detail member
-	public function detail_member($idmember = false){
-		if($idmember === false){
-			$query	= $this->db->get('member');
-			return $query->result_array();
-		}
-		
-		$query	= $this->db->get_where('member', array('id_member'=>$idmember));
+	public function detail_member($idmember){
+		$query	= $this->db->query('SELECT * FROM member WHERE id_member = "$idmember"');
 		return $query->row_array(); /*mengambil satu baris yg cocok*/
 	}
 	
@@ -57,6 +52,11 @@ class model_member extends CI_Model{
 	#menambah member
 	public function simpan($data){
 		return $this->db->insert('member',$data);
+	}
+	
+	#update data member
+	public function ubah($data){
+		
 	}
 	
 }

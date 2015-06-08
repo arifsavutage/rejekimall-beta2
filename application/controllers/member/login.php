@@ -20,8 +20,10 @@ class login extends CI_Controller{
 		$query	= $this->model_login->loginval($this->input->post('username'),$this->input->post('password'));
 		
 		if($query){
+			$row	= $this->model_login->data_detail_login($this->input->post('username'),$this->input->post('password'));
 			$data	= array(
 				'userlogin'=>$this->input->post('username'),
+				'iduser'=>$row,
 				'is_logged_in'=>true
 			);
 			

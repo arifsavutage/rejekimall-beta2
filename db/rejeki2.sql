@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2015 at 01:07 AM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Generation Time: Jun 08, 2015 at 12:03 PM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `detail_kategori` (
   `keterangan` text,
   `diskon` float NOT NULL DEFAULT '0',
   `bes_seller` enum('0','1') NOT NULL DEFAULT '0'
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=124 ;
+) ENGINE=MyISAM AUTO_INCREMENT=124 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `histori_member` (
   `id_member` int(11) DEFAULT NULL,
   `oid` int(11) DEFAULT NULL,
   `total` double NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `histori_seller` (
   `id_seller` int(11) DEFAULT NULL,
   `oid` int(11) DEFAULT NULL,
   `total` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `histori_seller` (
 CREATE TABLE IF NOT EXISTS `jasa_kirim` (
 `id_jasa` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `kab_kota` (
   `id_prop` int(11) DEFAULT NULL,
   `nmkab` varchar(50) DEFAULT NULL,
   `id_neg` int(11) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `kategori` (
 `cid` int(11) NOT NULL,
   `id_seller` int(5) DEFAULT NULL,
   `nama` char(30) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -124,14 +124,14 @@ CREATE TABLE IF NOT EXISTS `member` (
   `foto` varchar(100) DEFAULT NULL,
   `status` int(1) NOT NULL,
   `golongan` int(1) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`id_member`, `user_id`, `password`, `nama`, `jk`, `email`, `alamat`, `no_hp`, `no_tlprmh`, `kota`, `kdpos`, `propinsi`, `negara`, `gbr_ktp`, `foto`, `status`, `golongan`) VALUES
-(1, 'arifsavutage', '25d55ad283aa400af464c76d713c07ad', NULL, '', 'arifsavutage@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
+(1, 'arifsavutage', '25d55ad283aa400af464c76d713c07ad', 'Juniar Arif Wicaksono', '', 'arifsavutage@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
 (2, 'miracleass', '25d55ad283aa400af464c76d713c07ad', NULL, '', 'myrachel@ovi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
 (3, 'yunias', '5e8667a439c68f5145dd2fcbecf02209', 'Yuni Astuti ', 'perempuan', 'yunias@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3),
 (4, 'budbud', 'f638f4354ff089323d1a5f78fd8f63ca', 'Budi Raharjo', 'Laki-laki', 'cakbud@yahoo.co.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3);
@@ -145,7 +145,7 @@ INSERT INTO `member` (`id_member`, `user_id`, `password`, `nama`, `jk`, `email`,
 CREATE TABLE IF NOT EXISTS `negara` (
 `id_neg` int(11) NOT NULL,
   `nama_neg` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `negara`
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `ongkos_kirim` (
   `harga` double NOT NULL DEFAULT '0',
   `id_prop` int(11) DEFAULT NULL,
   `id_neg` int(11) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `order_pembeli` (
   `id_ongkir` int(11) DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `kd_pos` varchar(10) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `propinsi` (
 `id_prop` int(11) NOT NULL,
   `propinsi` varchar(50) DEFAULT NULL,
   `id_neg` int(11) DEFAULT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `propinsi`
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `gbr_ktp` varchar(100) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
   `npwp` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables

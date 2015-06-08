@@ -58,6 +58,7 @@ class member extends CI_Controller{
 			'jk'=>$this->input->post('jk', true),
 			'email'=>$this->input->post('email', true),
 			'password'=>md5($this->input->post('pass2', true)),
+			'foto'=>'nopic.png',
 			'golongan'=>'3'
 			);
 			

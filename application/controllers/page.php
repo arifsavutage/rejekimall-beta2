@@ -7,7 +7,8 @@ class page extends CI_Controller{
 	}
 	
 	public function index(){
-		$data	= array('title'=>'Rejeki Mall : Nama Page',
+		$data	= array(
+		'title'=>'Rejeki Mall : Nama Page',
 		'menu'=>'etalase/menu_etalase',
 		'isi'=>'page/main_page'
 		);

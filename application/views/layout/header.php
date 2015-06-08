@@ -1,3 +1,6 @@
+<?php
+$seslogin	= $this->session->userdata('userlogin');
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -43,9 +46,22 @@
       </ul>
       <!-- Right Nav Section -->
       <ul class="right">   
-        <li >
-          <a href="" 
-           data-dropdown="downlinelogin" aria-controls="downline11" aria-expanded="false" style="font-size:12px;">Login</a>
+        <li>
+		<?php
+		if(!isset($seslogin)){
+			echo "<a href='#' data-dropdown='downlinelogin' aria-controls='downline11' aria-expanded='false' style='font-size:12px;'>Login</a>";
+		}
+		else{
+			echo "
+				<a data-dropdown='drop1' aria-controls='drop1' aria-expanded='false' style='font-size:12px;'>Member ($seslogin)</a>
+				<ul id='drop1' class='f-dropdown' data-dropdown-content aria-hidden='true' tabindex='-1'>
+					<li><a href='".base_url()."dasbor/home' target='_blank'>Dashboard</a></li>
+					<li><a href='".base_url()."member/login/logout'>Logout</a></li>
+				</ul>
+			";
+		}
+		?>
+          
         </li>
         <li>
         <a href="<?php echo base_url();?>register/pembeli" style="font-size:12px;">Register Pembeli</a>
