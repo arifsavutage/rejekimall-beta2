@@ -59,12 +59,14 @@
 
 <!-- DROPDOWN LOGIN -->
 <div class="row colapse">
-  <div id="downlinelogin" data-dropdown-content class="small f-dropdown content text-center" aria-hidden="true" tabindex="-1" >
-    <input type="text" placeholder="username" name="username"/> 
-    <input type="text" placeholder="password" password="password"/>
-    <input type="submit" class="large-12 medium-12 small-12 alert button" value="Login"/>
-    <div class="large-12 medium-12 small-12 fi-social-facebook button" style="background:#3b5998"> | Login with Facebook</div>
-    <a href="" style="color:#888888;">Lupa Password ?</a>
+  <div id="downlinelogin" class="small f-dropdown content text-center" aria-hidden="true" tabindex="-1" >
+    <form name="login" method="post" action="<?php echo base_url();?>member/login/validate_login">
+		<input type="text" placeholder="username" name="username"/> 
+		<input type="password" placeholder="password" name="password"/>
+		<input type="submit" class="large-12 medium-12 small-12 alert button" value="Login"/>
+		<div class="large-12 medium-12 small-12 fi-social-facebook button" style="background:#3b5998"> | Login with Facebook</div>
+		<a href="#" style="color:#888888;">Lupa Password ?</a>
+	</form>
   </div>  
 </div>
 

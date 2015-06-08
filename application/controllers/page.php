@@ -73,4 +73,13 @@ class page extends CI_Controller{
 		
 		$this->load->view('layout/wrapper',$data);
 	}
+	
+	public function login(){
+		$data	= array(
+			'title'=>'Rejeki Mall : Login',
+			'menu'=>'etalase/menu_etalase',
+			'isi'=>'page/login'
+		);
+		$this->load->view('layout/wrapper', $data);
+	}
 }

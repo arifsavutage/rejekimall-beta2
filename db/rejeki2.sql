@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2015 at 01:39 AM
+-- Generation Time: Jun 08, 2015 at 01:07 AM
 -- Server version: 5.5.39
 -- PHP Version: 5.4.31
 
@@ -111,7 +111,8 @@ CREATE TABLE IF NOT EXISTS `member` (
   `user_id` varchar(50) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,
-  `Email` varchar(50) DEFAULT NULL,
+  `jk` varchar(12) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `alamat` varchar(50) DEFAULT NULL,
   `no_hp` varchar(20) DEFAULT NULL,
   `no_tlprmh` varchar(20) DEFAULT NULL,
@@ -120,8 +121,20 @@ CREATE TABLE IF NOT EXISTS `member` (
   `propinsi` varchar(30) DEFAULT NULL,
   `negara` varchar(30) DEFAULT NULL,
   `gbr_ktp` varchar(100) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `foto` varchar(100) DEFAULT NULL,
+  `status` int(1) NOT NULL,
+  `golongan` int(1) NOT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`id_member`, `user_id`, `password`, `nama`, `jk`, `email`, `alamat`, `no_hp`, `no_tlprmh`, `kota`, `kdpos`, `propinsi`, `negara`, `gbr_ktp`, `foto`, `status`, `golongan`) VALUES
+(1, 'arifsavutage', '25d55ad283aa400af464c76d713c07ad', NULL, '', 'arifsavutage@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
+(2, 'miracleass', '25d55ad283aa400af464c76d713c07ad', NULL, '', 'myrachel@ovi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
+(3, 'yunias', '5e8667a439c68f5145dd2fcbecf02209', 'Yuni Astuti ', 'perempuan', 'yunias@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3),
+(4, 'budbud', 'f638f4354ff089323d1a5f78fd8f63ca', 'Budi Raharjo', 'Laki-laki', 'cakbud@yahoo.co.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -357,7 +370,7 @@ MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `negara`
 --
