@@ -1,48 +1,10 @@
 <div class="span6">
-	<div class="span3 well">
+	<div class="span3 well" style="background:#CCC;">
 		<center>
 			<img src="<?php echo base_url();?>asset/img/member/nopic.png" name="aboutme" width="140" height="140" class="img-circle">
-						
-			<h3><?php echo $this->session->userdata('userlogin');?></h3>
-			<a href="#aboutModal" data-toggle="modal" class="btn btn-large btn-primary">Detail Profile</a>
-			<?php echo $this->session->userdata('iduser');?>
+			<br />			
+			<h3><?php echo $detail['nama'];?></h3>
 		</center>
-		
-		<div class="modal hide" id="aboutModal">
-			<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">?</button>
-			<h3>About Joe</h3>
-			</div>
-			
-			<div class="modal-body" style="text-align:center;">
-				<div class="row-fluid">
-					<div class="span10">
-						<div id="modalTab">
-							<div class="tab-content">
-								<div class="tab-pane active" id="about">
-								<center>
-								<img src="<?php echo base_url();?>asset/img/member/nopic.png" name="aboutme" width="140" height="140" border="0" class="img-circle"></a>
-								<h3 class="media-heading">Joe Sixpack <small> USA</small></h3>
-								<span><strong>Skills: </strong></span>
-								<span class="label label-warning">HTML5/CSS</span>
-								<span class="label label-info">Adobe CS 5.5</span>
-								<span class="label label-info">Microsoft Office</span>
-								<span class="label label-success">Windows XP, Vista, 7</span>
-								</center>
-								<hr>
-								
-								<center>
-								<p class="text-left"><strong>Bio: </strong><br>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
-								<br>
-								</center>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 <div class="span6">
@@ -70,15 +32,15 @@
 					<tr>
 						<td> Sandal Swallow </td>
 						<td> 15 pcs </td>
-						<td> <?php echo number_format('150000',0,'.',',');?></td>
-						<td> Shipped </td>
+						<td> <?php echo "Rp. ".number_format('150000',0,',','.');?></td>
+						<td> <span class="label label-info">Droped</span> </td>
 					</tr>
 					
 					<tr>
 						<td> Agar - agar swallow </td>
 						<td> 250 box </td>
-						<td> <?php echo number_format('2500000',0,'.',',');?></td>
-						<td> Confirmed </td>
+						<td> <?php echo "Rp. ".number_format('2500000',0,',','.');?></td>
+						<td> <span class="label label-success">Shipped</span> </td>
 					</tr>
 				</tbody>
 				</table>
@@ -106,8 +68,8 @@
 					<tr>
 						<td> Tongsis </td>
 						<td> 1 pcs </td>
-						<td> <?php echo number_format('25000',0,'.',',');?></td>
-						<td> Shipped </td>
+						<td> <?php echo "Rp. ".number_format('25000',0,',','.');?></td>
+						<td> <span class="label label-warning">Pending</span> </td>
 					</tr>
 				</tbody>
 				</table>

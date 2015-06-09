@@ -21,8 +21,9 @@ class model_member extends CI_Model{
 	}
 	
 	#menampilkan detail member
-	public function detail_member($idmember){
-		$query	= $this->db->query('SELECT * FROM member WHERE id_member = "$idmember"');
+	public function detail_member($id){
+		#$query	= $this->db->query('SELECT * FROM member WHERE id_member = "$idmember"');
+		$query	= $this->db->get_where('member', array('id_member'=>$id));
 		return $query->row_array(); /*mengambil satu baris yg cocok*/
 	}
 	

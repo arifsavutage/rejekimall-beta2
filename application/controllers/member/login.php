@@ -16,30 +16,52 @@ class login extends CI_Controller{
 	}
 	
 	function validate_login(){
-		$this->load->model('member/model_login');
-		$query	= $this->model_login->loginval($this->input->post('username'),$this->input->post('password'));
+		$datalogin	= array(
+			'user_id'=>$this->input->post('username', true),
+			'password'=>md5($this->input->post('password', true))		
+		);
 		
-		if($query){
-			$row	= $this->model_login->data_detail_login($this->input->post('username'),$this->input->post('password'));
-			$data	= array(
-				'userlogin'=>$this->input->post('username'),
-				'iduser'=>$row,
-				'is_logged_in'=>true
-			);
+		$this->load->model('member/model_login');
+		$hasil	= $this->model_login->loginval($datalogin);
+		
+		if($hasil->num_rows() == 1){
 			
-			$this->session->set_userdata($data);
+			foreach($hasil->result() as $sess){
+				$sesdata['logged_in']	= 'Sudah Login';
+				$sesdata['idmember']	= $sess->id_member;
+				$sesdata['username']	= $sess->user_id;
+				$sesdata['statusvalid']	= $sess->status;
+				
+				$this->session->set_userdata($sesdata);
+			}
+			
 			redirect(base_url().'dasbor/home');
+			/*$statvalid	= $this->session->userdata('statusvalid');
+			if($statvalid == 0){
+				$data	= array(
+					'title'=>'Rejeki Mall : Login',
+					'menu'=>'etalase/menu_etalase',
+					'error'=>'Anda belum memvalidasi akun, silahkan cek email anda..',
+					'isi'=>'page/login'
+					);
+						
+					$this->load->view('layout/wrapper', $data);
+			}else{
+				redirect(base_url().'dasbor/home');
+			}*/
 		}
 		else{
-			$data	= array(
+			/*$data	= array(
 				'title'=>'Rejeki Mall : Login',
 				'menu'=>'etalase/menu_etalase',
-				'quer'=>$query,
 				'error'=>'Username atau Password salah',
 				'isi'=>'page/login'
 			);
 			
-			$this->load->view('layout/wrapper', $data);
+			$this->load->view('layout/wrapper', $data);*/
+			$data['error']	= 'Username atau Password salah';
+			
+			redirect(base_url().'page/login', $data);
 		}
 	}
 	

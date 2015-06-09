@@ -1,5 +1,5 @@
 <?php
-$seslogin	= $this->session->userdata('userlogin');
+$seslogin	= $this->session->userdata('username');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

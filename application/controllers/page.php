@@ -76,6 +76,7 @@ class page extends CI_Controller{
 	}
 	
 	public function login(){
+				
 		$data	= array(
 			'title'=>'Rejeki Mall : Login',
 			'menu'=>'etalase/menu_etalase',

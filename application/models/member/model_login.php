@@ -6,19 +6,11 @@ class model_login extends CI_Model{
 	}
 	
 	#validasi login
-	function loginval($username, $password){
+	function loginval($data){
 		
-		$query	= $this->db->query('
-			SELECT user_id, password, id_member 
-			FROM member 
-			WHERE user_id = "$username" AND password = md5("$password")');
+		$query	= $this->db->get_where('member', $data);
 		
-		if($query->num_rows() == 1){
-			return true;
-		}
-		else{
-			return "cuk";
-		}
+		return $query;
 	}
 	
 	function data_detail_login($username, $password){

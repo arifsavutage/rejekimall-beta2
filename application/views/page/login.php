@@ -4,6 +4,7 @@
         <br />
         <br />
         <br />
+		<?php if($this->session->userdata('username') == ""){?>
 		<h2 class="welcome"> Login</h2>
         <form name="loginmember" action="<?php echo base_url();?>member/login/validate_login" method="post">
           <div class="row collapse">
@@ -31,14 +32,26 @@
           </div>
         </form>
         <p>Belum menjadi member? <a href="<?php echo base_url();?>register/pembeli">daftar disini &raquo;</a></p>
+		<?php
+		}
+		else{
+			echo "
+				<div data-alert class='alert-box info' style='font-size:25px;'>
+				  Anda sudah login :)
+				  <a href='#' class='close'>&times;</a>
+				</div>
+				<br />
+				<p>Silahkan klik <a href='".base_url()."'>di sini</a> untuk kembali</p>
+				";
+		}
+		?>
       </div>
 	  
 		<?php
 			
 			if(!empty($error)){
-				echo $quer;
 				echo "
-				<div data-alert class='alert-box alert radius' style='font-size:25px;'>
+				<div data-alert class='alert-box alert' style='font-size:25px;'>
 				  $error
 				  <a href='#' class='close'>&times;</a>
 				</div>
