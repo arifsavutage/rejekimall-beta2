@@ -57,7 +57,8 @@ class model_member extends CI_Model{
 	
 	#update data member
 	public function ubah($data){
-		
+		$this->db->where('id_member', $data['idmember']);
+		return $this->db->update('berita', $data);
 	}
 	
 }

@@ -68,4 +68,10 @@ class member extends CI_Controller{
 		}
 			
 	}
+	
+	public function edit(){
+		if(!empty($this->input->post('ktp'))){
+			$ktp	= $this->input->post('ktp');
+		}
+	}
 }
