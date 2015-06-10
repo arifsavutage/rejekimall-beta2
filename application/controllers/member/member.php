@@ -70,8 +70,36 @@ class member extends CI_Controller{
 	}
 	
 	public function edit(){
-		if(!empty($this->input->post('ktp'))){
-			$ktp	= $this->input->post('ktp');
+		$this->form_validation->set_rules('nama','Nama Lengkap','required');
+		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
+		$this->form_validation->set_rules('alamat', 'Alamat Lengkap', 'required');
+		$this->form_validation->set_rules('kota', 'Kota', 'required');
+		$this->form_validation->set_rules('propinsi', 'Propinsi', 'required');
+		$this->form_validation->set_rules('negara', 'Negara', 'required');
+		$this->form_validation->set_rules('hp', 'No Hp', 'required');
+		
+		if($this->form_validation->run()===false){
+			redirect(base_url().'dasbor/home/profil');
+		}
+		else{
+			
+			$data	= array(
+				'id_member'=>$this->input->post('idmember'),
+				'nama'=>$this->input->post('nama', true),
+				'jk'=>$this->input->post('jk'),
+				'email'=>$this->input->post('email', true),
+				'alamat'=>$this->input->post('alamat', true),
+				'no_hp'=>$this->input->post('hp', true),
+				'no_tlprmh'=>$this->input->post('tlp', true),
+				'kota'=>$this->input->post('kota', true),
+				'kdpos'=>$this->input->post('kdpos', true),
+				'propinsi'=>$this->input->post('propinsi', true),
+				'negara'=>$this->input->post('negara', true),
+				
+			);
+			
+			$this->model_member->ubah($data);
+			redirect(base_url().'dasbor/home/profil');
 		}
 	}
 }

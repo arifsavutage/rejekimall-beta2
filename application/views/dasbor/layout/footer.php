@@ -77,6 +77,11 @@
 <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
  
 <script src="<?php echo base_url();?>code/js/base.js"></script> 
+<script>
+  $(function () {
+    $('#mytab a:first').tab('show');
+  })
+</script>
 <script>     
 
         var lineChartData = {
