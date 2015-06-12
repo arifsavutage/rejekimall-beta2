@@ -6,7 +6,7 @@
         <br />
 		<?php if($this->session->userdata('username') == ""){?>
 		<h2 class="welcome"> Login</h2>
-        <form name="loginmember" action="<?php echo base_url();?>member/login/validate_login" method="post">
+        <form name="loginmember" action="<?php echo base_url();?>login/validate_login" method="post">
           <div class="row collapse">
             <div class="small-2  columns">
               <span class="prefix"><i class="fi-torso-female"></i></span>

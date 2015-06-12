@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2015 at 12:14 PM
+-- Generation Time: Jun 12, 2015 at 12:11 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -86,7 +86,14 @@ CREATE TABLE IF NOT EXISTS `kab_kota` (
   `id_prop` int(11) DEFAULT NULL,
   `nmkab` varchar(50) DEFAULT NULL,
   `id_neg` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kab_kota`
+--
+
+INSERT INTO `kab_kota` (`id_kab`, `id_prop`, `nmkab`, `id_neg`) VALUES
+(29, 1, 'Loksumawe', NULL);
 
 -- --------------------------------------------------------
 
@@ -124,17 +131,18 @@ CREATE TABLE IF NOT EXISTS `member` (
   `foto` varchar(100) DEFAULT NULL,
   `status` int(1) NOT NULL,
   `golongan` int(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`id_member`, `user_id`, `password`, `nama`, `jk`, `email`, `alamat`, `no_hp`, `no_tlprmh`, `kota`, `kdpos`, `propinsi`, `negara`, `gbr_ktp`, `foto`, `status`, `golongan`) VALUES
-(1, 'arifsavutage', '25d55ad283aa400af464c76d713c07ad', 'Juniar Arif Wicaksono', 'Laki-laki', 'arifsautage@gmail.com', 'Boja', '081390559997', '0294573265', 'Kendal', '51381', 'Jawa Tengah', 'Indonesia', NULL, NULL, 1, 3),
+(1, 'arifsavutage', 'bc000ea9d77b4c04b972bda114fd3a9f', 'Juniar Arif Wicaksono', 'Laki-laki', 'arifsautage@gmail.com', 'Boja', '081390559997', '0294573265', 'Kendal', '51381', 'Jawa Tengah', 'Indonesia', 'ktp_arifsavutage.jpg', 'arifsavutage.jpg', 1, 3),
 (2, 'miracleass', '25d55ad283aa400af464c76d713c07ad', 'Deny Nur Arifin', '', 'myrachel@ovi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
 (3, 'yunias', '5e8667a439c68f5145dd2fcbecf02209', 'Yuni Astuti ', 'perempuan', 'yunias@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3),
-(4, 'budbud', 'f638f4354ff089323d1a5f78fd8f63ca', 'Budi Raharjo', 'Laki-laki', 'cakbud@yahoo.co.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3);
+(4, 'budbud', 'f638f4354ff089323d1a5f78fd8f63ca', 'Budi Raharjo', 'Laki-laki', 'cakbud@yahoo.co.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3),
+(5, 'indahaja', '25d55ad283aa400af464c76d713c07ad', 'Indah Nurwati', 'perempuan', 'iendah@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -228,7 +236,7 @@ INSERT INTO `propinsi` (`id_prop`, `propinsi`, `id_neg`) VALUES
 CREATE TABLE IF NOT EXISTS `seller` (
 `id_seller` int(5) NOT NULL,
   `nama_toko` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `tgl_registrasi` date NOT NULL,
   `nama` varchar(100) NOT NULL,
@@ -237,24 +245,38 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `nohp` varchar(20) NOT NULL,
   `pin` int(11) NOT NULL,
   `token` int(11) NOT NULL,
+  `negara` int(10) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
   `namabank` varchar(50) NOT NULL,
-  `PemilikRek` varchar(50) NOT NULL,
+  `cabang` varchar(100) NOT NULL,
+  `pemilikrek` varchar(50) NOT NULL,
   `kat` varchar(100) NOT NULL,
   `newsletter` varchar(50) NOT NULL,
   `SMS` varchar(50) NOT NULL,
   `website` varchar(500) NOT NULL,
-  `Norek` varchar(100) NOT NULL,
+  `norek` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `ket` varchar(50) NOT NULL,
   `passtrx` varchar(32) NOT NULL,
   `kota` varchar(100) NOT NULL,
   `kecamatan` varchar(100) NOT NULL,
-  `kodepost` int(11) NOT NULL,
+  `kodepos` int(11) NOT NULL,
   `gbr_ktp` varchar(100) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
-  `npwp` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `npwp` varchar(100) DEFAULT NULL,
+  `golongan` int(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seller`
+--
+
+INSERT INTO `seller` (`id_seller`, `nama_toko`, `username`, `password`, `tgl_registrasi`, `nama`, `alamat`, `status_system`, `nohp`, `pin`, `token`, `negara`, `provinsi`, `namabank`, `cabang`, `pemilikrek`, `kat`, `newsletter`, `SMS`, `website`, `norek`, `email`, `ket`, `passtrx`, `kota`, `kecamatan`, `kodepos`, `gbr_ktp`, `foto`, `npwp`, `golongan`) VALUES
+(1, 'Jendela Ilmu', 'seller1@gmail.com', '25d55ad283aa400af464c76d713c07ad', '0000-00-00', 'Seller ke-1', '', '0', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller1@gmail.com', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
+(2, 'Sinar Barokah Elektronik', 'seller2@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '0000-00-00', 'Seller ke-2', '', '0', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller2@yahoo.co.id', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
+(3, 'Bangun Jaya Abadi', 'seller3@ovi.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'seller ke-3', '', '0', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller3@ovi.com', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
+(4, 'Toko Batu Mulia', 'wahid@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'Wahidin', '', '0', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'wahid@yahoo.com', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
+(5, 'baju distro', 'dimasaulia@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'dimas aulia', 'Jl. Kelud Raya 76 D', '0', '0853250000', 7451254, 0, 8, '1', 'Mandiri', 'loksumawe', 'dimas aulia', '', '', '', '', '13500212354', 'dimasaulia@yahoo.co.id', '', '', '29', 'aceh tengah', 12345, NULL, 'nopic.png', NULL, 2);
 
 --
 -- Indexes for dumped tables
@@ -360,7 +382,7 @@ MODIFY `id_jasa` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `kab_kota`
 --
 ALTER TABLE `kab_kota`
-MODIFY `id_kab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+MODIFY `id_kab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `kategori`
 --
@@ -370,7 +392,7 @@ MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `negara`
 --
@@ -395,7 +417,7 @@ MODIFY `id_prop` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT;
+MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

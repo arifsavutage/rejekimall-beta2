@@ -4,7 +4,7 @@ class register extends CI_Controller{
 	
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('register/model_city');
+		$this->load->model('model_city');
 	}
 	
 	public function index(){
@@ -32,19 +32,25 @@ class register extends CI_Controller{
 	}
 	
 	public function seller(){
+		$negara	= $this->model_city->getNegara();
+		$prop	= $this->model_city->getPropinsi();
+		$kota	= $this->model_city->getKota();
+		
 		$data	= array('title'=>'Rejeki Mall : Register Seller',
 		'menu'=>'etalase/menu_etalase',
+		'negara'=>$negara,
+		'prop'=>$prop,
+		'kota'=>$kota,
 		'isi'=>'register/registerperorangan'
 		);
 		$this->load->view('layout/wrapper',$data);
 	}
 	
 	public function pembeli(){
-		$query	= $this->model_city->getNegara();
+		
 		
 		$data	= array('title'=>'Rejeki Mall : Register Pembeli',
 		'menu'=>'etalase/menu_etalase',
-		'negara'=>$query,
 		'isi'=>'register/registerpembeli'
 		);
 		$this->load->view('layout/wrapper',$data);

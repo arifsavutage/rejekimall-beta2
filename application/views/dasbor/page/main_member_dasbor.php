@@ -1,7 +1,15 @@
 <div class="span6">
 	<div class="span3 well" style="background:#CCC;">
 		<center>
-			<img src="<?php echo base_url();?>asset/img/member/nopic.png" name="aboutme" width="140" height="140" class="img-circle">
+			
+			<?php
+			if(empty($detail['foto'])){
+				echo "<img src='".base_url()."asset/img/member/nopic.png' width='140' height='140' class='img-circle'>";
+			}
+			else{
+				echo "<img src='".base_url()."asset/img/member/pp/$detail[foto]' width='140' height='140' class='img-circle'>";
+			}
+			?>
 			<br />			
 			<h3><?php echo $detail['nama'];?></h3>
 		</center>

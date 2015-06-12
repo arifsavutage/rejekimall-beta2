@@ -5,8 +5,22 @@
 	</div> <!-- /widget-header -->
 	
 	<div class="widget-content">
+		<?php
+		if(!empty($error))
+		{
+			echo "
+				<div class='alert alert-warning'>
+				  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+				  <strong>Warning!</strong> $error
+				</div>
+			";
+		}
+		
+		$this->session->flashdata('pesan');
+		?>
+		
 		<div class="tabbable">
-		<ul class="nav nav-tabs">
+		<ul class="nav nav-tabs" id="mytab">
 		  <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
 		  <li><a href="#ktp" data-toggle="tab">Upload KTP</a></li>
 		  <li><a href="#foto" data-toggle="tab">Upload Foto</a></li>
@@ -32,7 +46,7 @@
 				<?php $this->load->view('dasbor/page/akun');?>
 			</div>
 		</div>
-	</div>
+		</div>
 	
 	</div> <!-- /widget-content -->
 </div>

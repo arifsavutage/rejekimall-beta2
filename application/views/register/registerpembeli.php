@@ -93,98 +93,15 @@
 								</div>            
 							</div>
 							
-							<hr />
-							<!-- Will be use this later
 							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Nama Lengkap
-							<textarea placeholder=""></textarea>
-							</label>
-							</div>            
+								<div class="large-12 medium-12 small-12 columns">
+									<p>
+										Dengan melakukan klik pada tombol "Register", saya setuju dengan <a href="#">Syarat & Ketentuan</a>
+										layanan di Rejeki Mall.
+									</p>									
+								</div>            
 							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Alamat
-							<textarea placeholder=""></textarea>
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Negara
-							<select name="negara">
-							<?php
-							foreach($negara as $list){
-								echo "<option value=".$list['id_neg'].">".$list['nama_neg']."</option>";
-							}
-							?>
-							</select>
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Provinsi
-							<select name>
-							<option value="">...</option>
-							<option value="">...</option>
-							<option value="">...</option>
-							<option value="">...</option>
-							</select>
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Kota
-							<select>
-							<option value="">...</option>
-							<option value="">...</option>
-							<option value="">...</option>
-							<option value="">...</option>
-							</select>
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Kecamatan
-							<select>
-							<option value="">...</option>
-							<option value="">...</option>
-							<option value="">...</option>
-							<option value="">...</option>
-							</select>
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Kode Pos
-							<input type="text" placeholder="" />
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>No HP
-							<input type="text" placeholder="" />
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-7 medium-12 small-12 columns">
-							<label>Referensi
-							<input type="text" placeholder="Rejekimall" />
-							</label>
-							</div>            
-							</div>
-							<div class="row">
-							<div class="large-12 medium-12 small-12 columns">             
-							<input type="radio" name="" value="" id=""><label>Saya Telah Setuju dengan <a href="">Syarat dan Ketentuan</a> dari RejekiMall</label>             
-							</div>            
-							</div>
-							-->
+							
 							<div class="row">
 								<div class="large-6 large-offset-4 medium-12 small-12 columns">             
 									<input type="submit" placeholder="" value="Register" class="alert button expand"/> 

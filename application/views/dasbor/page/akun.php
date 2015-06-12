@@ -1,9 +1,11 @@
-<form name="akunctrl" method="post" enctype="multipart/form-data" action="<?php echo base_url();?>member/member/edit_akun" id="akunctrl" class="form-horizontal">
+<form name="akunctrl" method="post" enctype="multipart/form-data" action="<?php echo base_url();?>member/member/editakun" id="akunctrl" class="form-horizontal">
 	<fieldset>			
 		<div class="control-group">											
 			<label class="control-label" for="passlama">Password Lama</label>
 			<div class="controls">
 				<input type="password" class="span4" id="paslama" name="passlama">
+				<input type="hidden" value="<?php echo $detail['password'];?>" name="passlamax"/>
+				<input type="hidden" value="<?php echo $detail['id_member'];?>" name="idmember"/>
 			</div>			
 		</div>
 		
