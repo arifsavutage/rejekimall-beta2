@@ -18,7 +18,7 @@
       <!-- ALL PRODUCT -->
       <div class="row fullscreen" style="padding-top:30px;font-size:1.5em;border-bottom:solid 1px #EFEFEF;">
         <div class="large-12 medium-12 small-12 columns" >
-        <h4>Nama Produk</h4>
+        <h4><?php echo $detail['nama'];?></h4>
         </div>
       </div>
 
@@ -30,7 +30,7 @@
             <ul class="clearing-thumbs clearing-feature" data-clearing>
               <li class="clearing-featured-img">
 				<a href="#">
-					<img style="width:475px;height:350px;" src="<?php echo base_url();?>asset/img/p9.jpg">
+					<img style="width:475px;height:350px;" src="<?php echo base_url().'asset/img/seller/produk/'.$detail['gambar'];?>">
 				</a>
 			  </li>
             </ul>
@@ -40,30 +40,36 @@
 
       <div class="medium-3 columns" style="background:transparent;border:0px;">
         <div class="" data-equalizer-watch="foo" >
-          <h5 style="color:#e62f17;"><strike>Rp. 7000.000</strike></h5>
-          <h3>Rp.6500.000,00</h3>
-             <table style="width:100%;border:0px;">
-              <tr>
-                <td>Shop</td>
-                <td>:</td>
-                <td>Rejeki Shop</td>                 
-              </tr>
-               <tr>
-                <td>Grade</td>
-                <td>:</td>
-                <td>Starter Seller</td>                 
-              </tr>
-               <tr>
-                <td>Lokasi</td>
-                <td>:</td>
-                <td>Semarang</td>                 
-              </tr>
-               <tr>
-                <td>Berat</td>
-                <td>:</td>
-                <td>1 Kg</td>                 
-              </tr>
-            </table>
+			<?php
+			if($detail['diskon'] > 0){
+				$harganew	= $detail['harga']-($detail['harga']*($detail['diskon']/100));
+								
+				echo "<h5 style=''color:#e62f17;''><strike>Rp. ".number_format($harganew,0,',','.')."</strike></h5>";
+			}
+			?>
+			<h3><?php echo "Rp. ".number_format($detail['harga'],0,',','.')."";?></h3>
+			<!--<table style="width:100%;border:0px;">
+				<tr>
+					<td>Shop</td>
+					<td>:</td>
+					<td>Rejeki Shop</td>                 
+				</tr>
+				<tr>
+					<td>Grade</td>
+					<td>:</td>
+					<td>Starter Seller</td>                 
+				</tr>
+				<tr>
+					<td>Lokasi</td>
+					<td>:</td>
+					<td>Semarang</td>                 
+				</tr>
+				<tr>
+					<td>Berat</td>
+					<td>:</td>
+					<td>1 Kg</td>                 
+				</tr>
+			</table>-->
 
          
       </div>
@@ -74,7 +80,7 @@
       <div class="medium-3 columns" style="background:transparent;border:0px;">
         <div class="" data-equalizer-watch="foo" >
         
-           <label>Jasa Pengiriman</label>
+           <!--<label>Jasa Pengiriman</label>
            <span>
                   <select name="couriers">
                   <option value="jne">JNE</option>
@@ -103,15 +109,42 @@
                   <option value="stok">S = stok : 127</option>
                    <option value="pos">M = stok : 25</option>
                   </select>
-          </span>
+          </span>-->
            
-          <form>
+          <form name="addtocart" method="post" action="<?php echo base_url();?>produk/addcart">
             <div class="row">
               <div class="large-12 medium-12 small-12 columns">
                 <label>Jumlah
-                  <input type="text" placeholder="" />
-                   <input type="submit" class="large-12 medium-12 small-12 columns alert button" value="Add to cart" />
+					<input type="text" name="jumlah" value="1" />
+					<input type="hidden" name="kdbrg" value="<?php echo $detail['harga'];?>"/>
                 </label>
+				<label>Ukuran
+				<select name="ukuran">
+				<?php
+					if(strlen($detail['ukuran']>1 || !empty($detail['ukuran']))){
+						$pecah	= explode(',',$detail['ukuran']);
+						
+						for($x=0;$x<count($pecah);$x++){
+							echo "<option value='$pecah[$x]'>$pecah[$x]</option>";
+						}
+					}
+				?>
+				</select>
+				</label>
+				<label>Stok
+					<input type="text" name="stok" value="<?php echo $detail['stok'];?>" readonly="true" />
+					<?php
+					if($detail['diskon'] > 0){
+						$harganew	= $detail['harga']-($detail['harga']*($detail['diskon']/100));
+										
+						echo "<input type='hidden' name='harga' value='$harganew'>";
+					}
+					else{
+						echo "<input type='hidden' name='harga' value='$detail[harga]'>";
+					}
+					?>
+				</label>
+				<input type="submit" class="large-12 medium-12 small-12 columns alert button" value="Add to cart" />
               </div>
             </div>
           </form>
@@ -133,48 +166,35 @@
 <div class="tabs-content">
   <div class="content active" id="deskripsi" >
     <p style="font-size:15px;font-family:tradegothic;">
-      Platform  Notebook 
-Tipe Prosesor Intel Core i3 
-Processor Onboard 
-Intel® Core™ i3-4030U Processor (1.90 GHz, 3M Cache)  
- 
-Memori Standar  2 GB DDR3 
-Tipe Grafis 
-NVIDIA® GeForce® GT840M 2GB  
- 
-Ukuran Layar  14 Inch 
-Resolusi Layar  1366 x 768 
-Tipe Layar  LED 
-Audio Integrated 
-Speaker Integrated 
-Kapasitas Penyimpanan 500 GB HDD 
-Optical Drive Type  DVD±RW 
-Networking  Integrated 
-Wireless Network Type Integrated 
-Wireless Network Protocol IEEE 802.11b, IEEE 802.11g, IEEE 802.11n 
-Wireless Bluetooth  Integrated
-Bluetooth 4.0  
- 
-Keyboard  Standard Keyboard 
-Ragam Input Device  Touch Pad 
-Antarmuka / Interface 
-1x USB 3.0  
-2x USB 2.0  
-HDMI  
- 
-Sistem Operasi  Pre-sales Request Available 
-Baterai 4 Cell 
-      </p>
+		<?php echo $detail['keterangan'];?>
+    </p>
   </div>
   <div class="content" id="infotoko">
-    <p style="font-size:15px;font-family:tradegothic;">
-Username : rejekishop<br>
-Nama Toko : rejekishop<br>
-Nama Pemilik Toko : Rejeki<br>
-Grade Seller : Starter Seller<br>
-Bergabung Sejak : 2015-02-07<br>
-Kota Seller : Solo
-      </p>
+	<table>
+		<tr>
+			<th>Nama Toko</th>
+			<td>:</td>
+			<td><?php echo ucwords($detail['nama_toko']);?></td>
+		</tr>
+		<tr>
+			<th>Bergabung Sejak</th>
+			<td>:</td>
+			<td><?php echo date('d M Y', strtotime($detail['tgl_registrasi']));?></td>
+		</tr>
+		<tr>
+			<th>Alamat Toko</th>
+			<td>:</td>
+			<td><?php echo $detail['alamat'];?></td>
+		</tr>
+	</table>
+    <!--<p style="font-size:15px;font-family:tradegothic;">
+		Username : rejekishop<br>
+		Nama Toko : rejekishop<br>
+		Nama Pemilik Toko : Rejeki<br>
+		Grade Seller : Starter Seller<br>
+		Bergabung Sejak : 2015-02-07<br>
+		Kota Seller : Solo
+      </p>-->
   </div>
   <div class="content" id="review">
     <p style="font-size:15px;font-family:tradegothic;">

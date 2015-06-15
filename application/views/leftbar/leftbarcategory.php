@@ -15,6 +15,10 @@
     <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="kado" style="font-size:0.9em;color:#333333;">Souvenir,Kado & Hadiah</a></li>
   </ul>
 </div>
+<?php
+$seller	= $this->session->userdata('userseller');
+if(!empty($seller)){
+?>
 <div class="row fullscreen" style="background:#efefef;margin:0px;padding:25px 0 25px 0;border-right:solid 5px #e62f17;border-top:solid 1px #e62f17;">
   <div class="row fullscreen text-center" style="background:#faf9f9;margin:0px; padding:10px 0 10px 0;border-top:0px;border-bottom:solid 5px #e62f17;">
     TOKO SAYA
@@ -26,18 +30,23 @@
       <li style="border-bottom:solid 1px #f9f9f9;"><a href="<?php echo site_url('page/info_toko'); ?>" style="font-size:0.9em;color:#333333;">Pengaturan Toko</a></li>
       <li style="border-bottom:solid 1px #f9f9f9;"><a href="#" style="font-size:0.9em;color:#333333;">Pengaturan Admin</a></li>
       <li style="border-bottom:solid 1px #f9f9f9;"><a href="#" style="font-size:0.9em;color:#333333;">Diskusi Produk</a></li>
+      <li style="border-bottom:solid 1px #f9f9f9;"><a href="#" style="font-size:0.9em;color:#333333;"><strong>logout</strong></a></li>
     </ul>
   </div>
 </div>
-<div class="row fullscreen" style="background:#efefef;margin:0px;padding:25px 0 25px 0;border-right:solid 5px #e62f17;border-top:solid 1px #e62f17;">
 
-<a href="registermerchant.php" style="color:#333333;font-size:13px;padding-left:25px;"><i class="fi-burst"> </i>Register Merchant</a>
+<div class="row fullscreen" style="background:#efefef;margin:0px;padding:10px 0px 10px 0px;border-right:solid 1px #e62f17;border-top:solid 1px #e62f17;">
+
+<a href="registermerchant.php" style="color:#333333;font-size:13px;"><i class="fi-burst"> </i>Register Merchant</a>
 <br>
-<a href="registermemberdiskon.php" style="color:#333333;font-size:13px;padding-left:25px;"><i class="fi-burst"> </i>Register Member Diskon</a>
+<a href="registermemberdiskon.php" style="color:#333333;font-size:13px;"><i class="fi-burst"> </i>Register Member Diskon</a>
 </div>
+<?php
+}
+?>
 
-<div class="row fullscreen sidebar" style="margin:0px; padding:0px;">
-<!-- <ul class="accordion" data-accordion style="margin:0px; padding:0px;">
+<!--<div class="row fullscreen sidebar" style="margin:0px; padding:0px;">
+<ul class="accordion" data-accordion style="margin:0px; padding:0px;">
   
 
   <li class="accordion-navigation" style="padding-left:10px;"> 
@@ -170,12 +179,9 @@
     </div>
   </li>
   
-</ul> -->
+</ul>
 
-</div>
-
-
-
+</div>-->
 
 <script src="<?php echo base_url().'asset/bower_components/foundation/js/foundation.min.js'?>"></script>
 <script src="<?php echo base_url().'asset/bower_components/foundation/js/foundation/foundation.orbit.js'?>"></script>

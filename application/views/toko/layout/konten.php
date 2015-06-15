@@ -3,7 +3,7 @@ echo "
 <div class='main'>
   <div class='main-inner'>
     <div class='container'>
-		<div class='row'>";
+		<div class='row' style='min-height:500px;'>";
 if($isi){
 	$this->load->view($isi);
 }

@@ -3,19 +3,8 @@
     <div class="container">
       <ul class="mainnav">
         <li><a href="<?php echo base_url();?>dasbor/home"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-        <li><a href="#"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
-        <li><a href="#"><i class="icon-bar-chart"></i><span>Selling Charts</span> </a> </li>
-        <li><a href="#"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="pricing.html">Pricing Plans</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
-            <li><a href="error.html">404</a></li>
-          </ul>
-        </li>
+        <li><a href="<?php echo base_url();?>dasbor/tracking"><i class="icon-list-alt"></i><span>Tracking</span> </a> </li>
+        <li><a href="#"><i class="icon-bar-chart"></i><span>History</span> </a> </li>
       </ul>
     </div>
     <!-- /container --> 

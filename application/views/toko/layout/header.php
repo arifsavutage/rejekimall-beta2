@@ -30,15 +30,8 @@
 			</a>
 			
             <ul class="dropdown-menu">
-              <li><a href="javascript:;">Settings</a></li>
-              <li><a href="javascript:;">Help</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="icon-user"></i> Rejekimall.com <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="<?php echo base_url();?>dasbor/home/profil">Profile</a></li>
-              <li><a href="<?php echo base_url();?>member/login/logout">Logout</a></li>
+              <li><a href="javascript:;">Setting Toko</a></li>
+              <li><a href="<?php echo base_url();?>penjual/login/logout">Logout</a></li>
             </ul>
           </li>
         </ul>

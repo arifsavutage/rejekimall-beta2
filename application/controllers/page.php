@@ -35,7 +35,7 @@ class page extends CI_Controller{
 		$this->load->view('layout/wrapper', $data);
 	}
 	
-	public function product(){
+	/*public function product(){
 		$data	= array(
 			'title'=>'Rejeki Mall : Product',
 			'menu'=>'etalase/menu_etalase',
@@ -43,7 +43,7 @@ class page extends CI_Controller{
 		);
 		
 		$this->load->view('layout/wrapper', $data);
-	}
+	}*/
 	
 	public function iklanbaris(){
 		$data	= array(
@@ -70,6 +70,26 @@ class page extends CI_Controller{
 			'title'=>'Rejeki Mall : Komplain',
 			'menu'=>'etalase/menu_etalase',
 			'isi'=>'page/laporkankomplain'
+		);
+		
+		$this->load->view('layout/wrapper',$data);
+	}
+	
+	public function toko(){
+		$data	= array(
+			'title'=>'Rejeki Mall : toko',
+			'menu'=>'etalase/menu_etalase',
+			'isi'=>'toko/pengaturan_toko'
+		);
+		
+		$this->load->view('layout/wrapper',$data);
+	}
+	
+	public function tambah_produk(){
+		$data	= array(
+			'title'=>'Rejeki Mall : tambah produk',
+			'menu'=>'etalase/menu_etalase',
+			'isi'=>'toko/tambah_produk'
 		);
 		
 		$this->load->view('layout/wrapper',$data);

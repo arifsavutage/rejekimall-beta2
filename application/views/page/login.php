@@ -27,7 +27,7 @@
 		  
 		  <div class="row collapse">
             <div class="small-12 columns ">
-              <input type="submit" class="large-12 medium-12 small-12 alert button" name="login" value="Login">
+              <input type="submit" class="large-12 medium-12 small-12 success button" name="login" value="Login">
             </div>
           </div>
         </form>
@@ -48,11 +48,13 @@
       </div>
 	  
 		<?php
-			
+			$error	= $this->session->flashdata('error');
 			if(!empty($error)){
 				echo "
 				<div data-alert class='alert-box alert' style='font-size:25px;'>
-				  $error
+				  ";
+				echo $error;
+				echo "
 				  <a href='#' class='close'>&times;</a>
 				</div>
 				";

@@ -3,6 +3,7 @@ class login extends CI_Controller{
 	
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('session');
 	}
 	
 	public function index(){
@@ -26,42 +27,28 @@ class login extends CI_Controller{
 		
 		if($hasil->num_rows() == 1){
 			
-			foreach($hasil->result() as $sess){
-				$sesdata['logged_in']	= 'Sudah Login';
-				$sesdata['idmember']	= $sess->id_member;
-				$sesdata['username']	= $sess->user_id;
-				$sesdata['statusvalid']	= $sess->status;
-				
-				$this->session->set_userdata($sesdata);
-			}
+			$x	= $hasil->row();
 			
-			redirect(base_url().'dasbor/home');
-			/*$statvalid	= $this->session->userdata('statusvalid');
-			if($statvalid == 0){
-				$data	= array(
-					'title'=>'Rejeki Mall : Login',
-					'menu'=>'etalase/menu_etalase',
-					'error'=>'Anda belum memvalidasi akun, silahkan cek email anda..',
-					'isi'=>'page/login'
-					);
-						
-					$this->load->view('layout/wrapper', $data);
+			if($x->status == 0){				
+				$this->session->set_flashdata('error', 'Anda belum memvalidasi akun, silahkan cek email anda');
+				redirect(base_url().'page/login');
 			}else{
+				
+				foreach($hasil->result() as $sess){
+					$sesdata['logged_in']	= 'Sudah Login';
+					$sesdata['idmember']	= $sess->id_member;
+					$sesdata['username']	= $sess->user_id;
+					
+					$this->session->set_userdata($sesdata);
+				}
 				redirect(base_url().'dasbor/home');
-			}*/
+			}
 		}
 		else{
-			/*$data	= array(
-				'title'=>'Rejeki Mall : Login',
-				'menu'=>'etalase/menu_etalase',
-				'error'=>'Username atau Password salah',
-				'isi'=>'page/login'
-			);
 			
-			$this->load->view('layout/wrapper', $data);*/
-			$data['error']	= 'Username atau Password salah';
+			$this->session->set_flashdata('error', 'Username atau Password salah');
 			
-			redirect(base_url().'page/login', $data);
+			redirect(base_url().'page/login');
 		}
 	}
 	

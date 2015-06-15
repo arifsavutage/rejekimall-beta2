@@ -15,4 +15,10 @@ class model_seller extends CI_Model{
 		
 		return $query->num_rows();
 	}
+	
+	function login($data){
+		$query	= $this->db->get_where('seller', $data);
+		
+		return $query;
+	}
 }
