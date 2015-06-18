@@ -37,13 +37,15 @@ class produk extends CI_Controller{
 		$jml	= $this->input->post('jumlah', true);
 		$ukuran	= $this->input->post('ukuran', true);
 		$harga	= $this->input->post('harga', true);
+		$nmbrg	= $this->input->post('nmbrg', true);
 		
 		
 		$data	= array(
-			'id'	=> '$gid',
-			'qty'	=> '$jml',
-			'price'	=> '$harga',
-			'option'=> array('size'=>'$ukuran')
+			'id'	=> $gid,
+			'qty'	=> $jml,
+			'price'	=> $harga,
+			'name'	=> $nmbrg,
+			'options'=> array('size'=>$ukuran)
 		);
 		
 		$this->cart->insert($data);
@@ -51,10 +53,53 @@ class produk extends CI_Controller{
 		redirect(base_url());
 	}
 	
-	function isicart(){
-		$cart	= $this->cart->contents();
+	function updatecart(){
 		
-		echo "<pre>";
-		echo print_r($cart);
+		unset($_POST['ubahcart']);
+		
+		$contents	= $this->input->post();
+		
+		foreach($contents as $content){
+			$data	= array(
+				'rowid'	=> $content['rowid'],
+				'qty'	=> $content['qty']
+			);
+			
+			$this->cart->update($data);
+		}
+		
+		
+		redirect(base_url().'produk/isicart');
+	}
+	
+	function removecart($rowid){
+		if ($rowid==="all"){
+            
+			// Destroy data which store in  session.
+			$this->cart->destroy();
+		}else{
+            
+			// Destroy selected rowid in session.
+			$data = array(
+				'rowid'   => $rowid,
+				'qty'     => 0
+			);
+                     // Update cart data, after cancle.
+			$this->cart->update($data);
+		}
+		
+		redirect(base_url().'produk/isicart');
+	}
+	
+	function isicart(){
+		$data	= array(
+			'title'	=> 'Cart View',
+			'menu'	=> 'etalase/menu_etalase',
+			'isi'	=> 'page/cart_view'
+		);
+		
+		$this->load->view('layout/wrapper', $data);
+		/*echo "<pre>";
+		echo print_r($cart);*/
 	}
 }

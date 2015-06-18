@@ -117,6 +117,7 @@
                 <label>Jumlah
 					<input type="text" name="jumlah" value="1" />
 					<input type="hidden" name="kdbrg" value="<?php echo $detail['harga'];?>"/>
+					<input type="hidden" name="nmbrg" value="<?php echo $detail['nama'];?>"/>
                 </label>
 				<label>Ukuran
 				<select name="ukuran">

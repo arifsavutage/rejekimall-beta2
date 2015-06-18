@@ -56,4 +56,45 @@ class login extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect(base_url().'page/login');
 	}
+	
+	function admin(){
+		$this->load->view('admin/login');
+	}
+	
+	function authadmin(){
+		$this->load->model('super_model');
+		$salt		= "!@#12345Hnahbsgrdt544#55$3";
+		
+		$login	= array(
+			'user'=>$this->input->post('username', true),
+			'pass'=>md5(md5($this->input->post('password', true)).md5($salt))
+		);
+		
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		
+		if($this->form_validation->run() === false){
+			$this->load->view('admin/login');
+		}
+		else{
+			$query	= $this->super_model->viewsuper($login);
+			
+			if($query->num_rows() > 0){
+				foreach($query->result_array() as $adm){
+					$data['superadmin']	= $adm['user'];
+					$data['pass']		= $adm['pass'];
+					$data['id']			= $adm['id'];
+					
+					$this->session->set_userdata($data);
+				}
+				
+				redirect(base_url().'admin');
+			}
+			else{
+				$this->session->set_flashdata('error','Username atau Password salah');
+				redirect(base_url().'login/admin');
+			}
+			
+		}
+	}
 }

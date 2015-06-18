@@ -149,12 +149,20 @@ $seslogin	= $this->session->userdata('username');
   </div>
   <div class="row">
     <div id="downlinecart" data-dropdown-content class="small f-dropdown content" aria-hidden="true" tabindex="-1">
-
-      <a href="index.php" style="color: #000000;">
-        <!--POPUP keranjang belanja-->
-		Keranjang Belanja Anda Kosong
-      </a>
-
+	<?php
+		/*$jml	= 1;
+		foreach ($this->cart->contents() as $items){
+			
+			
+			$jml++;
+		}*/
+		if($this->cart->total_items()>0){
+				echo "<a href='".base_url()."produk/isicart' class='button'>Total Items : ".$this->cart->total_items()."</a>";
+			}
+			else{
+				echo "Keranjang Belanja Anda Kosong";
+			}
+	?>
     </div>
   </div>
 

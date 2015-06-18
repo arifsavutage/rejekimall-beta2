@@ -4,6 +4,7 @@ class home extends CI_Controller{
 		parent::__construct();
 		
 		$this->load->model('model_utama');
+		$this->load->library('cart');
 	}
 	
 	public function index(){

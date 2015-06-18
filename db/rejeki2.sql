@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2015 at 12:04 PM
+-- Generation Time: Jun 18, 2015 at 11:37 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `detail_kategori` (
   `nama` varchar(30) DEFAULT NULL,
   `satuan` varchar(25) DEFAULT NULL,
   `harga` float DEFAULT NULL,
+  `ukuran` varchar(15) NOT NULL,
   `stok` int(3) NOT NULL,
-  `ukuran` varchar(30) NOT NULL,
   `gambar` varchar(100) DEFAULT NULL,
   `keterangan` text,
   `diskon` float NOT NULL DEFAULT '0',
@@ -44,12 +44,12 @@ CREATE TABLE IF NOT EXISTS `detail_kategori` (
 -- Dumping data for table `detail_kategori`
 --
 
-INSERT INTO `detail_kategori` (`cid`, `gid`, `nama`, `satuan`, `harga`, `stok`, `ukuran`, `gambar`, `keterangan`, `diskon`, `bes_seller`) VALUES
-(28, 124, 'cubitus', 'pcs', 35000, 15, 'L,S,M', '5_cubitus1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et augue sapien, ac consequat enim. Maecenas tincidunt ultrices enim, et euismod orci sollicitudin nec. Ut consequat leo sit amet massa luctus ac varius sapien lacinia. Nullam lorem tortor, vehicula fermentum consequat sed, auctor et quam. Donec nec ipsum dolor, in semper felis. Curabitur arcu ligula, aliquam in accumsan sit amet,', 0, '0'),
-(28, 125, 'tidak diketahui', 'pcs', 25000, 20, 'L,S,M,XL', '5_baju-anak-hub_ibu-Retno_-0815-7873-9133.jpg', 'Baju anak dengan bahan katun tidak panas ketika di pakai', 10, '1'),
-(30, 126, 'PHP Mysql Programming', 'pcs', 50000, 35, '-', '1_phpmysqlprogrammingfortheabsolutebeginner.jpg', 'Pemrograman PHP dan Mysql', 0, '0'),
-(31, 127, 'Mysql 5 For Dummy', 'pcs', 85000, 40, '-', '1_23846400.png', 'Belajar Mysql 5 untuk pemula', 2.3, '1'),
-(30, 128, 'Mastering PHP tips dan trik', 'pcs', 125000, 12, '-', '1_cepat-mudah-small.png', 'Cara mudah dan cepat mastering pemrograman PHP', 0, '1');
+INSERT INTO `detail_kategori` (`cid`, `gid`, `nama`, `satuan`, `harga`, `ukuran`, `stok`, `gambar`, `keterangan`, `diskon`, `bes_seller`) VALUES
+(28, 124, 'cubitus', 'pcs', 35000, 'L,M,S', 20, '5_cubitus1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et augue sapien, ac consequat enim. Maecenas tincidunt ultrices enim, et euismod orci sollicitudin nec. Ut consequat leo sit amet massa luctus ac varius sapien lacinia. Nullam lorem tortor, vehicula fermentum consequat sed, auctor et quam. Donec nec ipsum dolor, in semper felis. Curabitur arcu ligula, aliquam in accumsan sit amet,', 0, '0'),
+(28, 125, 'tidak diketahui', 'pcs', 25000, 'L,M,S', 15, '5_baju-anak-hub_ibu-Retno_-0815-7873-9133.jpg', 'Baju anak dengan bahan katun tidak panas ketika di pakai', 10, '1'),
+(30, 126, 'PHP Mysql Programming', 'pcs', 50000, '-', 35, '1_phpmysqlprogrammingfortheabsolutebeginner.jpg', 'Pemrograman PHP dan Mysql', 0, '0'),
+(31, 127, 'Mysql 5 For Dummy', 'pcs', 85000, '-', 5, '1_23846400.png', 'Belajar Mysql 5 untuk pemula', 2.3, '1'),
+(30, 128, 'Mastering PHP tips dan trik', 'pcs', 125000, '-', 10, '1_cepat-mudah-small.png', 'Cara mudah dan cepat mastering pemrograman PHP', 0, '1');
 
 -- --------------------------------------------------------
 
@@ -165,9 +165,22 @@ CREATE TABLE IF NOT EXISTS `member` (
 INSERT INTO `member` (`id_member`, `user_id`, `password`, `nama`, `jk`, `email`, `alamat`, `no_hp`, `no_tlprmh`, `kota`, `kdpos`, `propinsi`, `negara`, `gbr_ktp`, `foto`, `status`, `golongan`) VALUES
 (1, 'arifsavutage', 'bc000ea9d77b4c04b972bda114fd3a9f', 'Juniar Arif Wicaksono', 'Laki-laki', 'arifsautage@gmail.com', 'Boja', '081390559997', '0294573265', 'Kendal', '51381', 'Jawa Tengah', 'Indonesia', 'ktp_arifsavutage.jpg', 'arifsavutage.jpg', 1, 3),
 (2, 'miracleass', '25d55ad283aa400af464c76d713c07ad', 'Deny Nur Arifin', '', 'myrachel@ovi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
-(3, 'yunias', '5e8667a439c68f5145dd2fcbecf02209', 'Yuni Astuti ', 'perempuan', 'yunias@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3),
-(4, 'budbud', 'f638f4354ff089323d1a5f78fd8f63ca', 'Budi Raharjo', 'Laki-laki', 'cakbud@yahoo.co.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 3),
-(5, 'indahaja', '25d55ad283aa400af464c76d713c07ad', 'Indah Nurwati', 'perempuan', 'iendah@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 0, 3);
+(4, 'budbud', 'f638f4354ff089323d1a5f78fd8f63ca', 'Budi Raharjo', 'Laki-laki', 'cakbud@yahoo.co.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
+(5, 'indahaja', '25d55ad283aa400af464c76d713c07ad', 'Indah Nurwati', 'perempuan', 'iendah@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `my_sess`
+--
+
+CREATE TABLE IF NOT EXISTS `my_sess` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -290,18 +303,37 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `foto` varchar(100) DEFAULT NULL,
   `npwp` varchar(100) DEFAULT NULL,
   `golongan` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `seller`
 --
 
 INSERT INTO `seller` (`id_seller`, `nama_toko`, `username`, `password`, `tgl_registrasi`, `nama`, `alamat`, `status_system`, `nohp`, `pin`, `token`, `negara`, `provinsi`, `namabank`, `cabang`, `pemilikrek`, `kat`, `newsletter`, `SMS`, `website`, `norek`, `email`, `ket`, `passtrx`, `kota`, `kecamatan`, `kodepos`, `gbr_ktp`, `foto`, `npwp`, `golongan`) VALUES
-(1, 'Jendela Ilmu', 'seller1@gmail.com', '25d55ad283aa400af464c76d713c07ad', '2015-04-13', 'Seller ke-1', '', '1', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller1@gmail.com', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
-(2, 'Sinar Barokah Elektronik', 'seller2@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '2015-05-11', 'Seller ke-2', '', '1', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller2@yahoo.co.id', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
-(3, 'Bangun Jaya Abadi', 'seller3@ovi.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'seller ke-3', '', '0', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller3@ovi.com', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
-(4, 'Toko Batu Mulia', 'wahid@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'Wahidin', '', '0', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'wahid@yahoo.com', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
-(5, 'baju distro', 'dimasaulia@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'dimas aulia', 'Jl. Kelud Raya 76 D', '1', '0853250000', 7451254, 0, 8, '1', 'Mandiri', 'loksumawe', 'dimas aulia', '', '', '', '', '13500212354', 'dimasaulia@yahoo.co.id', '', '', '29', 'aceh tengah', 12345, NULL, 'nopic.png', NULL, 2);
+(1, 'Jendela Ilmu', 'seller1@gmail.com', '25d55ad283aa400af464c76d713c07ad', '0000-00-00', 'Seller ke-1', '', '1', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller1@gmail.com', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
+(2, 'Sinar Barokah Elektronik', 'seller2@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '0000-00-00', 'Seller ke-2', '', '1', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller2@yahoo.co.id', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
+(5, 'baju distro', 'dimasaulia@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'dimas aulia', 'Jl. Kelud Raya 76 D', '1', '0853250000', 7451254, 0, 8, '1', 'Mandiri', 'loksumawe', 'dimas aulia', '', '', '', '', '13500212354', 'dimasaulia@yahoo.co.id', '', '', '29', 'aceh tengah', 12345, NULL, 'nopic.png', NULL, 2),
+(6, 'choco bear shop', 'yolanda@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '2015-06-17', 'yolanda choco bear', 'Jl. Pademanan raya no 17 Blok D-4 Pondok Kelapa Jakarta', '1', '085235123456', 0, 0, 8, '1', 'BRI', 'Loksumawe', 'Yolanda Andita', '', '', '', '', '306512200112232', 'yolanda@yahoo.co.id', '', '', '29', 'Loksumawe', 12354, NULL, 'nopic.png', NULL, 2),
+(7, 'Eko Cell', 'ekosulistyo@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-17', 'Eko Sulistyo', 'Aceh', '1', '0213245000', 0, 0, 8, '1', 'BRI Syariah', 'Loksumawe', 'Eko Sulistyo', '', '', '', '', '2102221012', 'ekosulistyo@yahoo.com', '', '', '29', 'Loksumawe', 12345, NULL, 'nopic.png', NULL, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `superadm`
+--
+
+CREATE TABLE IF NOT EXISTS `superadm` (
+  `id` int(1) NOT NULL,
+  `user` varchar(30) NOT NULL,
+  `pass` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `superadm`
+--
+
+INSERT INTO `superadm` (`id`, `user`, `pass`) VALUES
+(1, 'superadmin', 'f9dda0c1ea49d7caf6eb55e5903fc490');
 
 --
 -- Indexes for dumped tables
@@ -350,6 +382,12 @@ ALTER TABLE `member`
  ADD PRIMARY KEY (`id_member`);
 
 --
+-- Indexes for table `my_sess`
+--
+ALTER TABLE `my_sess`
+ ADD PRIMARY KEY (`session_id`), ADD KEY `last_activity_idx` (`last_activity`);
+
+--
 -- Indexes for table `negara`
 --
 ALTER TABLE `negara`
@@ -378,6 +416,12 @@ ALTER TABLE `propinsi`
 --
 ALTER TABLE `seller`
  ADD PRIMARY KEY (`id_seller`);
+
+--
+-- Indexes for table `superadm`
+--
+ALTER TABLE `superadm`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -442,7 +486,7 @@ MODIFY `id_prop` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
