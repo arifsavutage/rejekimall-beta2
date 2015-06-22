@@ -24,14 +24,15 @@
 				<div class="large-12 medium-12 small-12 columns">
 				Silakan lengkapi form dibawah ini untuk mendaftar sebagai Penjual Perorangan.
 				<hr />
-					<?php echo validation_errors();?>
-					<form name="penjual" id="penjual" enctype="multipart/form-data" action="<?php echo base_url();?>penjual/seller/tambah" method="post">
+					<?php echo $this->session->flashdata('pesan');?>
+					<?php echo "<span class='color:#FF0000;'><strong>".validation_errors()."</strong></span>";?>
+					<form name="penjual" id="formdft" enctype="multipart/form-data" action="<?php echo base_url();?>penjual/seller/tambah" method="post">
 					
 					<div class="row">
 						<div class="large-12 medium-12 small-12 columns">
 						<label>
 							<strong>Emali <span style="color:red;">*</span></strong>
-							<input name="email" maxlength="100" type="text" placeholder="ex: yourmail@domain.com" required />
+							<input name="email" id="email" maxlength="100" type="text" placeholder="ex: yourmail@domain.com" required />
 							<p>Email akan digunakan sebagai username secara permanen, silahkan isi alamat email yang masih aktif</p>
 						</label>
 						</div>            
@@ -43,14 +44,14 @@
 								<div class="large-6 medium-12 small-12 columns">
 								<label>
 									<strong>Password <span style="color:red;">*</span></strong>
-									<input name="pass1" type="password" placeholder="" required />
+									<input name="pass1" id="pass1" type="password" placeholder="" required />
 								</label>
 								</div>
 
 								<div class="large-6 medium-12 small-12 columns">
 								<label>
 									<strong>Re-Password <span style="color:red;">*</span></strong>
-									<input name="pass2" type="password" placeholder="" required />
+									<input name="pass2" id="pass2" type="password" placeholder="" required />
 								</label>
 								</div>
 							</div>

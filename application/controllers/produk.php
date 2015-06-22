@@ -19,7 +19,7 @@ class produk extends CI_Controller{
 		$this->load->view('layout/wrapper', $data);
 	}
 	function detail($gid){
-		#$id		= $this->session->userdata('idseller');
+		
 		$row	= $this->model_produk->detailproduk($gid);
 		
 		$data	= array(
@@ -33,24 +33,31 @@ class produk extends CI_Controller{
 	}
 	
 	function addcart(){
-		$gid	= $this->input->post('kdbrg', true);
-		$jml	= $this->input->post('jumlah', true);
-		$ukuran	= $this->input->post('ukuran', true);
-		$harga	= $this->input->post('harga', true);
-		$nmbrg	= $this->input->post('nmbrg', true);
-		
-		
-		$data	= array(
-			'id'	=> $gid,
-			'qty'	=> $jml,
-			'price'	=> $harga,
-			'name'	=> $nmbrg,
-			'options'=> array('size'=>$ukuran)
-		);
-		
-		$this->cart->insert($data);
+		if($this->session->userdata('username') == "")
+		{
+			redirect(base_url().'page/login');
+		}
+		else{
+			$gid	= $this->input->post('kdbrg', true);
+			$jml	= $this->input->post('jumlah', true);
+			$ukuran	= $this->input->post('ukuran', true);
+			$harga	= $this->input->post('harga', true);
+			$nmbrg	= $this->input->post('nmbrg', true);
 			
-		redirect(base_url());
+			
+			$data	= array(
+				'id'	=> $gid,
+				'qty'	=> $jml,
+				'price'	=> $harga,
+				'name'	=> $nmbrg,
+				'options'=> array('size'=>$ukuran)
+			);
+			
+			$this->cart->insert($data);
+				
+			redirect(base_url());
+		}
+		
 	}
 	
 	function updatecart(){
@@ -73,10 +80,13 @@ class produk extends CI_Controller{
 	}
 	
 	function removecart($rowid){
-		if ($rowid==="all"){
+		if($rowid == "all"){
             
 			// Destroy data which store in  session.
 			$this->cart->destroy();
+			
+			redirect(base_url());
+						
 		}else{
             
 			// Destroy selected rowid in session.
@@ -99,7 +109,5 @@ class produk extends CI_Controller{
 		);
 		
 		$this->load->view('layout/wrapper', $data);
-		/*echo "<pre>";
-		echo print_r($cart);*/
 	}
 }

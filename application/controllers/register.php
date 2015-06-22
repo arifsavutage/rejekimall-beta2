@@ -47,8 +47,7 @@ class register extends CI_Controller{
 	}
 	
 	public function pembeli(){
-		
-		
+				
 		$data	= array('title'=>'Rejeki Mall : Register Pembeli',
 		'menu'=>'etalase/menu_etalase',
 		'isi'=>'register/registerpembeli'

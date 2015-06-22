@@ -1,3 +1,69 @@
+<!--<div class="above1">
+<div class="container">
+	<div class="row">
+		<div class="span2">
+			<h4>PEMBELI</h4>
+			<ul>
+				<li><a href="javascript:;">Cara Pendaftaran</a></li>
+				<li><a href="javascript:;">Panduan Belanja</a></li>
+				<li><a href="javascript:;">Ketentuan Member</a></li>
+				<li><a href="javascript:;">Metode Pembayaran</a></li>
+				<li><a href="javascript:;">Faq</a></li>
+			</ul>
+		</div>
+		<div class="span2">
+			<h4>PEMBELI</h4>
+			<ul>
+				<li><a href="javascript:;">Cara Pendaftaran</a></li>
+				<li><a href="javascript:;">Panduan Belanja</a></li>
+				<li><a href="javascript:;">Ketentuan Member</a></li>
+				<li><a href="javascript:;">Metode Pembayaran</a></li>
+				<li><a href="javascript:;">Faq</a></li>
+			</ul>
+		</div>
+		<div class="span2">
+			<h4>PEMBELI</h4>
+			<ul>
+				<li><a href="javascript:;">Cara Pendaftaran</a></li>
+				<li><a href="javascript:;">Panduan Belanja</a></li>
+				<li><a href="javascript:;">Ketentuan Member</a></li>
+				<li><a href="javascript:;">Metode Pembayaran</a></li>
+				<li><a href="javascript:;">Faq</a></li>
+			</ul>
+		</div>
+		<div class="span2">
+			<h4>PEMBELI</h4>
+			<ul>
+				<li><a href="javascript:;">Cara Pendaftaran</a></li>
+				<li><a href="javascript:;">Panduan Belanja</a></li>
+				<li><a href="javascript:;">Ketentuan Member</a></li>
+				<li><a href="javascript:;">Metode Pembayaran</a></li>
+				<li><a href="javascript:;">Faq</a></li>
+			</ul>
+		</div>
+		<div class="span2">
+			<h4>PEMBELI</h4>
+			<ul>
+				<li><a href="javascript:;">Cara Pendaftaran</a></li>
+				<li><a href="javascript:;">Panduan Belanja</a></li>
+				<li><a href="javascript:;">Ketentuan Member</a></li>
+				<li><a href="javascript:;">Metode Pembayaran</a></li>
+				<li><a href="javascript:;">Faq</a></li>
+			</ul>
+		</div>
+		<div class="span2">
+			<h4>PEMBELI</h4>
+			<ul>
+				<li><a href="javascript:;">Cara Pendaftaran</a></li>
+				<li><a href="javascript:;">Panduan Belanja</a></li>
+				<li><a href="javascript:;">Ketentuan Member</a></li>
+				<li><a href="javascript:;">Metode Pembayaran</a></li>
+				<li><a href="javascript:;">Faq</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
 <div class="extra">
   <div class="extra-inner">
     <div class="container">
@@ -12,7 +78,7 @@
                             <li><a href="javascript:;">Free Resources and Scripts</a></li>
                         </ul>
                     </div>
-                    <!-- /span3 -->
+                    
                     <div class="span3">
                         <h4>
                             Support</h4>
@@ -23,7 +89,7 @@
                             <li><a href="javascript:;">Feedback</a></li>
                         </ul>
                     </div>
-                    <!-- /span3 -->
+                    
                     <div class="span3">
                         <h4>
                             Something Legal</h4>
@@ -33,7 +99,7 @@
                             <li><a href="javascript:;">Privacy Policy</a></li>
                         </ul>
                     </div>
-                    <!-- /span3 -->
+                    
                     <div class="span3">
                         <h4>
                             Open Source jQuery Plugins</h4>
@@ -44,15 +110,15 @@
                             <li><a href="http://www.egrappler.com;">Flat UI PSD</a></li>
                         </ul>
                     </div>
-                    <!-- /span3 -->
+                  
                 </div>
-      <!-- /row --> 
+     
     </div>
-    <!-- /container --> 
+    
   </div>
-  <!-- /extra-inner --> 
+  
 </div>
-<!-- /extra -->
+-->
 <div class="footer">
   <div class="footer-inner">
     <div class="container">

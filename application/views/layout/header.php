@@ -56,7 +56,7 @@ $seslogin	= $this->session->userdata('username');
 				<a data-dropdown='drop1' aria-controls='drop1' aria-expanded='false' style='font-size:12px;'>Member ($seslogin)</a>
 				<ul id='drop1' class='f-dropdown' data-dropdown-content aria-hidden='true' tabindex='-1'>
 					<li><a href='".base_url()."dasbor/home' target='_blank'>Dashboard</a></li>
-					<li><a href='".base_url()."member/login/logout'>Logout</a></li>
+					<li><a href='".base_url()."login/logout'>Logout</a></li>
 				</ul>
 			";
 		}
@@ -144,24 +144,69 @@ $seslogin	= $this->session->userdata('username');
   <!-- KERANJANG --BELANJA -->
   <div class="large-1 medium-1 small-2 columns  " data-dropdown="downlinecart" aria-controls="downlinecart" aria-expanded="false" style="padding-top:15px;">
     <a class="fi-shopping-cart" href="" style="color: #FFFFFF;font-size:30px;">
-
-    </a>
+    <?php
+		if($this->cart->total_items()>0){
+			#echo "<a href='".base_url()."produk/isicart' class='button'>Total Items : ".$this->cart->total_items()."</a>";
+			$i	= 0;
+			$j	= $this->cart->contents();
+			foreach($j as $jml){
+				
+				$i++;
+			}
+			
+			echo "<span style='font-size:24px;'>$i</span>";
+				
+		}
+		else{
+			echo "<span style='font-size:24px;'>0</span>";
+		}
+	?>
+	</a>
   </div>
   <div class="row">
     <div id="downlinecart" data-dropdown-content class="small f-dropdown content" aria-hidden="true" tabindex="-1">
 	<?php
-		/*$jml	= 1;
-		foreach ($this->cart->contents() as $items){
-			
-			
-			$jml++;
-		}*/
 		if($this->cart->total_items()>0){
-				echo "<a href='".base_url()."produk/isicart' class='button'>Total Items : ".$this->cart->total_items()."</a>";
+			#echo "<a href='".base_url()."produk/isicart' class='button'>Total Items : ".$this->cart->total_items()."</a>";
+			$i	= 0;
+			$j	= $this->cart->contents();
+			
+			echo "<table>
+				<thead>
+				<tr>
+					<th>Barang</th>
+					<th>Harga</th>
+				</tr></thead>";			
+			foreach($j as $jml){
+				if(strlen($jml['name']) > 17){
+					$nmbrg	= substr($jml['name'],0,12)."..";
+				}
+				else{
+					$nmbrg	= $jml['name'];
+				}
+				
+				echo "<tbody>
+				<tr>
+					<td>$nmbrg</td>
+					<td>Rp. ".number_format($jml['price'],0,',','.')."</td>
+				</tr>
+				";
+				
+				$i++;
 			}
-			else{
-				echo "Keranjang Belanja Anda Kosong";
-			}
+			echo "
+				<tr>
+					<td>Total Item : $i</td>
+					<td><a href='".base_url()."produk/isicart' class='button tiny'><i class='fi-shopping-cart'></i> Cek</a></td>
+				</tr>
+				</tbody>
+				</table>";
+			echo "";
+				
+		}
+		else{
+			echo "Keranjang Belanja Anda Kosong";
+		}
 	?>
     </div>
   </div>

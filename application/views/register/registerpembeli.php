@@ -32,7 +32,8 @@
 					<div class="large-12 medium-12 small-12 columns">
 						Silakan lengkapi form dibawah ini untuk mendaftar sebagai pembeli
 						<hr /><br />
-						<form name="memberform" id="" enctype="multipart/form-data" action="<?php echo base_url();?>member/member/tambah" method="post">
+						<?php echo $this->session->flashdata('pesan');?>
+						<form name="memberform" id="formdft" enctype="multipart/form-data" action="<?php echo base_url();?>member/member/tambah" method="post">
 							<div class="row">
 								<div class="large-12 medium-12 small-12 columns">
 									<label>
@@ -64,7 +65,7 @@
 										<div class="large-6 medium-12 small-12 columns">
 										<label>
 											<strong>E-mail <span style="color:red;">*</span></strong>
-											<input name="email" type="text" placeholder="ex: john@domain.com" required />
+											<input name="email" id="email" type="text" placeholder="ex: john@domain.com" required />
 										</label>
 										</div>
 									</div>
@@ -78,14 +79,14 @@
 										<div class="large-6 medium-12 small-12 columns">
 										<label>
 											<strong>Password <span style="color:red;">*</span></strong>
-											<input name="pass1" type="password" placeholder="" required />
+											<input id="pass1" name="pass1" type="password" placeholder="" required />
 										</label>
 										</div>
 										
 										<div class="large-6 medium-12 small-12 columns">
 										<label>
 											<strong>Re-Password <span style="color:red;">*</span></strong>
-											<input name="pass2" type="password" placeholder="" required />
+											<input id="pass2" name="pass2" type="password" placeholder="" required />
 										</label>
 										</div>
 									</div>

@@ -19,7 +19,6 @@ class seller extends CI_Controller{
 		$this->form_validation->set_rules('pass1', 'Password', 'required');
 		$this->form_validation->set_rules('pass2', 'Re-Type Password', 'required');
 		$this->form_validation->set_rules('hp', 'Handphone', 'required');
-		$this->form_validation->set_rules('pin', 'Pin BB', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('negara', 'Negara', 'required');
 		$this->form_validation->set_rules('propinsi', 'Propinsi', 'required');
@@ -39,16 +38,6 @@ class seller extends CI_Controller{
 			);
 			
 			$this->load->view('layout/wrapper',$data);			
-		}
-		else if($this->input->post('pass1', true) != $this->input->post('pass2', true)){
-			$data	= array(
-				'title'=>'Rejeki Mall : Register Seller',
-				'menu'=>'etalase/menu_etalase',
-				'error'=>'Password Tidak Sama, Ulangi Lagi',
-				'isi'=>'register/registerperorangan'
-			);
-			
-			$this->load->view('layout/wrapper',$data);
 		}
 		else if($this->model_seller->cekuname($this->input->post('email', true)) > 0)
 		{
@@ -86,8 +75,22 @@ class seller extends CI_Controller{
 			'golongan'=>'2'
 			);
 			
-			$this->model_seller->tambahseller($data);
-			redirect(base_url().'register/seller');
+			$exe	= $this->model_seller->tambahseller($data);
+			
+			if($exe){
+				$this->session->set_flashdata('pesan','<div class="alert-box">
+				Pendaftaran berhasil, silahkan tunggu konfirmasi admin
+				<a href="#" class="close">&times;</a>
+				</div>');
+				redirect(base_url().'register/seller');
+			}
+			else{
+				$this->session->set_flashdata('pesan','<div class="alert-box warning">
+				Pendaftaran gagal tersimpan..!!
+				<a href="#" class="close">&times;</a>
+				</div>');
+				redirect(base_url().'register/seller');
+			}
 			
 		}
 	}

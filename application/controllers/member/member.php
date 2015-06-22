@@ -63,6 +63,10 @@ class member extends CI_Controller{
 			);
 			
 			$this->model_member->simpan($data);
+			$this->session->set_flashdata('pesan','<div data-alert class="alert-box info">
+				Pendaftaran berhasil, silahkan tunggu konfirmasi
+				<a href="#" class="close">&times;</a>
+			</div>');
 			redirect(base_url().'register/pembeli');
 			
 		}

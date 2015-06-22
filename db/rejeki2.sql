@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2015 at 11:37 AM
+-- Generation Time: Jun 22, 2015 at 11:23 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `foto` varchar(100) DEFAULT NULL,
   `status` int(1) NOT NULL,
   `golongan` int(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
@@ -166,7 +166,12 @@ INSERT INTO `member` (`id_member`, `user_id`, `password`, `nama`, `jk`, `email`,
 (1, 'arifsavutage', 'bc000ea9d77b4c04b972bda114fd3a9f', 'Juniar Arif Wicaksono', 'Laki-laki', 'arifsautage@gmail.com', 'Boja', '081390559997', '0294573265', 'Kendal', '51381', 'Jawa Tengah', 'Indonesia', 'ktp_arifsavutage.jpg', 'arifsavutage.jpg', 1, 3),
 (2, 'miracleass', '25d55ad283aa400af464c76d713c07ad', 'Deny Nur Arifin', '', 'myrachel@ovi.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
 (4, 'budbud', 'f638f4354ff089323d1a5f78fd8f63ca', 'Budi Raharjo', 'Laki-laki', 'cakbud@yahoo.co.id', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
-(5, 'indahaja', '25d55ad283aa400af464c76d713c07ad', 'Indah Nurwati', 'perempuan', 'iendah@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 1, 3);
+(5, 'indahaja', '25d55ad283aa400af464c76d713c07ad', 'Indah Nurwati', 'perempuan', 'iendah@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 1, 3),
+(6, 'dhiyoet', '25d55ad283aa400af464c76d713c07ad', 'Fidzia Liring Passa', 'perempuan', 'dhiyoet@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 0, 3),
+(7, 'masjhon', '25d55ad283aa400af464c76d713c07ad', 'John Mc Fee', 'Laki-laki', 'john@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 0, 3),
+(8, 'astuti', '25d55ad283aa400af464c76d713c07ad', 'Yuni Astuti', 'perempuan', 'astuti@rocketmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 0, 3),
+(9, 'test1', 'e10adc3949ba59abbe56e057f20f883e', 'test member', 'Laki-laki', 'test1@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'nopic.png', 0, 3),
+(10, 'toyibwin', '25d55ad283aa400af464c76d713c07ad', 'toyib', 'Laki-laki', 'toyibwin@yahoo.com', 'Jl. Sriwijaya No 30 Semarang', '08522222222', '-', 'semarang', '12365', 'jawa tengah', 'Indonesia', NULL, 'toyibwin.jpeg', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -219,32 +224,49 @@ CREATE TABLE IF NOT EXISTS `ongkos_kirim` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detail`
+-- Table structure for table `order`
 --
 
-CREATE TABLE IF NOT EXISTS `order_detail` (
-  `gid` int(11) DEFAULT NULL,
-  `oid` int(11) DEFAULT NULL,
-  `jumlah` double DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `order` (
+`idpesan` int(11) NOT NULL,
+  `id_member` int(11) NOT NULL,
+  `waktu` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`idpesan`, `id_member`, `waktu`) VALUES
+(10, 1, '2015-06-21 18:13:43'),
+(11, 1, '2015-06-22 03:41:27');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_pembeli`
+-- Table structure for table `order_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `order_pembeli` (
+CREATE TABLE IF NOT EXISTS `order_detail` (
 `oid` int(11) NOT NULL,
-  `id_seller` int(5) DEFAULT NULL,
-  `id_member` int(11) DEFAULT NULL,
-  `tot_kirim` double NOT NULL,
-  `tgl_pesan` datetime DEFAULT NULL,
-  `jam_pesan` varchar(20) DEFAULT NULL,
+  `idpesan` int(11) NOT NULL,
+  `gid` int(1) NOT NULL,
+  `jml` int(3) NOT NULL,
+  `subtotal` int(11) NOT NULL,
   `id_ongkir` int(11) DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `kd_pos` varchar(10) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`oid`, `idpesan`, `gid`, `jml`, `subtotal`, `id_ongkir`, `alamat`, `kd_pos`) VALUES
+(30, 10, 127, 1, 83045, 1, 'Boja, Kab. Kendal', '51381'),
+(29, 10, 124, 2, 70000, 1, 'Boja, Kab. Kendal', '51381'),
+(31, 11, 127, 1, 83045, 1, 'Jl. Ashoka No. 09', '54325'),
+(32, 11, 128, 1, 125000, 1, 'Jl. Ashoka No. 09', '54325');
 
 -- --------------------------------------------------------
 
@@ -303,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `foto` varchar(100) DEFAULT NULL,
   `npwp` varchar(100) DEFAULT NULL,
   `golongan` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `seller`
@@ -314,7 +336,8 @@ INSERT INTO `seller` (`id_seller`, `nama_toko`, `username`, `password`, `tgl_reg
 (2, 'Sinar Barokah Elektronik', 'seller2@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '0000-00-00', 'Seller ke-2', '', '1', '', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'seller2@yahoo.co.id', '', '', '', '', 0, NULL, 'nopic.png', NULL, 2),
 (5, 'baju distro', 'dimasaulia@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '2015-06-12', 'dimas aulia', 'Jl. Kelud Raya 76 D', '1', '0853250000', 7451254, 0, 8, '1', 'Mandiri', 'loksumawe', 'dimas aulia', '', '', '', '', '13500212354', 'dimasaulia@yahoo.co.id', '', '', '29', 'aceh tengah', 12345, NULL, 'nopic.png', NULL, 2),
 (6, 'choco bear shop', 'yolanda@yahoo.co.id', '25d55ad283aa400af464c76d713c07ad', '2015-06-17', 'yolanda choco bear', 'Jl. Pademanan raya no 17 Blok D-4 Pondok Kelapa Jakarta', '1', '085235123456', 0, 0, 8, '1', 'BRI', 'Loksumawe', 'Yolanda Andita', '', '', '', '', '306512200112232', 'yolanda@yahoo.co.id', '', '', '29', 'Loksumawe', 12354, NULL, 'nopic.png', NULL, 2),
-(7, 'Eko Cell', 'ekosulistyo@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-17', 'Eko Sulistyo', 'Aceh', '1', '0213245000', 0, 0, 8, '1', 'BRI Syariah', 'Loksumawe', 'Eko Sulistyo', '', '', '', '', '2102221012', 'ekosulistyo@yahoo.com', '', '', '29', 'Loksumawe', 12345, NULL, 'nopic.png', NULL, 2);
+(7, 'Eko Cell', 'ekosulistyo@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-17', 'Eko Sulistyo', 'Aceh', '1', '0213245000', 0, 0, 8, '1', 'BRI Syariah', 'Loksumawe', 'Eko Sulistyo', '', '', '', '', '2102221012', 'ekosulistyo@yahoo.com', '', '', '29', 'Loksumawe', 12345, NULL, 'nopic.png', NULL, 2),
+(8, 'baju bagus', 'testseller@mail.com', '25d55ad283aa400af464c76d713c07ad', '2015-06-20', 'test seller', 'aceh', '0', '0852222', 0, 0, 8, '1', 'BRI', 'BRI loksumawe', 'test seller', '', '', '', '', '123456', 'testseller@mail.com', '', '', '29', 'loksumawe', 3251, NULL, 'nopic.png', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -400,9 +423,15 @@ ALTER TABLE `ongkos_kirim`
  ADD PRIMARY KEY (`id_ongkir`);
 
 --
--- Indexes for table `order_pembeli`
+-- Indexes for table `order`
 --
-ALTER TABLE `order_pembeli`
+ALTER TABLE `order`
+ ADD PRIMARY KEY (`idpesan`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
  ADD PRIMARY KEY (`oid`);
 
 --
@@ -461,7 +490,7 @@ MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `negara`
 --
@@ -473,10 +502,15 @@ MODIFY `id_neg` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 ALTER TABLE `ongkos_kirim`
 MODIFY `id_ongkir` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `order_pembeli`
+-- AUTO_INCREMENT for table `order`
 --
-ALTER TABLE `order_pembeli`
-MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+ALTER TABLE `order`
+MODIFY `idpesan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `order_detail`
+--
+ALTER TABLE `order_detail`
+MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `propinsi`
 --
@@ -486,7 +520,7 @@ MODIFY `id_prop` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

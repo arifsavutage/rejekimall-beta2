@@ -44,10 +44,14 @@
 			if($detail['diskon'] > 0){
 				$harganew	= $detail['harga']-($detail['harga']*($detail['diskon']/100));
 								
-				echo "<h5 style=''color:#e62f17;''><strike>Rp. ".number_format($harganew,0,',','.')."</strike></h5>";
+				echo "<h5 style='color:#e62f17;'><strike>Rp. ".number_format($detail['harga'],0,',','.')."</strike></h5>";
+				echo "<h3>Rp. ".number_format($harganew,0,',','.')."</h3>";
+			}
+			else{
+				echo "<h3>Rp. ".number_format($detail['harga'],0,',','.')."</h3>";
 			}
 			?>
-			<h3><?php echo "Rp. ".number_format($detail['harga'],0,',','.')."";?></h3>
+			
 			<!--<table style="width:100%;border:0px;">
 				<tr>
 					<td>Shop</td>
@@ -116,7 +120,7 @@
               <div class="large-12 medium-12 small-12 columns">
                 <label>Jumlah
 					<input type="text" name="jumlah" value="1" />
-					<input type="hidden" name="kdbrg" value="<?php echo $detail['harga'];?>"/>
+					<input type="hidden" name="kdbrg" value="<?php echo $detail['gid'];?>"/>
 					<input type="hidden" name="nmbrg" value="<?php echo $detail['nama'];?>"/>
                 </label>
 				<label>Ukuran

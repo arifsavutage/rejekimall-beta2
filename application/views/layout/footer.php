@@ -9,8 +9,49 @@
 	<script src="<?php echo base_url().'asset/plugin/jQueryStickyFooter1.1/jQuery Sticky Footer 1.1.js'?>"></script>
 	<link rel="stylesheet" href="<?php echo base_url().'asset/plugin/jQueryStickyFooter1.1/footerConfigProrief.css'?>" />
 	<!-- end plugin footer (EXTERNAL SOURCE FROM JQUERY)-->
-
-
+	
+	<script src="<?php echo base_url().'asset/js/jquery.validate.js';?>"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#formdft').validate({
+			rules:{
+				pass1:{
+					minlength:6
+				},
+				pass2:{
+					equalTo : "#pass1"
+				},
+				email:{
+					email : true
+				},
+				tlp:{
+					digits: true
+				},
+				hp:{
+					digits: true
+				}
+			},
+			messages: {
+				pass1:{
+					minlength:"Minimal 6 karakter"
+				},
+				email: {
+					email: "Format email tidak valid"
+				},
+				pass2: {
+					required: "Ulangi password di atas",
+					equalTo: "Password tidak sama"
+				},
+				tlp:{
+					digits: "Harus berupa angka"
+				},
+				hp:{
+					digits: "Harus berupa angka"
+				}
+			}
+		});
+	});
+	</script>
 	<footer>
 		<div style="background:#EEEEEE;">
 			<div class="row" data-equalizer>
