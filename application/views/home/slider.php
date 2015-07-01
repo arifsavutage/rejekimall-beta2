@@ -8,15 +8,18 @@
 				  navigation_arrows:true;
 				  timer_speed: 4000;
 				  bullets:false;">
+		<?php
+		$x	= 1;
+		foreach($slider as $listslide):
+			echo "
 			<li>
-				<img src="<?php echo base_url();?>asset/img/slider/slide.jpg" alt="slide 1" />   
+				<img src='".base_url()."asset/img/slider/$listslide[gbslider]' alt='slide $x' />   
 			</li>
-			<li>   
-				<img src="<?php echo base_url();?>asset/img/slider/slide1.jpg" alt="slide 1" />    
-			</li>
-			<li>
-				<img src="<?php echo base_url();?>asset/img/slider/slide2.jpg" alt="slide 3" />   
-			</li>
+			";
+			
+			$x++;
+		endforeach;
+		?>
 		</ul>
 	</div> 
 </div>

@@ -1,91 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  
-<head>
-    <meta charset="utf-8">
-    <title>Administrator</title>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes"> 
-    
-	<link href="<?php echo base_url();?>code/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="<?php echo base_url();?>code/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-
-	<link href="<?php echo base_url();?>code/css/font-awesome.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-    
-<link href="<?php echo base_url();?>code/css/style.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url();?>code/css/pages/signin.css" rel="stylesheet" type="text/css">
-
-</head>
-
-<body>
-	
-	<div class="navbar navbar-fixed-top">
-	
-	<div class="navbar-inner">
-		
-		<div class="container">
-			
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			
-			<a class="brand" href="#">
-				Super Admin				
-			</a>		
-	
-		</div> <!-- /container -->
-		
-	</div> <!-- /navbar-inner -->
-	
-</div> <!-- /navbar -->
-
-
-
-<div class="account-container">
-	
-	<?php echo validation_errors();?>
-	<?php echo $this->session->flashdata('error');?>
-	
-	<div class="content clearfix">
-		
-		<form action="<?php echo base_url()?>login/authadmin" method="post">
-		
-			<h1>Login</h1>		
-			
-			<div class="login-fields">
-				
-				<div class="field">
-					<label for="email">Username</label>
-					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
-				</div> <!-- /field -->
-				
-				<div class="field">
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"/>
-				</div> <!-- /password -->
-				
-				<div class="field">
-					
-				</div> 
-				<!-- /password -->
-			</div> <!-- /login-fields -->
-			<input type="submit" name="login" value="Login" class="btn btn-success" />
-		</form>
-		
-	</div> <!-- /content -->
-	
-</div> <!-- /account-container -->
-
-
-<script src="<?php echo base_url();?>code/js/jquery-1.7.2.min.js"></script>
-<script src="<?php echo base_url();?>code/js/bootstrap.js"></script>
-
-<script src="<?php echo base_url();?>code/js/signin.js"></script>
-
-</body>
-
-</html>
+ <div class="row">
+    <div class="large-5 large-offset-3 columns" style="min-height:500px;">
+	  <div class="signup-panel">
+        <br />
+        <br />
+        <br />
+		<?php validation_errors();?>
+		<h2 class="welcome"> Login Admin</h2>
+        <form name="loginmember" action="<?php echo base_url();?>login/authadmin" method="post">
+          <div class="row collapse">
+            <div class="small-2  columns">
+              <span class="prefix"><i class="fi-torso-female"></i></span>
+            </div>
+            <div class="small-10  columns">
+              <input type="text" name="username" placeholder="username">
+            </div>
+          </div>
+		  
+          <div class="row collapse">
+            <div class="small-2 columns ">
+              <span class="prefix"><i class="fi-lock"></i></span>
+            </div>
+            <div class="small-10 columns ">
+              <input type="password" name="password" placeholder="password">
+            </div>
+          </div>
+		  
+		  <div class="row collapse">
+            <div class="small-12 columns ">
+              <input type="submit" class="large-12 medium-12 small-12 success button" name="login" value="Login">
+            </div>
+          </div>
+        </form>
+    </div>
+    </div>
+   </div>

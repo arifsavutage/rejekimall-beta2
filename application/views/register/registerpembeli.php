@@ -39,10 +39,25 @@
 									<label>
 										<strong>Nama Lengkap <span style="color:red;">*</span></strong>
 										<input name="nama" type="text" placeholder="ex: john mcfee" required />
+										<input name="sponsor" type="hidden" value="<?php echo $this->session->userdata('idmember');?>" />
 									</label>
 								</div>            
 							</div>
-							
+							<div class="row">
+								<div class="large-12 medium-12 small-12 columns">
+									<label>
+										<strong>Paket Member <span style="color:red;">*</span></strong>
+										<select name="pktmember">
+										<option value="">- Pilih Paket</option>
+										<?php
+										foreach($pktmember as $listmember):
+											echo "<option value='$listmember[id_pkt]'>$listmember[nmpaket]</option>";
+										endforeach;
+										?>
+										</select>
+									</label>
+								</div>            
+							</div>
 							<div class="row">
 								<div class="large-12 medium-12 small-12 columns">
 									<label>

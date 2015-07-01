@@ -5,7 +5,7 @@
 	<br>
 
 	<!--  PROUK DAN IKLAN BARIS -->
-	<?php require_once "produk_dan_iklan.php";?>
+	<?php $this->load->view("home/produk_dan_iklan");?>
 
 
 	<!-- WELLCOME RESSELER -->
@@ -38,8 +38,8 @@
 	<!-- IKLAN BAWAH -->
 	<div class="row fullscreen">
 	  <div class="large-12 columns text-center" style="padding:0px;"  >
-		<a href="<?php echo base_url();?>page/iklanbaris">
-		  <img src="<?php echo base_url();?>asset/img/slider/slide.jpg" >
+		<a href="#">
+		  <img width="100%" src="<?php echo base_url().'asset/img/iklan/'.$banner6['gbiklan'];?>" >
 		</a>
 	  </div>
 	</div>
@@ -51,11 +51,31 @@
 			<img src="<?php echo base_url();?>asset/img/logobawah.png" style="height:50px;">
 		  </a>
 		  <p style="color:#333333;font-size:14px;">
-		   Telp : 087836325580  |  081226020880  |  085799468880
+		   <?php
+			if(preg_match("/,/", $profil['hp'])){
+				$pecah	= explode(',',$profil['hp']);
+				
+				for($x=0;$x<count($pecah);$x++){
+					echo "Telp : $pecah[$x] | ";
+				}
+			}else{
+				echo "Telp : $profil[hp]";
+			}
+		   ?>
 		   <br>
-		   BB: 529E1E94  |  528873CE  |  52284348
+		   <?php
+			if(preg_match("/,/", $profil['pin'])){
+				$split	= explode(',',$profil['pin']);
+				
+				for($x=0;$x<count($split);$x++){
+					echo "Pin BB : $split[$x] | ";
+				}
+			}else{
+				echo "Pin BB : $profil[pin]";
+			}
+		   ?>
 		   <br>
-		   admin@rejekimall.com
+		   <?php echo "E-mail : ".$profil['email'];?>
 		 </p>
 		</div>
 	</div>

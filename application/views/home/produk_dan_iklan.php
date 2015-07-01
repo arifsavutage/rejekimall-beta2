@@ -1,5 +1,6 @@
 <div class="row fullscreen" style="padding-bottom:20px;">
-	<div data-equalizer="foo">
+	<!--PRODUK RAND-->
+	<div class="medium-8 columns">
 		<?php
 			$this->load->view('home/allproduk');
 		?>
@@ -10,14 +11,9 @@
 		<div  data-equalizer-watch="foo">
 			<div>
 				<div class="row fullscreen">
-					<div class="large-12 medium-12 small-12 columns" 
-					style="
-					background-image: url(<?php echo base_url();?>asset/img/iklan/spaceiklan3.jpg);
-					background-repeat:no-repeat;
-					background-size:cover;
-					min-height:150px;
-					">
-					</div >
+					<div class="large-12 medium-12 small-12 columns" style="padding:0px;">
+					<img style="width:100%;" src="<?php echo base_url().'asset/img/iklan/'.$banner1['gbiklan'];?>"/>
+					</div >					
 				</div>
 				
 				<br>
@@ -31,27 +27,15 @@
 					navigation_arrows:true;
 					timer_speed: 3500;
 					bullets:false;">
-						<li style="
-						background-image: url(<?php echo base_url();?>asset/img/iklan/bigbanner.jpg);
-						background-repeat:no-repeat;
-						background-size:cover;
-						min-height:475px;
-						">   
+					<?php
+					foreach($banner2 as $listbanner2){
+						echo "
+						<li>
+							<img src='".base_url()."asset/img/iklan/$listbanner2[gbiklan]' />
 						</li>
-						<li style="
-						background-image: url(<?php echo base_url();?>asset/img/iklan/bigbanner1.jpg);
-						background-repeat:no-repeat;
-						background-size:cover;
-						min-height:475px;
-						">   
-						</li>
-						<li style="
-						background-image: url(<?php echo base_url();?>asset/img/iklan/bigbanner2.jpg);
-						background-repeat:no-repeat;
-						background-size:cover;
-						min-height:475px;
-						">   
-						</li>
+						";
+					}
+					?>
 					</ul>
 					</div>
 				</div>

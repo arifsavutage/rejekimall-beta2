@@ -4,12 +4,14 @@ class page extends CI_Controller{
 	
 	public function __construct(){
 		parent::__construct();
+		$this->load->model("model_utama");
 	}
 	
 	public function index(){
 		$data	= array(
 		'title'=>'Rejeki Mall : Nama Page',
 		'menu'=>'etalase/menu_etalase',
+		'kategori'=>$this->model_utama->kategori(),
 		'isi'=>'page/main_page'
 		);
 		$this->load->view('layout/wrapper',$data);	
@@ -19,6 +21,7 @@ class page extends CI_Controller{
 		$data	= array(
 			'title'=>'Rejeki Mall : Buletin',
 			'menu'=>'etalase/menu_etalase',
+			'kategori'=>$this->model_utama->kategori(),
 			'isi'=>'page/buletin'
 		);
 		
@@ -29,6 +32,7 @@ class page extends CI_Controller{
 		$data	= array(
 			'title'=>'Rejeki Mall : About',
 			'menu'=>'etalase/menu_etalase',
+			'kategori'=>$this->model_utama->kategori(),
 			'isi'=>'page/about'
 		);
 		
@@ -49,6 +53,7 @@ class page extends CI_Controller{
 		$data	= array(
 			'title'=>'Rejeki Mall : Iklan Baris',
 			'menu'=>'etalase/menu_etalase',
+			'kategori'=>$this->model_utama->kategori(),
 			'isi'=>'page/iklanbaris'
 		);
 		
@@ -59,6 +64,7 @@ class page extends CI_Controller{
 		$data	= array(
 			'title'=>'Rejeki Mall : Iklan Jasa',
 			'menu'=>'etalase/menu_etalase',
+			'kategori'=>$this->model_utama->kategori(),
 			'isi'=>'page/iklanjasa'
 		);
 		
@@ -69,13 +75,14 @@ class page extends CI_Controller{
 		$data	= array(
 			'title'=>'Rejeki Mall : Komplain',
 			'menu'=>'etalase/menu_etalase',
+			'kategori'=>$this->model_utama->kategori(),
 			'isi'=>'page/laporkankomplain'
 		);
 		
 		$this->load->view('layout/wrapper',$data);
 	}
 	
-	public function toko(){
+	/*public function toko(){
 		$data	= array(
 			'title'=>'Rejeki Mall : toko',
 			'menu'=>'etalase/menu_etalase',
@@ -93,7 +100,7 @@ class page extends CI_Controller{
 		);
 		
 		$this->load->view('layout/wrapper',$data);
-	}
+	}*/
 	
 	public function login(){
 				

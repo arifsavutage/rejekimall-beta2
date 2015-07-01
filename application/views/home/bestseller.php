@@ -17,7 +17,7 @@
 			<div class="large-2 medium-6 small-12 columns text-center">
 				<ul class="pricing-table" data-equalizer-watch>
 					<li class="large-12 medium-12 small-12 columns" style="max-height:170px;min-height:170px;">
-					<a href="product.php"><img src="<?php echo base_url();?>asset/img/seller/produk/p1.png"></a>
+					<a href=""><img src="<?php echo base_url();?>asset/img/seller/produk/p1.png"></a>
 					</li>       
 					<li style=""><p class="description" ><a href="" style="color:#e62f17;">
 					<b>NAMA PRODUK</b><br></a><br>Nama Kota<br><strike><br>Rp. 7000.000</strike><br>

@@ -3,16 +3,11 @@
 </div>
 <div class="row fullscreen sidebar" style="margin:0px; padding:0 0 30px 0;background:#EEEEEE;">
    <ul class="no-bullet" style="padding-left:30px;">
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"  data-orbit-link="newarrivals" style="font-size:0.9em;color:#333333;">New Arrivals</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="fashion" style="font-size:0.9em;color:#333333;">Fashion</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="beauty" style="font-size:0.9em;color:#333333;">Beauty & Health</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"  data-orbit-link="babies" style="font-size:0.9em;color:#333333;">Babies & Kids</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="garden" style="font-size:0.9em;color:#333333;">Home & Garden</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="gadget" style="font-size:0.9em;color:#333333;">Gadget & Computer</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"  data-orbit-link="electronic" style="font-size:0.9em;color:#333333;">Electronic</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="sport" style="font-size:0.9em;color:#333333;">Sport & Hobby</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="food" style="font-size:0.9em;color:#333333;">Food & Beverage</a></li>
-    <li style="border-bottom:solid 1px #f9f9f9;"><a href="category.php"   data-orbit-link="kado" style="font-size:0.9em;color:#333333;">Souvenir,Kado & Hadiah</a></li>
+   <?php
+   foreach($kategori as $listkat){
+	   echo "<li style='border-bottom:solid 1px #f9f9f9;'><a href='".base_url()."produk/kategori/$listkat[slugkat]'  data-orbit-link='newarrivals' style='font-size:0.9em;color:#333333;'>$listkat[nama]</a></li>";
+   }
+   ?>
   </ul>
 </div>
 <?php

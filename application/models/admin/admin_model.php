@@ -5,6 +5,22 @@ class admin_model extends CI_Model{
 		$this->load->database();
 	}
 	
+	function detailprofilweb(){
+		$query	= $this->db->query("
+		SELECT 
+		`id`, `hp`, `pin`, 
+		`email`, `fb`, `twitter`, 
+		`gplus`, `insta`, `youtube` 
+		FROM `profil`");
+		
+		return $query->row_array();
+	}
+	
+	function editprofilweb($data){
+		$this->db->where('id', $data['id']);
+		return $this->db->update('profil', $data);
+	}
+	
 	function sellerbaru(){
 		$query	= $this->db->query('
 		SELECT 

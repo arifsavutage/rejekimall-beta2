@@ -123,10 +123,13 @@
 					<input type="hidden" name="kdbrg" value="<?php echo $detail['gid'];?>"/>
 					<input type="hidden" name="nmbrg" value="<?php echo $detail['nama'];?>"/>
                 </label>
+				
 				<label>Ukuran
 				<select name="ukuran">
 				<?php
-					if(strlen($detail['ukuran']>1 || !empty($detail['ukuran']))){
+					$pjg	= strlen($detail['ukuran']);
+					
+					if($pjg>1 || !empty($detail['ukuran'])){
 						$pecah	= explode(',',$detail['ukuran']);
 						
 						for($x=0;$x<count($pecah);$x++){
@@ -136,6 +139,23 @@
 				?>
 				</select>
 				</label>
+				
+				<label>Warna
+				<select name="warna">
+				<?php
+					if(preg_match("/,/", $detail['warna'])){
+						$pecah	= explode(',',$detail['warna']);
+						
+						for($x=0;$x<count($pecah);$x++){
+							echo "<option value='$pecah[$x]'>$pecah[$x]</option>";
+						}
+					}else{
+						echo "<option value='$detail[warna]'>$detail[warna]</option>";
+					}
+				?>
+				</select>
+				</label>
+				
 				<label>Stok
 					<input type="text" name="stok" value="<?php echo $detail['stok'];?>" readonly="true" />
 					<?php
@@ -166,7 +186,7 @@
   <ul class="tabs" data-tab >
   <li class=" tab-title active"><a href="#deskripsi" style="font-size:13px;">Deskripsi</a></li>
   <li class=" tab-title"><a href="#infotoko" style="font-size:13px;">Informasi Toko</a></li>
-  <li class=" tab-title"><a href="#review" style="font-size:13px;">Review</a></li>
+  <!--<li class=" tab-title"><a href="#review" style="font-size:13px;">Review</a></li>-->
 </ul>
 <div class="tabs-content">
   <div class="content active" id="deskripsi" >
@@ -201,11 +221,11 @@
 		Kota Seller : Solo
       </p>-->
   </div>
-  <div class="content" id="review">
+  <!--<div class="content" id="review">
     <p style="font-size:15px;font-family:tradegothic;">
       ASUS Notebook A455LN – WX016D merupakan notebook yang memberikan keseimbangan antara performa yang cepat dan lancar dengan kualitas multimedia yang impresif & memukau. Dari segi prosesor, dengan Intel Core i3-4030U berkecepatan 1.90 GHz, serta RAM 2GB DDR3, notebook ini dapat menjalankan aplikasi umum seperti Microsoft Office, game casual serta multitasking cukup lancar. Untuk multimedia, ASUS menyertakan teknologi Audio SonicMaster yang dapat menghasilkan kualitas suara seperti bioskop untuk keperluan multimedia seperti music, film atau game.
     </p>
-  </div>
+  </div>-->
 </div>
 </div>
 

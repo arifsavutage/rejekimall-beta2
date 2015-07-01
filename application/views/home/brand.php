@@ -127,22 +127,22 @@
 
 <!-- IKLAN BARIS2 -->
 <div class="row fullscreen text-center">
-
+	
 	<div class="large-6 medium-6  columns" >
-		<a class="" href="<?php echo base_url();?>page/iklanjasa">
-		<img src="<?php echo base_url();?>asset/img/iklan/iklanjasa.jpg" >
+		<a class="" href="#">
+		<img src="<?php echo base_url().'asset/img/iklan/'.$banner3['gbiklan'];?>" >
+		</a>
+	</div>
+	
+	<div class="large-3 medium-3  columns">
+		<a class="" href="#">
+		<img src="<?php echo base_url().'asset/img/iklan/'.$banner4['gbiklan'];?>" >
 		</a>
 	</div>
 
 	<div class="large-3 medium-3  columns">
-		<a class="" href="<?php echo base_url();?>page/iklanjasa">
-		<img src="<?php echo base_url();?>asset/img/iklan/spaceiklan2.jpg" >
-		</a>
-	</div>
-
-	<div class="large-3 medium-3  columns">
-		<a class="" href="<?php echo base_url();?>page/iklanjasa">
-		<img src="<?php echo base_url();?>asset/img/iklan/spaceiklan.jpg" >
+		<a class="" href="#">
+		<img src="<?php echo base_url().'asset/img/iklan/'.$banner5['gbiklan'];?>" >
 		</a>
 	</div >
 </div>

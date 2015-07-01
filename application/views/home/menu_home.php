@@ -20,16 +20,11 @@
 			<b>PILIH KATEGORI</b>
         </a>
         <ul class="dropdown">
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">New Arrivals</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Fashion</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Beauty & Health</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Babies & Kids</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Home & Garden</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Gadget & Computer</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Electronic</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Sport & Hobby</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Food & Beverage</a></li>
-          <li><a href="category.php" style="background:#f8f5f5;color:#333333;">Souvenir, Kado, & Hadiah</a></li>
+        <?php
+		foreach($kategori as $listkat){
+			echo "<li><a href='".base_url()."produk/kategori/$listkat[slugkat]' style='background:#f8f5f5;color:#333333;'>$listkat[nama]</a></li>";
+		}
+		?>
         </ul>
       </li>
     </ul>

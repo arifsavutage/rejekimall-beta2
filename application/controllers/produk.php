@@ -4,20 +4,50 @@ class produk extends CI_Controller{
 		parent::__construct();
 		$this->load->library('cart');
 		$this->load->model('penjual/model_produk');
-		$this->load->database();
+		$this->load->model('model_utama');
 	}
 	
 	function index(){
-		$query	= $this->model_produk->allproduk();
+		redirect(base_url().'produk/all');
+	}
+	
+	function all(){
+		$jml	= $this->model_produk->jmlrow();
+		
+		$config['base_url']			= base_url().'produk/all/';
+		$config['total_rows']		= $jml->num_rows();
+		$config['per_page']			= $per_page	= 8;
+		$config['uri_segment']		= 3;
+		
+		$config['full_tag_open']	= "<ul class='pagination'>";
+		$config['full_tag_close']	= "</ul>";
+		$config['num_tag_open']		= "<li>";
+		$config['num_tag_close']	= "</li>";
+		$config['cur_tag_open']		= "<li class='current'><a href=''>";
+		$config['cur_tag_close']	= "</li>";
+		$config['first_tag_open'] 	= "<li class='arrow'><a href=''>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] 	= "<li class='arrow'><a href=''>";
+		$config['last_tagl_close'] 	= "</li>";
+		
+		$this->pagination->initialize($config);
+		
+		$page	= ($this->uri->segment(3)) ? $this->uri->segment(3):0;
+		$query	= $this->model_produk->allproduk($page, $per_page);
+		
 		$data	= array(
 			'title'=>'All Produk',
 			'menu'=>'etalase/menu_etalase',
-			'detail'=>$query,
+			'detail'=>$query->result_array(),
+			'kategori'=>$this->model_utama->kategori(),
+			'paging'=> $this->pagination->create_links(),
 			'isi'=>'toko/view_produk'
 		);
 		
+		
 		$this->load->view('layout/wrapper', $data);
 	}
+	
 	function detail($gid){
 		
 		$row	= $this->model_produk->detailproduk($gid);
@@ -26,11 +56,13 @@ class produk extends CI_Controller{
 			'title'=>'Produk Rejeki Mall',
 			'menu'=>'etalase/menu_etalase',
 			'detail'=>$row->row_array(),
+			'kategori'=>$this->model_utama->kategori(),
 			'isi'=>'page/product'
 		);
 		
 		$this->load->view('layout/wrapper', $data);
 	}
+	
 	
 	function addcart(){
 		if($this->session->userdata('username') == "")
@@ -43,6 +75,7 @@ class produk extends CI_Controller{
 			$ukuran	= $this->input->post('ukuran', true);
 			$harga	= $this->input->post('harga', true);
 			$nmbrg	= $this->input->post('nmbrg', true);
+			$warna	= $this->input->post('warna', true);
 			
 			
 			$data	= array(
@@ -50,7 +83,7 @@ class produk extends CI_Controller{
 				'qty'	=> $jml,
 				'price'	=> $harga,
 				'name'	=> $nmbrg,
-				'options'=> array('size'=>$ukuran)
+				'options'=> array('size'=>$ukuran, 'warna'=>$warna)
 			);
 			
 			$this->cart->insert($data);

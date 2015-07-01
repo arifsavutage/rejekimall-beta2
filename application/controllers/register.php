@@ -5,19 +5,24 @@ class register extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('model_city');
+		$this->load->model("model_utama");
+		$this->load->model("admin/paket_member");
+		$this->load->model("admin/paket_seller");
 	}
 	
 	public function index(){
 		$data	= array('title'=>'Rejeki Mall : Register',
 		'menu'=>'etalase/menu_etalase',
+		'kategori'=>$this->model_utama->kategori(),
 		'isi'=>'register/registerpenjual'
 		);
 		$this->load->view('layout/wrapper',$data);
 	}
 	
 	public function pengusaha(){
-		$data	= array('title'=>'Rejeki Mall : Register Badan Usaha',
+		$data	= array('title'=>'Register Badan Usaha',
 		'menu'=>'etalase/menu_etalase',
+		'kategori'=>$this->model_utama->kategori(),
 		'isi'=>'register/registerbadanusaha'
 		);
 		$this->load->view('layout/wrapper',$data);
@@ -47,9 +52,12 @@ class register extends CI_Controller{
 	}
 	
 	public function pembeli(){
-				
+		
+		$query	= $this->paket_member->viewpaket();
 		$data	= array('title'=>'Rejeki Mall : Register Pembeli',
 		'menu'=>'etalase/menu_etalase',
+		'kategori'=>$this->model_utama->kategori(),
+		'pktmember'=> $query,
 		'isi'=>'register/registerpembeli'
 		);
 		$this->load->view('layout/wrapper',$data);

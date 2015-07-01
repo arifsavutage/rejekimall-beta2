@@ -52,13 +52,82 @@ class login extends CI_Controller{
 		}
 	}
 	
-	function logout(){
-		$this->session->sess_destroy();
-		redirect(base_url().'page/login');
+	function logout($user){
+		if($user == "member"){
+			$this->session->sess_destroy();
+			redirect(base_url().'page/login');
+		}
+		else if($user == "seller"){
+			$this->session->sess_destroy();
+			redirect(base_url().'toko');
+		}
+		else{
+			$this->session->sess_destroy();
+			redirect(base_url().'admin');
+		}
 	}
 	
+/*
+SELLER
+*/
+	function seller(){
+		$data	= array(
+			'title'	=> 'LOGIN SELLER',
+			'menu'	=> 'etalase/menu_etalase',
+			'isi'	=> 'toko/login'
+		);
+		
+		$this->load->view('layout/wrapper', $data);
+	}
+	
+	function authseller(){
+		$this->load->model('penjual/model_seller');
+		
+		$datalogin	= array(
+			'email'=>$this->input->post('email', true),
+			'password'=>md5($this->input->post('password', true))
+		);
+		
+		$hasil	= $this->model_seller->login($datalogin);
+		
+		if($hasil->num_rows() == 1){
+			
+			$row	= $hasil->row();
+			
+			if($row->status_system == 0){
+				$this->session->set_flashdata('error', 'Oops : akun anda belum divalidasi, silahkan hubungi admin untuk konfirmasi');
+				redirect(base_url().'login/seller');
+			}
+			else{
+				foreach($hasil->result() as $sessme){
+					$sessdata['idseller']	= $sessme->id_seller;
+					$sessdata['userseller']	= $sessme->nama;
+					
+					$this->session->set_userdata($sessdata);
+				}
+				
+				redirect(base_url().'toko');
+			}
+			
+		}
+		else{
+			$this->session->set_flashdata('error', 'Oops : Email atau password salah');
+			redirect(base_url().'login/seller');
+		}
+	}
+/*-------------------------------------------------------------------------------------------------------------------------*/
+	
+/*
+ADMINISTRATOR
+*/
 	function admin(){
-		$this->load->view('admin/login');
+		$data	= array(
+			'title'	=> 'LOGIN ADMIN',
+			'menu'	=> 'etalase/menu_etalase',
+			'isi'	=> 'admin/login'
+		);
+		
+		$this->load->view('layout/wrapper', $data);
 	}
 	
 	function authadmin(){

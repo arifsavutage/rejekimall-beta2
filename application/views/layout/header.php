@@ -1,5 +1,7 @@
 <?php
 $seslogin	= $this->session->userdata('username');
+$super		= $this->session->userdata('superadmin');
+$seller		= $this->session->userdata('userseller');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -48,25 +50,43 @@ $seslogin	= $this->session->userdata('username');
       <ul class="right">   
         <li>
 		<?php
-		if(!isset($seslogin)){
-			echo "<a href='#' data-dropdown='downlinelogin' aria-controls='downline11' aria-expanded='false' style='font-size:12px;'>Login</a>";
-		}
-		else{
+		if(isset($seslogin)){
 			echo "
 				<a data-dropdown='drop1' aria-controls='drop1' aria-expanded='false' style='font-size:12px;'>Member ($seslogin)</a>
 				<ul id='drop1' class='f-dropdown' data-dropdown-content aria-hidden='true' tabindex='-1'>
 					<li><a href='".base_url()."dasbor/home' target='_blank'>Dashboard</a></li>
-					<li><a href='".base_url()."login/logout'>Logout</a></li>
+					<li><a href='".base_url()."login/logout/member'>Logout</a></li>
 				</ul>
 			";
+		}
+		else if(isset($super)){
+			echo "
+				<a data-dropdown='drop1' aria-controls='drop1' aria-expanded='false' style='font-size:12px;'>Admin ($super)</a>
+				<ul id='drop1' class='f-dropdown' data-dropdown-content aria-hidden='true' tabindex='-1'>
+					<li><a href='".base_url()."admin' target='_blank'>Dashboard</a></li>
+					<li><a href='".base_url()."login/logout/admin'>Logout</a></li>
+				</ul>
+			";
+		}
+		else if(isset($seller)){
+			echo "
+				<a data-dropdown='drop1' aria-controls='drop1' aria-expanded='false' style='font-size:12px;'>Toko ($seller)</a>
+				<ul id='drop1' class='f-dropdown' data-dropdown-content aria-hidden='true' tabindex='-1'>
+					<li><a href='".base_url()."toko' target='_blank'>Dashboard</a></li>
+					<li><a href='".base_url()."login/logout/seller'>Logout</a></li>
+				</ul>
+			";
+		}
+		else{
+			echo "<a href='#' data-dropdown='downlinelogin' aria-controls='downline11' aria-expanded='false' style='font-size:12px;'>Login</a>";
 		}
 		?>
           
         </li>
         <li>
-        <a href="<?php echo base_url();?>register/pembeli" style="font-size:12px;">Register Pembeli</a>
+		<a href="<?php echo base_url();?>register/pembeli" style="font-size:12px;">Register Pembeli</a>
         <li>
-        <a href="<?php echo base_url(); ?>register" style="font-size:12px;">Register Penjual</a></li> 
+        <a href="<?php echo base_url(); ?>register" style="font-size:12px;">Register Penjual</a></li>
       </ul>
     </section>
   </nav>
@@ -123,6 +143,9 @@ $seslogin	= $this->session->userdata('username');
 
 
 <!-- LOGO SEARCH & KERANJANG BELANJA -->
+<?php
+if(!isset($super)){
+?>
 <div class="logo">
   <div class="row">
     <div class="large-3 medium-4 small-12 large-uncentered medium-centered hide-for-small columns">
@@ -213,5 +236,8 @@ $seslogin	= $this->session->userdata('username');
 
 </div>
 </div>
+<?php
+}
+?>
 
 </div>

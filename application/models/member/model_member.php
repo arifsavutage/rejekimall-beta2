@@ -5,6 +5,16 @@ class model_member extends CI_Model{
 		$this->load->database();
 	}
 	
+	#sponsoring member
+	function sponsorin($data){
+		$query	= $this->db->query("
+			UPDATE member SET memberpoin = memberpoin+".$data['poin']."
+			WHERE id_member = ".$data['sponsor']."
+		");
+		
+		return $query;
+	}
+	
 	#menampilkan data member
 	public function list_member(){
 		$query	= $this->db->query('

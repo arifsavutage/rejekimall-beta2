@@ -10,17 +10,26 @@ class model_produk extends CI_Model{
 		return $this->db->insert('detail_kategori', $data);
 	}
 	
-	function allproduk(){
+	function editproduk($data){
+		$this->db->where('gid', $data['gid']);
+		return $this->db->update('detail_kategori', $data);
+	}
+	
+	function allproduk($dari, $sampai){
 		$query	= $this->db->query('
 			SELECT 
 			`cid`, `gid`, `nama`, 
 			`satuan`, `harga`, `gambar`, 
 			`keterangan`, `diskon`, `bes_seller` 
 		FROM `detail_kategori`
-		ORDER BY RAND() LIMIT 0,30
+		ORDER BY cid ASC LIMIT '.$dari.', '.$sampai.'
 		');
 		
-		return $query->result_array();
+		return $query;
+	}
+	
+	function jmlrow(){
+		return $this->db->get('detail_kategori');
 	}
 	
 	public function readproduk($id){
@@ -51,7 +60,8 @@ class model_produk extends CI_Model{
 			detail_kategori.satuan, detail_kategori.harga, 
 			detail_kategori.gambar, detail_kategori.keterangan, 
 			detail_kategori.diskon, detail_kategori.bes_seller, 
-			detail_kategori.ukuran, detail_kategori.stok
+			detail_kategori.ukuran, detail_kategori.stok,
+			detail_kategori.warna, kategori.cid
 			FROM detail_kategori, kategori, seller 
 			WHERE 
 				kategori.cid = detail_kategori.cid

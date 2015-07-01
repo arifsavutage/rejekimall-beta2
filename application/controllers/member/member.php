@@ -5,6 +5,7 @@ class member extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('member/model_member');
+		$this->load->model('admin/paket_member');
 	}
 	
 	public function index(){
@@ -19,6 +20,7 @@ class member extends CI_Controller{
 		$this->form_validation->set_rules('nama', 'Nama Lengap', 'required');
 		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
 		$this->form_validation->set_rules('username', 'User Name', 'required');
+		$this->form_validation->set_rules('pktmember', 'Paket Member', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('pass1', 'Password', 'required');
 		$this->form_validation->set_rules('pass2', 'Re-Type Password', 'required');
@@ -51,16 +53,25 @@ class member extends CI_Controller{
 			$this->load->view('layout/wrapper',$data);
 		}
 		else{
-			#$iduser	= $this->input->post('id_user');
+			$id			= $this->input->post('pktmember', true);
+			$poin		= $this->paket_member->detailpaket($id);
+			$sponsor	= $this->input->post('sponsor');
+					
 			$data	= array(
+			'id_pkt'=>$id,
 			'user_id'=>$this->input->post('username', true),
 			'nama'=>$this->input->post('nama', true),
 			'jk'=>$this->input->post('jk', true),
 			'email'=>$this->input->post('email', true),
 			'password'=>md5($this->input->post('pass2', true)),
 			'foto'=>'nopic.png',
-			'golongan'=>'3'
+			'golongan'=>'3',
+			'memberpoin'=>$poin['poin']
 			);
+			
+			if(!empty($sponsor)){
+				
+			}
 			
 			$this->model_member->simpan($data);
 			$this->session->set_flashdata('pesan','<div data-alert class="alert-box info">
