@@ -3,11 +3,13 @@
 </div>
 <div class="row fullscreen sidebar" style="margin:0px; padding:0 0 30px 0;background:#EEEEEE;">
 	<ul class="side-nav">
-		<li><a href="<?php echo base_url().'pembeli';?>">Dashboard</a></li>
-		<li><a href="#">Profil Pembeli</a></li>
+		<li><a href="<?php echo base_url().'pembeli';?>">Profil</a></li>
+		<li><a href="<?php echo base_url().'pembeli/foto'?>">Unggah Foto</a></li>
+		<li><a href="<?php echo base_url().'pembeli/ktp'?>">Unggah KTP</a></li>
+		<li><a href="<?php echo base_url().'pembeli/akun'?>">Ubah Password</a></li>
 		<li class="divider"></li>
 		<li>
-			<a href="#">Keranjang Belanja
+			<a href="#">Status Pengiriman
 				<i class="fi-shopping-cart"></i>
 				<span class="label alert round">1</span>
 			</a>

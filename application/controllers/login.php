@@ -41,7 +41,7 @@ class login extends CI_Controller{
 					
 					$this->session->set_userdata($sesdata);
 				}
-				redirect(base_url().'dasbor/home');
+				redirect(base_url().'pembeli');
 			}
 		}
 		else{

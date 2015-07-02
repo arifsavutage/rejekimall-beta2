@@ -1,5 +1,5 @@
 <div class="row fullscreen text-center" style="background:#faf9f9;margin:0px; padding:10px 0 10px 0;border-top:0px;border-bottom:solid 5px #e62f17;">
-  MENU ADMIN
+  <strong>MENU ADMIN</strong>
 </div>
 <div class="row fullscreen sidebar" style="margin:0px; padding:0 0 30px 0;background:#EEEEEE;">
 	<ul class="side-nav">
@@ -9,8 +9,9 @@
 		<li class="divider"></li>
 		<li><a href="<?php echo base_url().'admin/viewslider';?>">Iklan Slider</a></li>
 		<li><a href="<?php echo base_url().'admin/banner'?>">Iklan Banner</a></li>
-		<li><a href="#">Iklan Baris</a></li>
-		<li><a href="#">Ongkos Kirim</a></li>
-		<li><a href="#">Setting Bank</a></li>
+		<!--<li><a href="#">Iklan Baris</a></li>-->
+		<li><a href="<?php echo base_url().'admin/showjasa';?>">Paket Jasa Kirm</a></li>
+		<li><a href="<?php echo base_url().'admin/showongkir';?>">Ongkos Kirim</a></li>
+		<li><a href="<?php echo base_url().'admin/showbank';?>">Setting Bank</a></li>
 	</ul>
 </div>

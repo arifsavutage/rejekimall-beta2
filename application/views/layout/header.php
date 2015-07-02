@@ -54,7 +54,7 @@ $seller		= $this->session->userdata('userseller');
 			echo "
 				<a data-dropdown='drop1' aria-controls='drop1' aria-expanded='false' style='font-size:12px;'>Member ($seslogin)</a>
 				<ul id='drop1' class='f-dropdown' data-dropdown-content aria-hidden='true' tabindex='-1'>
-					<li><a href='".base_url()."dasbor/home' target='_blank'>Dashboard</a></li>
+					<li><a href='".base_url()."pembeli' target='_blank'>Dashboard</a></li>
 					<li><a href='".base_url()."login/logout/member'>Logout</a></li>
 				</ul>
 			";

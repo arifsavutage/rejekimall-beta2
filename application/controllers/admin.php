@@ -6,6 +6,10 @@ class admin extends CI_Controller{
 		$this->load->model('admin/paket_seller');
 		$this->load->model('admin/paket_member');
 		$this->load->model('admin/iklan_model');
+		$this->load->model('admin/bank_model');
+		$this->load->model('admin/jasa_model');
+		$this->load->model('admin/ongkir_model');
+		$this->load->model('model_city');
 		
 		if($this->session->userdata('superadmin')==""){
 			redirect(base_url().'login/admin');
@@ -625,21 +629,264 @@ class admin extends CI_Controller{
 	
 	/*BANK*/
 	function addbank(){
+		$this->form_validation->set_rules('nmbank', 'Nama Bank', 'required');
+		$this->form_validation->set_rules('norek', 'No. Rekening', 'required');
+		$this->form_validation->set_rules('an', 'Atas Nama', 'required');
 		
+		if($this->form_validation->run() === false){
+			$data	= array(
+				'title'		=> 'Tambah Bank',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/addbank'
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$simpan	= array(
+				'nmbank'	=> $this->input->post('nmbank', true),
+				'norek'		=> $this->input->post('norek', true),
+				'an'		=> $this->input->post('an', true)
+			);
+			
+			$this->bank_model->tambah($simpan);
+			redirect(base_url().'admin/showbank');
+		}
 	}
+	
 	function showbank(){
+		$query	= $this->bank_model->viewbank();
+		$data	= array(
+			'title'		=> 'Tambah Bank',
+			'menu'		=> '',
+			'profil'	=> $this->admin_model->detailprofilweb(),
+			'isi'		=> 'admin/page/home',
+			'page'		=> 'admin/page/bank',
+			'detail'	=> $query
+		);
 		
+		$this->load->view('layout/wrapper', $data);
 	}
-	function bankdetail(){
+	
+	function updatebank($idbank){
+		$this->form_validation->set_rules('nmbank', 'Nama Bank', 'required');
+		$this->form_validation->set_rules('norek', 'No. Rekening', 'required');
+		$this->form_validation->set_rules('an', 'Atas Nama', 'required');
 		
+		if($this->form_validation->run() === false){
+			
+			$query	= $this->bank_model->detail($idbank);
+			$data	= array(
+				'title'		=> 'Tambah Bank',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/upbank',
+				'detail'	=> $query
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$simpan	= array(
+				'idbank'	=> $this->input->post('idbank'),
+				'nmbank'	=> $this->input->post('nmbank', true),
+				'norek'		=> $this->input->post('norek', true),
+				'an'		=> $this->input->post('an', true)
+			);
+			
+			$this->bank_model->ubah($simpan);
+			redirect(base_url().'admin/showbank');
+		}
 	}
-	function updatebank(){
-		
-	}
-	function deletebank(){
-		
+	
+	function deletebank($idbank){
+		$this->bank_model->hapus($idbank);
+		redirect(base_url().'admin/showbank');
 	}
 	/*END OF BANK*/
+	
+	/*JASA*/
+	function addjasa(){
+		$this->form_validation->set_rules('nmjasa', 'Nama Jasa', 'required');
+		
+		if($this->form_validation->run() === false){
+			$data	= array(
+				'title'		=> 'Tambah Jasa',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/addjasa'
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$simpan	= array(
+				'nama'	=> $this->input->post('nmjasa', true)
+			);
+			
+			$this->jasa_model->tambah($simpan);
+			redirect(base_url().'admin/showjasa');
+		}
+	}
+	
+	function showjasa(){
+		$query	= $this->jasa_model->viewjasa();
+		
+		$data	= array(
+			'title'		=> 'Jasa',
+			'menu'		=> '',
+			'profil'	=> $this->admin_model->detailprofilweb(),
+			'isi'		=> 'admin/page/home',
+			'page'		=> 'admin/page/jasa',
+			'detail'	=> $query
+		);
+		
+		$this->load->view('layout/wrapper', $data);
+	}
+	
+	function upjasa($id_jasa){
+		$this->form_validation->set_rules('nmjasa', 'Nama Jasa', 'required');
+		
+		if($this->form_validation->run() === false){
+			$query	= $this->jasa_model->detailjasa($id_jasa);
+			
+			$data	= array(
+				'title'		=> 'Edit Jasa',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/upjasa',
+				'detail'	=> $query
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$simpan	= array(
+				'id_jasa'	=> $this->input->post('idjasa'),
+				'nama'		=> $this->input->post('nmjasa', true)
+			);
+			
+			$this->jasa_model->update($simpan);
+			redirect(base_url().'admin/showjasa');
+		}
+	}
+	/*END OF JASA*/
+	
+	/*ONGKOS KIRIM*/
+	function addongkir(){
+		$this->form_validation->set_rules('idkab', 'Kabupaten', 'required');
+		$this->form_validation->set_rules('idjasa', 'Paket Jasa', 'required');
+		$this->form_validation->set_rules('harga', 'Harga Jasa', 'required');
+		$this->form_validation->set_rules('prop', 'Propinsi', 'required');
+		$this->form_validation->set_rules('negara', 'Negara', 'required');
+		
+		if($this->form_validation->run() === false){
+			$kab	= $this->model_city->getKota();
+			$prop	= $this->model_city->getPropinsi();
+			$negara	= $this->model_city->getNegara();
+			$jasa	= $this->jasa_model->viewjasa();
+			
+			$data	= array(
+				'title'		=> 'Tambah Ongkos Kirim',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/addongkir',
+				'kab'		=> $kab,
+				'prop'		=> $prop,
+				'negara'	=> $negara,
+				'jasa'		=> $jasa
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$simpan	= array(
+				'id_kab'	=> $this->input->post('idkab', true),
+				'id_jasa'	=> $this->input->post('idjasa', true),
+				'harga'		=> $this->input->post('harga', true),
+				'id_prop'	=> $this->input->post('prop', true),
+				'id_neg'	=> $this->input->post('negara', true)
+			);
+			
+			$this->ongkir_model->tambah($simpan);
+			redirect(base_url().'admin/showongkir');
+			
+		}
+	}
+	
+	function showongkir(){
+		$query	= $this->ongkir_model->viewongkir();
+		
+		$data	= array(
+			'title'		=> 'Data Ongkos Kirim',
+			'menu'		=> '',
+			'profil'	=> $this->admin_model->detailprofilweb(),
+			'isi'		=> 'admin/page/home',
+			'page'		=> 'admin/page/showongkir',
+			'detail'	=> $query
+		);
+		
+		$this->load->view('layout/wrapper', $data);
+	}
+	
+	function upongkir($id_ongkir){
+		$this->form_validation->set_rules('idkab', 'Kabupaten', 'required');
+		$this->form_validation->set_rules('idjasa', 'Paket Jasa', 'required');
+		$this->form_validation->set_rules('harga', 'Harga Jasa', 'required');
+		$this->form_validation->set_rules('prop', 'Propinsi', 'required');
+		$this->form_validation->set_rules('negara', 'Negara', 'required');
+		
+		if($this->form_validation->run() === false){
+			$kab	= $this->model_city->getKota();
+			$prop	= $this->model_city->getPropinsi();
+			$negara	= $this->model_city->getNegara();
+			$jasa	= $this->jasa_model->viewjasa();
+			$detail	= $this->ongkir_model->detailongkir($id_ongkir);
+			
+			$data	= array(
+				'title'		=> 'Edit Ongkos Kirim',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/upongkir',
+				'kab'		=> $kab,
+				'prop'		=> $prop,
+				'negara'	=> $negara,
+				'jasa'		=> $jasa,
+				'detail'	=> $detail
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$simpan	= array(
+				'id_ongkir'	=> $this->input->post('idongkir'),
+				'id_kab'	=> $this->input->post('idkab', true),
+				'id_jasa'	=> $this->input->post('idjasa', true),
+				'harga'		=> $this->input->post('harga', true),
+				'id_prop'	=> $this->input->post('prop', true),
+				'id_neg'	=> $this->input->post('negara', true)
+			);
+			
+			$this->ongkir_model->update($simpan);
+			redirect(base_url().'admin/showongkir');
+			
+		}
+	}
+	
+	function delongkir($id_ongkir){
+		$this->ongkir_model->delete($id_ongkir);
+		
+		redirect(base_url().'admin/showongkir');
+	}
+	/*END OF ONGKOS KIRIM*/
+	
 	function logout(){
 		$this->session->sess_destroy();
 		redirect(base_url().'login/admin');

@@ -1,29 +1,44 @@
-<div class="row">
-	<div class="large-12 medium-12 small-12 columns">
-		<h3>Daftar Belanja</h3>
-		<hr />
-		<table class="large-12 medium-12 small-12 columns">
-			<caption>Toko Mak Icih</caption>
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>Nama Barang</th>
-					<th>Qty</th>
-					<th>Harga Satuan</th>
-					<th>Sub Total</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Baju Bagus</td>
-					<td>1</td>
-					<td>Rp. 25.000</td>
-					<td>Rp. 25.000</td>
-					<td><span class="label">Shipping</span></td>
-				</tr>
-			</tbody>
-		</table>
+<div class="row fullscreen" style="min-height:800px;">
+	<div class="large-3 columns">
+	<?php
+		$this->load->view('pembeli/panel');
+	?>
+	</div>
+	<div class="large-9 columns">
+	<div class="row">
+		<div class="large-12 columns">
+		<?php
+		if($page){
+			$this->load->view($page);
+		}
+		?>
+		</div>
+	</div>
+	<script>
+		function valdel(){
+			var cek	= confirm("Yakin akan dihapus ?");
+			
+			if(cek == true){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	</script>
+	</div>
+</div>
+<div style="background:#FFFFFF;">
+	<div class="row text-center">
+	   <a href="#">
+		<img src="<?php echo base_url();?>asset/img/logobawah.png" style="height:50px;">
+	  </a>
+	  <p style="color:#333333;font-size:14px;">
+	   Telp : 087836325580  |  081226020880  |  085799468880
+	   <br>
+	   BB: 529E1E94  |  528873CE  |  52284348
+	   <br>
+	   admin@rejekimall.com
+	 </p>
 	</div>
 </div>

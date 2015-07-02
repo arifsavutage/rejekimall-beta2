@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2015 at 10:55 AM
+-- Generation Time: Jul 02, 2015 at 11:30 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `rejeki2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bank`
+--
+
+CREATE TABLE IF NOT EXISTS `bank` (
+`idbank` int(10) NOT NULL,
+  `nmbank` varchar(50) NOT NULL,
+  `norek` varchar(50) NOT NULL,
+  `an` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`idbank`, `nmbank`, `norek`, `an`) VALUES
+(2, 'Mandiri', '1030001233232', 'PT. Rejeki Mall'),
+(3, 'BCA', '8502223012', 'PT. Rejeki Mall');
 
 -- --------------------------------------------------------
 
@@ -165,7 +186,14 @@ INSERT INTO `iklan_slider` (`idslide`, `nmiklan`, `gbslider`) VALUES
 CREATE TABLE IF NOT EXISTS `jasa_kirim` (
 `id_jasa` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jasa_kirim`
+--
+
+INSERT INTO `jasa_kirim` (`id_jasa`, `nama`) VALUES
+(1, 'Reguler');
 
 -- --------------------------------------------------------
 
@@ -226,7 +254,14 @@ CREATE TABLE IF NOT EXISTS `member` (
   `status` int(1) NOT NULL,
   `golongan` int(1) NOT NULL,
   `memberpoin` int(10) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`id_member`, `id_pkt`, `user_id`, `password`, `nama`, `jk`, `email`, `alamat`, `no_hp`, `no_tlprmh`, `kota`, `kdpos`, `propinsi`, `negara`, `gbr_ktp`, `foto`, `status`, `golongan`, `memberpoin`) VALUES
+(2, 1, 'arifsavutage', '07905a38596dff6ad49ded1028f9d7bf', 'Juniar Arif Wicaksono', 'Perempuan', 'arif@gmail.com', 'Kendali', '0852333322', '0294572125', '29', '513814', '1', '8', 'blank-id-card.jpg', 'nopic.png', 1, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -260,7 +295,14 @@ CREATE TABLE IF NOT EXISTS `ongkos_kirim` (
   `harga` double NOT NULL DEFAULT '0',
   `id_prop` int(11) DEFAULT NULL,
   `id_neg` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ongkos_kirim`
+--
+
+INSERT INTO `ongkos_kirim` (`id_ongkir`, `id_kab`, `id_jasa`, `harga`, `id_prop`, `id_neg`) VALUES
+(10, 29, 1, 250000, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -441,6 +483,12 @@ INSERT INTO `superadm` (`id`, `user`, `pass`) VALUES
 --
 
 --
+-- Indexes for table `bank`
+--
+ALTER TABLE `bank`
+ ADD PRIMARY KEY (`idbank`);
+
+--
 -- Indexes for table `brand`
 --
 ALTER TABLE `brand`
@@ -571,6 +619,11 @@ ALTER TABLE `superadm`
 --
 
 --
+-- AUTO_INCREMENT for table `bank`
+--
+ALTER TABLE `bank`
+MODIFY `idbank` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
@@ -609,7 +662,7 @@ MODIFY `idslide` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `jasa_kirim`
 --
 ALTER TABLE `jasa_kirim`
-MODIFY `id_jasa` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_jasa` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `kab_kota`
 --
@@ -624,7 +677,7 @@ MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `negara`
 --
@@ -634,7 +687,7 @@ MODIFY `id_neg` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT for table `ongkos_kirim`
 --
 ALTER TABLE `ongkos_kirim`
-MODIFY `id_ongkir` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id_ongkir` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `order`
 --
