@@ -5,14 +5,20 @@
 <div class="row">
 	<div class="large-12 columns">
 		<div class="row">
-			<div class="large-6 columns">
+			<div class="large-4 columns">
 				<label>
 				<strong>Nama Paket</strong>
 				<input type="text" name="nmpaket" maxlength="30" value="<?php echo $detail['nmpaket'];?>">
 				<input type="hidden" name="idpkt" value="<?php echo $detail['id_pkt'];?>">
 				</label>
 			</div>
-			<div class="large-6 columns">
+			<div class="large-4 columns">
+				<label>
+				<strong>Harga Paket</strong>
+				<input type="text" name="harga" maxlength="10" value="<?php echo $detail['harga'];?>">
+				</label>
+			</div>
+			<div class="large-4 columns">
 				<label>
 				<strong>Jumlah Poin</strong>
 				<input type="text" name="poin" maxlength="3" value="<?php echo $detail['poin'];?>">

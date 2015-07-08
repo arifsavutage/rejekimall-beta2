@@ -6,6 +6,8 @@
 		<li><a href="<?php echo base_url().'admin';?>">Dashboard</a></li>
 		<li><a href="<?php echo base_url().'admin/profil';?>">Data Profil</a></li>
 		<li><a href="<?php echo base_url().'admin/paket';?>">Pengaturan Paket</a></li>
+		<li><a href="<?php echo base_url().'admin/paketan';?>">Paket & Sponsoran</a></li>
+		<!--<li><a href="<?php echo base_url().'admin/sponsor_poin';?>">Poin Sponsor</a></li>-->
 		<li class="divider"></li>
 		<li><a href="<?php echo base_url().'admin/viewslider';?>">Iklan Slider</a></li>
 		<li><a href="<?php echo base_url().'admin/banner'?>">Iklan Banner</a></li>

@@ -1,15 +1,15 @@
 <div class="row fullscreen" data-equalizer="foo" style="background:transparent;padding:0px;margin:0px;border:0px;">
 
-  <div class="medium-2 columns" style="background:transparent;padding:0px;margin:0px;border:0px;">
+	<div class="medium-2 columns">
 
-    <div class="hide-for-small" data-equalizer-watch="foo" >
-        <div class="row fullscreen" data-equalizer="bar">
+    <!--.<div class="hide-for-small" data-equalizer-watch="foo" >
+        <div class="row fullscreen" data-equalizer="bar">-->
          <?php
           $this->load->view('leftbar/leftbarcategory');
           $this->load->view('leftbar/leftbarsupport');
         ?>
-        </div>      
-    </div>
+        <!--</div>      
+    </div>-->
     </div>
 
   <div class="medium-10 columns" style="background:transparent;border:0px;" >
@@ -115,17 +115,17 @@
                   </select>
           </span>-->
            
-          <form name="addtocart" method="post" action="<?php echo base_url();?>produk/addcart">
+          <form name="addcart" id="addcart" method="post" action="<?php echo base_url().'produk/addcart';?>">
             <div class="row">
               <div class="large-12 medium-12 small-12 columns">
                 <label>Jumlah
-					<input type="text" name="jumlah" value="1" />
-					<input type="hidden" name="kdbrg" value="<?php echo $detail['gid'];?>"/>
-					<input type="hidden" name="nmbrg" value="<?php echo $detail['nama'];?>"/>
+					<input type="text" name="jumlah" id="jumlah" value="1" />
+					<input type="hidden" id="kdbrg" name="kdbrg" value="<?php echo $detail['gid'];?>"/>
+					<input type="hidden" id="nmbrg" name="nmbrg" value="<?php echo $detail['nama'];?>"/>
                 </label>
 				
 				<label>Ukuran
-				<select name="ukuran">
+				<select name="ukuran" id="ukuran">
 				<?php
 					$pjg	= strlen($detail['ukuran']);
 					
@@ -141,7 +141,7 @@
 				</label>
 				
 				<label>Warna
-				<select name="warna">
+				<select name="warna" id="warna">
 				<?php
 					if(preg_match("/,/", $detail['warna'])){
 						$pecah	= explode(',',$detail['warna']);
@@ -157,19 +157,19 @@
 				</label>
 				
 				<label>Stok
-					<input type="text" name="stok" value="<?php echo $detail['stok'];?>" readonly="true" />
+					<input type="text" id="stok" name="stok" value="<?php echo $detail['stok'];?>" readonly="true" />
 					<?php
 					if($detail['diskon'] > 0){
 						$harganew	= $detail['harga']-($detail['harga']*($detail['diskon']/100));
 										
-						echo "<input type='hidden' name='harga' value='$harganew'>";
+						echo "<input type='hidden' id='harga' name='harga' value='$harganew'>";
 					}
 					else{
-						echo "<input type='hidden' name='harga' value='$detail[harga]'>";
+						echo "<input type='hidden' id='harga' name='harga' value='$detail[harga]'>";
 					}
 					?>
 				</label>
-				<input type="submit" class="large-12 medium-12 small-12 columns alert button" value="Add to cart" />
+				<input type="submit" name="submit" class="large-12 medium-12 small-12 columns alert button" value="Add to cart" />
               </div>
             </div>
           </form>
@@ -235,4 +235,5 @@
 </div>
 
 <script src="bower_components/foundation/js/foundation.min.js"></script>
-<script src="js/app.js"></script>
+<script src="<?php echo base_url();?>asset/js/app.js"></script>
+<script src="<?php echo base_url();?>asset/js/jquery.min.js"></script>

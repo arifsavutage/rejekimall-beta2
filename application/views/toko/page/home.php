@@ -1,10 +1,10 @@
 <div class="row fullscreen" style="min-height:800px;">
-	<div class="large-3 columns">
+	<div class="large-2 columns">
 	<?php
 		$this->load->view('toko/page/panel');
 	?>
 	</div>
-	<div class="large-9 columns">
+	<div class="large-10 columns">
 	<div class="row">
 		<div class="large-12 columns">
 		<?php

@@ -18,7 +18,7 @@ class model_produk extends CI_Model{
 	function allproduk($dari, $sampai){
 		$query	= $this->db->query('
 			SELECT 
-			`cid`, `gid`, `nama`, 
+			`cid`, `gid`,idbrand, `nama`, 
 			`satuan`, `harga`, `gambar`, 
 			`keterangan`, `diskon`, `bes_seller` 
 		FROM `detail_kategori`
@@ -35,15 +35,18 @@ class model_produk extends CI_Model{
 	public function readproduk($id){
 		$query	= $this->db->query('
 			SELECT 
-			detail_kategori.gid, detail_kategori.nama, 
+			detail_kategori.gid, detail_kategori.nama,
+			brand.idbrand, brand.nmbrand, brand.gb_brand,
 			detail_kategori.satuan, detail_kategori.harga, 
 			detail_kategori.gambar, detail_kategori.keterangan, 
 			detail_kategori.diskon, detail_kategori.bes_seller 
-			FROM detail_kategori, kategori, seller 
+			FROM detail_kategori, kategori, seller, brand 
 			WHERE 
 				kategori.cid = detail_kategori.cid
 			AND
 				seller.id_seller = kategori.id_seller
+			AND
+				brand.idbrand = detail_kategori.idbrand
 			AND
 				kategori.id_seller = "'.$id.'"
 			ORDER BY detail_kategori.gid DESC
@@ -52,21 +55,70 @@ class model_produk extends CI_Model{
 		return $query;
 	}
 	
+	function jmlkat($slug){
+		$query	= $this->db->query('
+			SELECT 
+			detail_kategori.gid, detail_kategori.nama,
+			brand.idbrand, brand.nmbrand, brand.gb_brand,
+			detail_kategori.satuan, detail_kategori.harga, 
+			detail_kategori.gambar, detail_kategori.keterangan, 
+			detail_kategori.diskon, detail_kategori.bes_seller 
+			FROM detail_kategori, kategori, seller, brand 
+			WHERE 
+				kategori.cid = detail_kategori.cid
+			AND
+				seller.id_seller = kategori.id_seller
+			AND
+				brand.idbrand = detail_kategori.idbrand
+			AND
+				kategori.slugkat = "'.$slug.'"
+			ORDER BY detail_kategori.gid DESC
+		');
+		
+		return $query;
+	}
+	public function bykategori($dari, $sampai, $slug){
+		$query	= $this->db->query('
+			SELECT 
+			detail_kategori.gid, detail_kategori.nama,
+			brand.idbrand, brand.nmbrand, brand.gb_brand,
+			detail_kategori.satuan, detail_kategori.harga, 
+			detail_kategori.gambar, detail_kategori.keterangan, 
+			detail_kategori.diskon, detail_kategori.bes_seller 
+			FROM detail_kategori, kategori, seller, brand 
+			WHERE 
+				kategori.cid = detail_kategori.cid
+			AND
+				seller.id_seller = kategori.id_seller
+			AND
+				brand.idbrand = detail_kategori.idbrand
+			AND
+				kategori.slugkat = "'.$slug.'"
+			ORDER BY detail_kategori.gid DESC 
+			LIMIT '.$dari.', '.$sampai.'
+		');
+		
+		return $query->result_array();
+	}
+	
 	public function detailproduk($gid){
 		$query	= $this->db->query('
 			SELECT
 			seller.nama_toko, seller.tgl_registrasi, seller.alamat,
-			detail_kategori.gid, detail_kategori.nama, 
+			detail_kategori.gid, detail_kategori.nama,
+			brand.idbrand, brand.nmbrand, brand.gb_brand,			
 			detail_kategori.satuan, detail_kategori.harga, 
 			detail_kategori.gambar, detail_kategori.keterangan, 
 			detail_kategori.diskon, detail_kategori.bes_seller, 
 			detail_kategori.ukuran, detail_kategori.stok,
 			detail_kategori.warna, kategori.cid
-			FROM detail_kategori, kategori, seller 
+			FROM detail_kategori, kategori, seller , brand
 			WHERE 
 				kategori.cid = detail_kategori.cid
 			AND
 				seller.id_seller = kategori.id_seller
+			AND
+				brand.idbrand = detail_kategori.idbrand
 			AND
 				detail_kategori.gid="'.$gid.'"
 			ORDER BY detail_kategori.gid DESC

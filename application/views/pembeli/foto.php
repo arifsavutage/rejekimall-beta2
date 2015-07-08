@@ -1,14 +1,14 @@
 <h3>Unggah Foto</h3>
 <hr />
-<form name="foto" enctype="multipart/form-data" method="post" action="<?php echo base_url().'pembeli/foto';?>">
+<form name="foto" enctype="multipart/form-data" method="post" action="<?php echo base_url().'pembeli/upfoto';?>">
 <?php
-	validation_errors();
+	echo validation_errors();
 	echo $this->session->flashdata('pesan');
 ?>
 <div class="row">
 	<div class="large-12 columns">
 		<label><strong>foto</strong></label>
-		<input type="file" name="gbfoto" />
+		<input type="file" name="gbfoto" required />
 		<input type="hidden" name="idmember" value="<?php echo $profil['id_member'];?>" />
 	</div>
 </div>

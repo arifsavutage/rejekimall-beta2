@@ -72,9 +72,17 @@ class member extends CI_Controller{
 			'memberpoin'=>$poin['poin']
 			);
 			
-			/*if(!empty($sponsor)){
+			if(!empty($sponsor)){
+				$this->load->model('admin/paketan_model');
+				$untuk	= "member";
+				$poin	= $this->paketan_model->ambilpoin($untuk);
 				
-			}*/
+				$dapatpoin	= array(
+					'id_member'		=> $sponsor,
+					'memberpoin'	=> $poin['poinspon']
+				);
+				$this->model_member->addpoin($dapatpoin);
+			}
 			
 			$this->model_member->simpan($data);
 			$this->session->set_flashdata('pesan','<div data-alert class="alert-box info">

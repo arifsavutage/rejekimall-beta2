@@ -6,7 +6,7 @@ class paket_member extends CI_Model{
 	
 	function viewpaket(){
 		$query	= $this->db->query("
-			SELECT `id_pkt`, `nmpaket`, `poin` FROM `paket_member`
+			SELECT `id_pkt`, `nmpaket`, harga, `poin` FROM `paket_member`
 		");
 		
 		return	$query->result_array();
@@ -14,7 +14,7 @@ class paket_member extends CI_Model{
 	
 	function detailpaket($idpkt){
 		$query	= $this->db->query("
-			SELECT `id_pkt`, `nmpaket`, `poin` FROM `paket_member`
+			SELECT `id_pkt`, `nmpaket`, harga, `poin` FROM `paket_member`
 			WHERE id_pkt = ".$idpkt."
 		");
 		

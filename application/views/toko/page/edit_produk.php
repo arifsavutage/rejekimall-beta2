@@ -25,6 +25,24 @@
 				</div>
 			</div>
 			
+			
+			<div class="row">
+				<div class="large-3 columns">
+				<label><strong>Brand Produk</strong>
+					<select name="brand">
+					<option value="">- Pilih Brand</option>
+					<?php
+						foreach($brand as $brandlist){
+							echo "<option value='$brandlist[idbrand]'";
+							if($list['idbrand'] == $brandlist['idbrand']) echo "selected";
+							echo ">$brandlist[nmbrand]</option>";
+						}
+					?>
+					</select>
+				</label>
+				</div>
+			</div>
+			
 			<div class="row">
 				<div class="large-6 columns">
 				<label><strong>Nama Produk</strong>

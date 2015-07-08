@@ -29,6 +29,16 @@ class Ongkir_model extends CI_Model{
 		return $query->result_array();
 	}
 	
+	function cariongkir($negara, $propinsi, $kota){
+		$query	= $this->db->query("
+			SELECT `id_ongkir`, `id_kab`, `id_jasa`, `harga`, `id_prop`, `id_neg` 
+			FROM `ongkos_kirim`
+			WHERE id_neg = ".$negara." AND id_prop = ".$propinsi." AND id_kab = ".$kota."
+		");
+		
+		return $query->row_array();
+	}
+	
 	function detailongkir($idongkir){
 		$query	= $this->db->query("
 			SELECT `id_ongkir`, `id_kab`, `id_jasa`, `harga`, `id_prop`, `id_neg` 

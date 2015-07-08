@@ -76,6 +76,13 @@ class model_member extends CI_Model{
 		return $this->db->update('member', $data);
 	}
 	
+	#update poin
+	public function addpoin($data){
+		return $this->db->query("
+			UPDATE member SET memberpoin = memberpoin + $data[memberpoin] WHERE id_member = ".$data['id_member']."
+		");
+	}
+	
 	#update foto profil
 	public function editfoto($data){
 		$this->db->where('id_member', $data['id_member']);

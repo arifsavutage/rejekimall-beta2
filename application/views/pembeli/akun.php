@@ -1,6 +1,6 @@
 <h3>edit akun</h3>
 <hr />
-<form name="akun" id="formdft" enctype="multipart/form-data" method="post" action="<?php echo base_url().'pembeli/ktp';?>">
+<form name="akun" id="formdft" enctype="multipart/form-data" method="post" action="<?php echo base_url().'pembeli/akun';?>">
 <?php
 	validation_errors();
 	echo $this->session->flashdata('pesan');

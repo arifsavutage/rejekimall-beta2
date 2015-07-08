@@ -16,6 +16,7 @@
 					<tr>
 						<th>No.</th>
 						<th>Nama Paket</th>
+						<th>Harga Paket</th>
 						<th>Poin</th>
 						<th>Banner</th>
 						<th>Iklan Baris</th>
@@ -30,6 +31,7 @@
 					<tr>
 						<td>$no</td>
 						<td>$listpaket[nmpaket]</td>
+						<td>Rp. ".number_format($listpaket['harga'],0,',','.')."</td>
 						<td>$listpaket[poin]</td>
 						<td>$listpaket[iklanbaner]</td>
 						<td>$listpaket[iklanbaris]</td>
@@ -52,6 +54,7 @@
 					<tr>
 						<th>No.</th>
 						<th>Nama Paket</th>
+						<th>Harga Paket</th>
 						<th>Poin</th>
 						<th><i class="fi-widget"></i></th>
 					</tr>
@@ -65,6 +68,7 @@
 						<tr>
 							<td>$no</td>
 							<td>$list[nmpaket]</td>
+							<td>Rp. ".number_format($list['harga'],0,',','.')."</td>
 							<td>$list[poin]</td>
 							<td>
 								<a href='".base_url()."admin/uppktmember/$list[id_pkt]' class='button success tiny'><i class='fi-pencil'></i></a>

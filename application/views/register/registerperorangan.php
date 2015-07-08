@@ -16,17 +16,47 @@
 
 			<div class="row fullscreen" style="margin:0px;padding:25px 0 0 0px;">
 				<div class="large-12 medium-12 small-12 columns" >
-					<h3>Pendaftaran Penjual Perorangan</h3>
+					<h3>Pendaftaran Seller</h3>
 				</div>
 			</div> 
 
 			<div class="row fullscreen" style="padding-top:15px;margin:0px;">
 				<div class="large-12 medium-12 small-12 columns">
-				Silakan lengkapi form dibawah ini untuk mendaftar sebagai Penjual Perorangan.
+				Silakan lengkapi form dibawah ini untuk mendaftar sebagai seller
 				<hr />
 					<?php echo $this->session->flashdata('pesan');?>
 					<?php echo "<span class='color:#FF0000;'><strong>".validation_errors()."</strong></span>";?>
 					<form name="penjual" id="formdft" enctype="multipart/form-data" action="<?php echo base_url();?>penjual/seller/tambah" method="post">
+					
+					<div class="row">
+						<div class="large-6 medium-12 small-12 columns">
+						<label>
+							<strong>Paket Seller <span style="color:red;">*</span></strong>
+							<select name="pktseller" required>
+								<option value="">- Pilih Paket</option>
+							<?php
+								foreach($paket as $listpaket):
+									echo "<option value='$listpaket[idpkt]'>$listpaket[nmpaket]</option>";
+								endforeach;
+							?>
+							</select>
+						</label>
+						</div>
+						
+						<div class="large-6 medium-12 small-12 columns">
+						<label>
+							<strong>Jenis Seller <span style="color:red;">*</span></strong>
+							<select name="jenis" required>
+								<option value="">- Pilih Jenis</option>
+							<?php
+								foreach($jenis as $jenisseller):
+									echo "<option value='$jenisseller[ids]'>$jenisseller[nmpaket]</option>";
+								endforeach;
+							?>
+							</select>
+						</label>
+						</div>  
+					</div>
 					
 					<div class="row">
 						<div class="large-12 medium-12 small-12 columns">

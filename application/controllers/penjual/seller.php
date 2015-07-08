@@ -5,7 +5,8 @@ class seller extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('penjual/model_seller');
-		
+		$this->load->model('admin/paket_seller');	
+		$this->load->model('admin/paketan_model');	
 	}
 	
 	public function index(){
@@ -29,30 +30,44 @@ class seller extends CI_Controller{
 		$this->form_validation->set_rules('an', 'Pemilik rekening', 'required');
 		$this->form_validation->set_rules('norek', 'Nomor Rekening', 'required');
 		$this->form_validation->set_rules('cabang', 'Nama Cabang', 'required');
+		$this->form_validation->set_rules('pktseller', 'Paket Seller', 'required');
+		$this->form_validation->set_rules('jenis', 'Jenis Seller', 'required');
 		
 		if($this->form_validation->run() === false){
+			$pkt	= $this->paket_seller->viewpaket();
 			$data	= array(
-				'title'=>'Rejeki Mall : Register Seller',
-				'menu'=>'etalase/menu_etalase',
-				'isi'=>'register/registerperorangan'
+				'title'	=> 'Rejeki Mall : Register Seller',
+				'menu'	=> 'etalase/menu_etalase',
+				'isi'	=> 'register/registerperorangan',
+				'paket'	=> $pkt
 			);
 			
 			$this->load->view('layout/wrapper',$data);			
 		}
 		else if($this->model_seller->cekuname($this->input->post('email', true)) > 0)
 		{
-			$data	= array(
-				'title'=>'Rejeki Mall : Register Seller',
-				'menu'=>'etalase/menu_etalase',
-				'error'=>'Email '.$this->input->post('email').' Sudah Digunakan',
-				'isi'=>'register/registerperorangan'
-			);
-			
-			$this->load->view('layout/wrapper',$data);
+			$this->session->set_flashdata('pesan', '<div class="alert-box alert">
+				Email '.$this->input->post('email', true).' Sudah Digunakan...
+				<a href="#" class="close">&times;</a>
+				</div>');
+				
+			redirect(base_url().'register/seller');
 		}
 		else{
+			$poins	= $this->paket_seller->detailpaket($this->input->post('pktseller'));
+			
+			#RAND()
+			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			$charactersLength = strlen($characters);
+			$randomString = '';
+			for ($i = 0; $i < 7; $i++) {
+				$randomString .= $characters[rand(0, $charactersLength - 1)];
+			}				
+			#END RAND()
 			
 			$data	= array(
+			'idpkt'		=> $this->input->post('pktseller', true),
+			'jenis'=> $this->input->post('jenis', true),
 			'nama_toko'=>$this->input->post('toko', true),
 			'username'=>$this->input->post('email', true),
 			'nama'=>$this->input->post('nama', true),
@@ -72,12 +87,28 @@ class seller extends CI_Controller{
 			'norek'=>$this->input->post('norek', true),
 			'tgl_registrasi'=>date('Y-m-d'),
 			'foto'=>'nopic.png',
-			'golongan'=>'2'
+			'golongan'=>'2',
+			'token'=>$randomString,
+			'poinseller'=>$poins['poin']
 			);
+			
+			$sponsor	= $this->session->userdata('idseller');
+			
+			$untuk		= "seller";
+			$poin		= $this->paketan_model->ambilpoin($untuk, $this->input->post('jenis'));
+			if(!empty($sponsor)){
+				$poinseller	= array(
+					'id_seller'		=> $sponsor,
+					'poinseller'	=> $poin['poinspon']
+				);
+				
+				$this->model_seller->addpoin($poinseller);
+			}
 			
 			$exe	= $this->model_seller->tambahseller($data);
 			
 			if($exe){
+				
 				$this->session->set_flashdata('pesan','<div class="alert-box">
 				Pendaftaran berhasil, silahkan tunggu konfirmasi admin
 				<a href="#" class="close">&times;</a>

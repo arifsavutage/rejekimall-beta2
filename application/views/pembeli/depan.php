@@ -1,13 +1,10 @@
-<h3>Profil Member</h3>
+<h3>Profil Member <?php echo "(Poin : $profil[memberpoin])";?></h3>
 <hr />
 <form id="formdft" name="profil" enctype="multipart/form-data" method="post" action="<?php echo base_url().'pembeli';?>">
 	<?php validation_errors();?>
 	<div class="row">
 		<div class="large-4 columns">
 			<img src="<?php echo base_url().'asset/img/member/pp/'.$profil['foto'];?>" class="th" />
-			<br />
-			<br />
-			<a href="<?php echo base_url().'pembeli/foto'?>" class="button tiny alert">Unggah Foto</a>
 		</div>
 		
 		<div class="large-8 columns">
@@ -16,7 +13,7 @@
 					<label>
 					<strong>Nama Lengkap</strong>
 					<input type="text" name="nmlengkap" value="<?php echo $profil['nama'];?>" />
-					<input type="text" name="id_member" value="<?php echo $profil['id_member'];?>" />
+					<input type="hidden" name="id_member" value="<?php echo $profil['id_member'];?>" />
 					</label>
 				</div>
 			</div>
@@ -124,9 +121,6 @@
 				<strong>Ktp</strong>
 			</label>
 			<img src="<?php echo base_url().'asset/img/member/ktp/'.$profil['gbr_ktp'];?>" class="th">
-			<br />
-			<br />
-			<a href="<?php echo base_url().'pembeli/ktp'?>" class="button tiny alert">Unggah Ktp</a>
 		</div>
 	</div>
 	

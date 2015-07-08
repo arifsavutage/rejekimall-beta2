@@ -5,12 +5,17 @@
 	<?php validation_errors();?>
 	<form name="pktseller" method="post" action="<?php echo base_url().'admin/upsellerpaket';?>">
 	<div class="row">
-		<div class="large-12 columns">
+		<div class="large-6 columns">
 			<label>
 			<strong>Nama Paket</strong>
 			<input type="text" name="nmpaket" maxlength="30" value="<?php echo $detail['nmpaket'];?>">
 			<input type="hidden" name="idpkt" value="<?php echo $detail['idpkt'];?>">
 			</label>
+		</div>
+		<div class="large-6 columns">
+			<label>
+			<strong>Harga Paket</strong>
+			<input type="text" name="harga" maxlength="10" value="<?php echo $detail['harga'];?>">
 		</div>
 	</div>
 	<div class="row">

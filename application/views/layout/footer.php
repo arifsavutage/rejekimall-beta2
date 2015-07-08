@@ -24,6 +24,9 @@
 				email:{
 					email : true
 				},
+				email2:{
+					email2 : true
+				},
 				tlp:{
 					digits: true
 				},
@@ -37,6 +40,9 @@
 				},
 				email: {
 					email: "Format email tidak valid"
+				},
+				email2: {
+					email2: "Format email tidak valid"
 				},
 				pass2: {
 					required: "Ulangi password di atas",

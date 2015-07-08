@@ -10,6 +10,7 @@ class admin extends CI_Controller{
 		$this->load->model('admin/jasa_model');
 		$this->load->model('admin/ongkir_model');
 		$this->load->model('model_city');
+		$this->load->model('admin/paketan_model');
 		
 		if($this->session->userdata('superadmin')==""){
 			redirect(base_url().'login/admin');
@@ -94,6 +95,7 @@ class admin extends CI_Controller{
 	function addpaketseller(){
 		$this->form_validation->set_rules('nmpaket', 'Nama Paket', 'required');
 		$this->form_validation->set_rules('poin', 'Poin', 'required');
+		$this->form_validation->set_rules('harga', 'Harga Paket', 'required');
 		$this->form_validation->set_rules('banner', 'Banner', 'required');
 		$this->form_validation->set_rules('brsiklan', 'Iklan Baris', 'required');
 		
@@ -111,6 +113,7 @@ class admin extends CI_Controller{
 		else{
 			$input	= array(
 				'nmpaket'	=> $this->input->post('nmpaket', true),
+				'harga'		=> $this->input->post('harga', true),
 				'poin'		=> $this->input->post('poin', true),
 				'iklanbaner'=> $this->input->post('banner', true),
 				'iklanbaris'=> $this->input->post('brsiklan', true)
@@ -129,6 +132,7 @@ class admin extends CI_Controller{
 	
 	function upsellerpaket($idpkt){
 		$this->form_validation->set_rules('nmpaket', 'Nama Paket', 'required');
+		$this->form_validation->set_rules('harga', 'Harga Paket', 'required');
 		$this->form_validation->set_rules('poin', 'Poin', 'required');
 		$this->form_validation->set_rules('banner', 'Banner', 'required');
 		$this->form_validation->set_rules('brsiklan', 'Iklan Baris', 'required');
@@ -150,6 +154,7 @@ class admin extends CI_Controller{
 			$edit	= array(
 				'idpkt'		=> $this->input->post('idpkt'),
 				'nmpaket'	=> $this->input->post('nmpaket', true),
+				'harga'		=> $this->input->post('harga', true),
 				'poin'		=> $this->input->post('poin', true),
 				'iklanbaner'=> $this->input->post('banner', true),
 				'iklanbaris'=> $this->input->post('brsiklan', true)
@@ -170,6 +175,7 @@ class admin extends CI_Controller{
 	/*PAKET MEMBER*/
 	function addpaketmember(){
 		$this->form_validation->set_rules('nmpaket', 'Nama Paket', 'required');
+		$this->form_validation->set_rules('harga', 'Harga Paket', 'required');
 		$this->form_validation->set_rules('poin', 'Poin', 'required');
 		
 		if($this->form_validation->run() === false){
@@ -186,7 +192,8 @@ class admin extends CI_Controller{
 		else{
 			$input	= array(
 				'nmpaket'	=> $this->input->post('nmpaket', true),
-				'poin'		=> $this->input->post('poin', true),
+				'harga'		=> $this->input->post('harga', true),
+				'poin'		=> $this->input->post('poin', true)
 			);
 			
 			$this->paket_member->add($input);
@@ -202,6 +209,7 @@ class admin extends CI_Controller{
 	
 	function uppktmember($idpkt){
 		$this->form_validation->set_rules('nmpaket', 'Nama Paket', 'required');
+		$this->form_validation->set_rules('harga', 'Harga Paket', 'required');
 		$this->form_validation->set_rules('poin', 'Poin', 'required');
 		
 		if($this->form_validation->run() === false){
@@ -221,6 +229,7 @@ class admin extends CI_Controller{
 			$edit	= array(
 				'id_pkt'	=> $this->input->post('idpkt'),
 				'nmpaket'	=> $this->input->post('nmpaket', true),
+				'harga'		=> $this->input->post('harga', true),
 				'poin'		=> $this->input->post('poin', true)
 			);
 			
@@ -886,6 +895,117 @@ class admin extends CI_Controller{
 		redirect(base_url().'admin/showongkir');
 	}
 	/*END OF ONGKOS KIRIM*/
+	
+	/*PAKETAN & SPONSOR*/
+	function paketan(){
+		$this->form_validation->set_rules('nmpaket', 'Nama Paket', 'required');
+		$this->form_validation->set_rules('poinspon', 'Poin Sponsoran', 'required');
+		$this->form_validation->set_rules('hrgpaket', 'Harga Paket', 'required');
+		$this->form_validation->set_rules('untuk', 'Target Paket', 'required');
+		
+		if($this->form_validation->run() === false){
+			$query	= $this->paketan_model->showall();
+			
+			$data	= array(
+				'title'		=> 'Golongan Seller',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/paketan',
+				'detail'	=> $query
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$this->load->model('admin/paketan_model');
+			
+			$data	= array(
+				'nmpaket'	=> $this->input->post('nmpaket', true),
+				'poinspon'	=> $this->input->post('poinspon', true),
+				'hrgpkt'	=> $this->input->post('hrgpaket', true),
+				'untuk'		=> $this->input->post('untuk', true)
+			);
+			
+			$this->paketan_model->tambahpaket($data);
+			redirect(base_url().'admin/paketan');
+		}
+	}
+	
+	function editpaketan($ids){
+		$this->form_validation->set_rules('nmpaket', 'Nama Paket', 'required');
+		$this->form_validation->set_rules('poinspon', 'Poin Sponsoran', 'required');
+		$this->form_validation->set_rules('hrgpaket', 'Harga Paket', 'required');
+		$this->form_validation->set_rules('untuk', 'Target Paket', 'required');
+		
+		if($this->form_validation->run() === false){
+			$query	= $this->paketan_model->detailpaketan($ids);
+			
+			$data	= array(
+				'title'		=> 'Golongan Seller',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/editpaketan',
+				'detail'	=> $query
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$this->load->model('admin/paketan_model');
+			
+			$data	= array(
+				'ids'		=> $this->input->post('ids'),
+				'nmpaket'	=> $this->input->post('nmpaket', true),
+				'poinspon'	=> $this->input->post('poinspon', true),
+				'hrgpkt'	=> $this->input->post('hrgpaket', true),
+				'untuk'		=> $this->input->post('untuk', true)
+			);
+			
+			$this->paketan_model->editpaket($data);
+			redirect(base_url().'admin/paketan');
+		}
+	}
+	
+	function delpaketan($ids){
+		$this->paketan_model->delete($ids);
+		redirect(base_url().'admin/paketan');
+	}
+	
+	function sponsor_poin(){
+		$this->form_validation->set_rules('sponseller', 'Poin Sponsoring Seller', 'required');
+		$this->form_validation->set_rules('sponmember', 'Poin Sponsoring Member', 'required');
+		
+		if($this->form_validation->run() === false){
+			$this->load->model('admin/paketan_model');
+			$query	= $this->paketan_model->detailpaketan();
+			
+			$data	= array(
+				'title'		=> 'Poin Sponsoran',
+				'menu'		=> '',
+				'profil'	=> $this->admin_model->detailprofilweb(),
+				'isi'		=> 'admin/page/home',
+				'page'		=> 'admin/page/sponsorpoin',
+				'detail'	=> $query
+			);
+			
+			$this->load->view('layout/wrapper', $data);
+		}
+		else{
+			$this->load->model('admin/paketan_model');
+			
+			$data	= array(
+				'ids'			=> $this->input->post('idpaketan'),
+				'psponseller'	=> $this->input->post('sponseller', true),
+				'psponmember'	=> $this->input->post('sponmember', true)
+			);
+			
+			$this->paketan_model->ubahpaketan($data);
+			redirect(base_url().'admin/sponsor_poin');
+		}
+	}
+	/*END OF PAKETAN & SPONSOR*/
 	
 	function logout(){
 		$this->session->sess_destroy();

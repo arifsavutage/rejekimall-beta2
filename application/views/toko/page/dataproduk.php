@@ -3,7 +3,7 @@
 <a href="<?php echo base_url();?>toko/tambah_produk" class="button small"><i class="fi-plus"></i> Tambah</a>
 <br />
 <br />
-<table>
+<table class="large-12 columns">
 	<thead>
 		<tr>
 			<th> No. </th>
@@ -27,7 +27,11 @@
 			echo "
 			<tr>
 			<td valign='top'>$no</td>
-			<td>$listproduk[nama]</td>
+			<td>
+				$listproduk[nama]
+				<br />
+				<span style='font-size:6;color:red;'>$listproduk[nmbrand]</span>
+			</td>
 			<td>$listproduk[satuan]</td>
 			<td>Rp. ".number_format($listproduk['harga'],0,',','.')."</td>
 			<td><img width='80' height='80' src='".base_url()."asset/img/seller/produk/$listproduk[gambar]'></td>

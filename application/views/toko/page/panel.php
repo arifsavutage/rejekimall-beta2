@@ -4,7 +4,9 @@
 <div class="row fullscreen sidebar" style="margin:0px; padding:0 0 30px 0;background:#EEEEEE;">
 	<ul class="side-nav">
 		<li><a href="<?php echo base_url().'toko';?>">Dashboard</a></li>
-		<li><a href="#">Profil Seller</a></li>
+		<li><a href="<?php echo base_url().'toko/profilseller';?>">Profil Seller</a></li>
+		<li><a href="<?php echo base_url().'toko/akun';?>">Akun Seller</a></li>
+		<li><a href="<?php echo base_url().'toko/upfoto';?>">Upload Foto Profil</a></li>
 		<li class="divider"></li>
 		<li><a href="<?php echo base_url().'toko/viewbrand'?>">Brand List</a></li>
 		<li><a href="<?php echo base_url().'toko/tampil_kat'?>">Kategori List</a></li>

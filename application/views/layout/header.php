@@ -44,7 +44,7 @@ $seller		= $this->session->userdata('userseller');
        <ul class="left" >
         <li><a href="#" style="font-size:12px;">Cicilan 0%</a></li>
         <li><a href="#" style="font-size:12px;">Tracking</a></li>
-        <li><a href="#" style="font-size:12px;">Konfirmasi Pembayaran</a></li>
+        <li><a href="<?php echo base_url().'konfirmasi';?>" style="font-size:12px;">Konfirmasi Pembayaran</a></li>
       </ul>
       <!-- Right Nav Section -->
       <ul class="right">   
@@ -84,9 +84,21 @@ $seller		= $this->session->userdata('userseller');
           
         </li>
         <li>
-		<a href="<?php echo base_url();?>register/pembeli" style="font-size:12px;">Register Pembeli</a>
+			<a href="<?php echo base_url();?>register/pembeli" style="font-size:12px;">Register Pembeli</a>	
         <li>
-        <a href="<?php echo base_url(); ?>register" style="font-size:12px;">Register Penjual</a></li>
+			<a data-dropdown='dropx' aria-controls='dropx' aria-expanded='false' style='font-size:12px;'>Penjual</a>
+			<ul id='dropx' class='f-dropdown' data-dropdown-content aria-hidden='true' tabindex='-1'>
+				<li><a href="<?php echo base_url(); ?>register" style="font-size:12px;">Register</a></li>
+				<?php
+				if(!isset($seller)){
+				?>
+				<li><a href="<?php echo base_url();?>login/seller" style="font-size:12px;">Toko</a>
+				<?php
+				}
+				?>
+			</ul>
+        
+		</li>
       </ul>
     </section>
   </nav>
