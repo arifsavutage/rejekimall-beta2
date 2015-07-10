@@ -1,5 +1,5 @@
 <?php if(!defined('BASEPATH')) exit ('No direct script access allowed');
-class produk extends CI_Controller{
+class Produk extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('cart');
@@ -164,10 +164,13 @@ class produk extends CI_Controller{
 					'idpesan'	=> $idpesan,
 					'gid'		=> $orderdetail['id'],
 					'jml'		=> $orderdetail['qty'],
-					'subtotal'	=> $orderdetail['subtotal']
+					'subtotal'	=> $orderdetail['subtotal'],
+					'warna'		=> $orderdetail['options']['warna'],
+					'ukuran'	=> $orderdetail['options']['size']
 				);
 				
 				$this->model_transaksi->orderdetail($detail);
+				$this->model_produk->kurangistok($detail);
 			}
 			
 			$this->cart->destroy();

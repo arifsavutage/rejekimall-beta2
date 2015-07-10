@@ -1,7 +1,7 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 #class controller ini untuk mengatur view dasbor sellernya
 
-class toko extends CI_Controller{
+class Toko extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		
@@ -13,16 +13,31 @@ class toko extends CI_Controller{
 		$this->load->model('penjual/model_produk');
 		$this->load->model('penjual/model_brand');
 		$this->load->model('penjual/model_seller');
+		$this->load->model('penjual/model_penjualan');
 		$this->load->model('model_city');
 	}
 	
 	public function index(){
+		$idseller	= $this->session->userdata('idseller');
 		$data	= array(
-			'title'=>'Dasbor Seller',
-			'menu'=>'',
-			'isi'=>'toko/page/home',
-			'page'=>'toko/page/depan'
+			'title'			=>'Dasbor Seller',
+			'menu'			=>'',
+			'isi'			=>'toko/page/home',
+			'order'			=> $this->model_penjualan->order($idseller,0)->result_array(),
+			'jmlorder'		=> $this->model_penjualan->order($idseller,0)->num_rows(),
+			'ordertrans'	=> $this->model_penjualan->order($idseller,1)->result_array(),
+			'transjml'		=> $this->model_penjualan->order($idseller,1)->num_rows(),
+			'packing'		=> $this->model_penjualan->order($idseller,2)->result_array(),
+			'jmlpacking'	=> $this->model_penjualan->order($idseller,2)->num_rows(),
+			'kirim'			=> $this->model_penjualan->order($idseller,3)->result_array(),
+			'jmlkirim'		=> $this->model_penjualan->order($idseller,3)->num_rows(),
+			'droping'		=> $this->model_penjualan->order($idseller,4)->result_array(),
+			'jmldrop'		=> $this->model_penjualan->order($idseller,4)->num_rows(),
+			'retur'			=> $this->model_penjualan->order($idseller,5)->result_array(),
+			'jmlretur'		=> $this->model_penjualan->order($idseller,5)->num_rows(),
+			'page'			=>'toko/page/depan'
 		);
+		#ctt : 0 = belum transfer, 1=transfer, 2=packing, 3=kirim, 4=diterima, 5=retur
 		
 		$this->load->view('layout/wrapper', $data);
 	}
@@ -584,7 +599,26 @@ class toko extends CI_Controller{
 				redirect(base_url().'toko/tampil_produk');
 			}
 			
-			
 		}
 	}
+	/*END PRODUK*/
+	
+	/*PACKING*/
+	function packing($idpesan){
+		
+		$idseller		= $this->session->userdata('idseller');
+		$detailorder	= $this->model_penjualan->orderdetail($idpesan, $idseller, 1);
+		
+		$data	= array(
+			'title'		=>'Konfirmasi : Packing',
+			'menu'		=>'',
+			'isi'		=>'toko/page/home',
+			'page'		=>'toko/page/form_packing',
+			'detail'	=> $detailorder,
+			'idpesan'	=> $idpesan
+		);
+	
+		$this->load->view('layout/wrapper', $data);
+	}
+	/*END OF PACKING*/
 }

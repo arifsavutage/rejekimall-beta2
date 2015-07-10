@@ -1,5 +1,5 @@
 <?php
-class paket_seller extends CI_Model{
+class Paket_seller extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}

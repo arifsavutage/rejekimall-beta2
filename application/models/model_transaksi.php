@@ -1,5 +1,5 @@
 <?php
-class model_transaksi extends CI_Model{
+class Model_transaksi extends CI_Model{
 	function __construct(){
 		parent::__construct();
 		$this->load->database();
@@ -10,7 +10,7 @@ class model_transaksi extends CI_Model{
 	}
 	
 	function vieworder($id){
-		$query	= $this->db->query('SELECT `idpesan` FROM `order` WHERE id_member = '.$id.' ORDER BY waktu DESC');
+		$query	= $this->db->query('SELECT `idpesan` FROM `order` WHERE id_member = '.$id.' BY waktu DESC');
 		return $query;
 	}
 	
@@ -23,11 +23,11 @@ class model_transaksi extends CI_Model{
 			SELECT 
 				`idpesan`, `id_member`, `waktu`, 
 				`totalbayar`, `ongkoskirim`, `to`, 
-				`alamat`, `kdpos`, `kontak` 
+				`alamat`, `kdpos`, `kontak`
 			FROM `order` 
-			WHERE id_member = '.$idmember.' AND status =0 ');
+			WHERE id_member = '.$idmember.'');
 		
-		return $query->result_array();
+		return $query;
 	}
 	
 	function detailtrans($idpesan){
@@ -62,6 +62,6 @@ class model_transaksi extends CI_Model{
 	
 	function poskonfirm($data){
 		$this->db->where('idpesan', $data['idpesan']);
-		return $this->db->update('order', $data);
+		return $this->db->update('order_detail', $data);
 	}
 }

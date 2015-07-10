@@ -1,7 +1,7 @@
 <?php if(!defined('BASEPATH')) exit('No direct access script allowed');
 #class controller ini hanya berfungsi untuk CRUD
 
-class seller extends CI_Controller{
+class Seller extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('penjual/model_seller');

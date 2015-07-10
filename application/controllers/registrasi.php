@@ -1,5 +1,5 @@
 <?php
-class registrasi extends CI_Controller{
+class Registrasi extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->helper('url');

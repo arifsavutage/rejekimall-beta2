@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2015 at 11:39 AM
+-- Generation Time: Jul 10, 2015 at 10:45 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `idseller` int(9) NOT NULL,
   `nmbrand` varchar(50) NOT NULL,
   `gb_brand` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brand`
@@ -63,7 +63,9 @@ INSERT INTO `brand` (`idbrand`, `idseller`, `nmbrand`, `gb_brand`) VALUES
 (2, 1, 'Sinar Dunia', '1_sidu1.jpg'),
 (3, 1, 'Kiky', '1_kikky1.png'),
 (4, 2, 'Apple', '2_apple_01.jpg'),
-(5, 2, 'Lenovo', '2_rating_lenovo_sh.jpg');
+(5, 2, 'Lenovo', '2_rating_lenovo_sh.jpg'),
+(6, 3, 'elzatta', '3_Cover1.jpg'),
+(7, 3, 'Arina', '3_Arinakecil.jpg');
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `detail_kategori` (
   `keterangan` text,
   `diskon` float NOT NULL DEFAULT '0',
   `bes_seller` enum('0','1') NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_kategori`
@@ -95,10 +97,12 @@ INSERT INTO `detail_kategori` (`cid`, `gid`, `idbrand`, `nama`, `satuan`, `harga
 (1, 1, 1, 'Kaos Cubitus 1', 'Pcs', 105000, 'S,M,L', 'Oranye, Abu-abu, Biru, Kuning', 60, '1_cubitus-1.jpg', 'Baju nyaman dipakai dan berbahan halus, sehingga tidak menimbulkan iritasi kulit.', 2, '0'),
 (2, 2, 2, 'Buku Tulis Sinar Dunia', 'Lusin', 35000, '-', '-', 60, '1_bukusidu1.jpg', 'Buku Tulis Isi 36 Lembar', 0, '0'),
 (2, 3, 3, 'Buku Tulis Kiky', 'Lusin', 38000, '-', '-', 60, '1_kiky1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et augue sapien, ac consequat enim. Maecenas tincidunt ultrices enim, et euismod orci sollicitudin nec. Ut consequat leo sit amet massa luctus ac varius sapien lacinia. Nullam lorem tortor', 5, '0'),
-(2, 4, 2, 'Buku Tulis Sinar Dunia 2', 'Lusin', 35000, '-', '-', 60, '1_sidu2.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et augue sapien, ac consequat enim. Maecenas tincidunt ultrices enim, et euismod orci sollicitudin nec.', 0, '0'),
-(2, 5, 2, 'Buku Tulis Sinar Dunia 3', 'Lusin', 35000, '-', '-', 60, '1_sidu3.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et augue sapien, ac consequat enim. Maecenas tincidunt ultrices enim, et euismod orci sollicitudin nec. Ut consequat leo sit amet massa luctus ac varius sapien lacinia. Nullam lorem tortor, vehicula fermentum consequat sed, auctor et quam. Donec nec ipsum dolor, in semper felis. Curabitur arcu ligula, aliquam in accumsan sit amet, accumsan quis mi. Vestibulum cursus ipsum eu lorem malesuada suscipit.', 2.5, '0'),
+(2, 4, 2, 'Buku Tulis Sinar Dunia 2', 'Lusin', 35000, '-', '-', 59, '1_sidu2.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et augue sapien, ac consequat enim. Maecenas tincidunt ultrices enim, et euismod orci sollicitudin nec.', 0, '0'),
+(2, 5, 2, 'Buku Tulis Sinar Dunia 3', 'Lusin', 35000, '-', '-', 59, '1_sidu3.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et augue sapien, ac consequat enim. Maecenas tincidunt ultrices enim, et euismod orci sollicitudin nec. Ut consequat leo sit amet massa luctus ac varius sapien lacinia. Nullam lorem tortor, vehicula fermentum consequat sed, auctor et quam. Donec nec ipsum dolor, in semper felis. Curabitur arcu ligula, aliquam in accumsan sit amet, accumsan quis mi. Vestibulum cursus ipsum eu lorem malesuada suscipit.', 2.5, '0'),
 (3, 6, 4, 'Macbook 001', 'Unit', 14000000, '-', 'Silver', 35, '2_macbook1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla posuere sem nec blandit. Nulla molestie varius ligula, vitae pellentesque dolor. Ut mollis id magna nec luctus. Nam efficitur tortor at mattis pharetra. Nam sagittis egestas fermentum. Integer ac orci in nisl porta aliquet. Nam laoreet egestas fermentum. Phasellus ac risus nibh.', 10, '0'),
-(3, 7, 5, 'Lenovo Thinkpad 001', 'Unit', 7800000, '-', 'Black', 30, '2_Lenovo_thinkpad.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla posuere sem nec blandit. Nulla molestie varius ligula, vitae pellentesque dolor. Ut mollis id magna nec luctus. Nam efficitur tortor at mattis pharetra. Nam sagittis egestas fermentum. Integer ac orci in nisl porta aliquet. Nam laoreet egestas fermentum. Phasellus ac risus nibh.', 5, '0');
+(3, 7, 5, 'Lenovo Thinkpad 001', 'Unit', 7800000, '-', 'Black', 29, '2_Lenovo_thinkpad.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla posuere sem nec blandit. Nulla molestie varius ligula, vitae pellentesque dolor. Ut mollis id magna nec luctus. Nam efficitur tortor at mattis pharetra. Nam sagittis egestas fermentum. Integer ac orci in nisl porta aliquet. Nam laoreet egestas fermentum. Phasellus ac risus nibh.', 5, '0'),
+(4, 8, 6, 'Kerudung 1', 'pcs', 125000, 'L,M,S', 'Merah, Hijau, Pink', 48, '3_Cover1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla posuere sem nec blandit. Nulla molestie varius ligula, vitae pellentesque dolor. Ut mollis id magna nec luctus. Nam efficitur tortor at mattis pharetra. Nam sagittis egestas fermentum. Integer ac orci in nisl porta aliquet. Nam laoreet egestas fermentum. Phasellus ac risus nibh', 0, '0'),
+(4, 9, 7, 'Kerudung 2', 'pcs', 135000, 'L,M,S', 'Merah, Biru, Kuning', 45, '3_Arinakecil.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla posuere sem nec blandit. Nulla molestie varius ligula, vitae pellentesque dolor. Ut mollis id magna nec luctus. Nam efficitur tortor at mattis pharetra. Nam sagittis egestas fermentum.', 0, '0');
 
 -- --------------------------------------------------------
 
@@ -251,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `kategori` (
   `id_seller` int(5) DEFAULT NULL,
   `nama` char(30) DEFAULT NULL,
   `slugkat` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kategori`
@@ -260,7 +264,8 @@ CREATE TABLE IF NOT EXISTS `kategori` (
 INSERT INTO `kategori` (`cid`, `id_seller`, `nama`, `slugkat`) VALUES
 (1, 1, 'Baju Anak - anak', 'baju-anak-anak'),
 (2, 1, 'Buku Tulis', 'buku-tulis'),
-(3, 2, 'Laptop', 'laptop');
+(3, 2, 'Laptop', 'laptop'),
+(4, 3, 'Pakaian Muslim Wanita', 'pakaian-muslim-wanita');
 
 -- --------------------------------------------------------
 
@@ -288,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `status` int(1) NOT NULL,
   `golongan` int(1) NOT NULL,
   `memberpoin` int(10) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
@@ -297,10 +302,11 @@ CREATE TABLE IF NOT EXISTS `member` (
 INSERT INTO `member` (`id_member`, `id_pkt`, `user_id`, `password`, `nama`, `jk`, `email`, `alamat`, `no_hp`, `no_tlprmh`, `kota`, `kdpos`, `propinsi`, `negara`, `gbr_ktp`, `foto`, `status`, `golongan`, `memberpoin`) VALUES
 (2, 1, 'arifsavutage', '07905a38596dff6ad49ded1028f9d7bf', 'Narto Soejono', 'Laki-laki', 'narto@gmail.com', 'Jl. Jenang Timur No. 1', '0852333322', '0294572125', '29', '513814', '1', '8', 'ktp_arifsavutage.jpg', 'arifsavutage.jpeg', 1, 3, 25),
 (3, 3, 'john', '25d55ad283aa400af464c76d713c07ad', 'john mc fee', 'Laki-laki', 'john@example.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'blank-id-card.jpg', 'nopic.png', 0, 3, 20),
-(4, 2, 'ani', '25d55ad283aa400af464c76d713c07ad', 'Ani Yulia', 'Laki-laki', 'ani@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'blank-id-card.jpg', 'nopic.png', 1, 3, 10),
+(4, 2, 'ani', '25d55ad283aa400af464c76d713c07ad', 'Ani Yulia', 'Laki-laki', 'ani@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'blank-id-card.jpg', 'ani.jpg', 1, 3, 10),
 (5, 1, 'dwi', '25d55ad283aa400af464c76d713c07ad', 'Dwi yahya', 'Laki-laki', 'dwiyahya@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'blank-id-card.jpg', 'nopic.png', 0, 3, 5),
 (6, 1, 'gogon', '25d55ad283aa400af464c76d713c07ad', 'Gogon', 'Laki-laki', 'gogon@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'blank-id-card.jpg', 'nopic.png', 1, 3, 5),
-(7, 2, 'anindoet', '25d55ad283aa400af464c76d713c07ad', 'Ani Rhoma', 'perempuan', 'anindoet@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'blank-id-card.jpg', 'nopic.png', 1, 3, 10);
+(7, 2, 'anindoet', '25d55ad283aa400af464c76d713c07ad', 'Ani Rhoma', 'perempuan', 'anindoet@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'blank-id-card.jpg', 'nopic.png', 1, 3, 10),
+(8, 2, 'batman', '25d55ad283aa400af464c76d713c07ad', 'Batman Bin Suparman', 'Laki-laki', 'batman@rocketmail.com', 'Jl. Dibangun Dulu No 09', '', '', '29', '3210', '1', '9', 'blank-id-card.jpg', 'nopic.png', 1, 3, 10);
 
 -- --------------------------------------------------------
 
@@ -334,14 +340,15 @@ CREATE TABLE IF NOT EXISTS `ongkos_kirim` (
   `harga` double NOT NULL DEFAULT '0',
   `id_prop` int(11) DEFAULT NULL,
   `id_neg` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ongkos_kirim`
 --
 
 INSERT INTO `ongkos_kirim` (`id_ongkir`, `id_kab`, `id_jasa`, `harga`, `id_prop`, `id_neg`) VALUES
-(10, 29, 1, 250000, 1, 8);
+(10, 29, 1, 250000, 1, 8),
+(11, 29, 1, 300000, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -361,17 +368,16 @@ CREATE TABLE IF NOT EXISTS `order` (
   `kontak` varchar(25) NOT NULL,
   `tglkonfirm` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `bank` varchar(200) NOT NULL,
-  `bukti` varchar(200) NOT NULL,
-  `status` int(1) NOT NULL
+  `bukti` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`idpesan`, `id_member`, `waktu`, `totalbayar`, `ongkoskirim`, `to`, `alamat`, `kdpos`, `kontak`, `tglkonfirm`, `bank`, `bukti`, `status`) VALUES
-('2-Q3W64', 2, '2015-07-07 23:34:09', 7924500, 250000, 'Borid Bokir', 'Jl. Maju Takgenta No. 01', '12365', '085321000012', '0000-00-00 00:00:00', '', '', 0),
-('7-BV3MC', 7, '2015-07-07 23:41:10', 174000, 250000, 'Ani Rhoma', 'Jl. Pasar Paing No.099', '98745', '0298321654', '0000-00-00 00:00:00', 'Mandiri / 1030001233232 / PT. Rejeki Mall', '7-BV3MC_anindoet.jpg', 0);
+INSERT INTO `order` (`idpesan`, `id_member`, `waktu`, `totalbayar`, `ongkoskirim`, `to`, `alamat`, `kdpos`, `kontak`, `tglkonfirm`, `bank`, `bukti`) VALUES
+('4-XUD9D', 4, '2015-07-10 03:43:08', 800000, 250000, 'Ani Setya', 'Jl. Baru No. 08', '52310', '085352003221', '0000-00-00 00:00:00', '', ''),
+('4-ZV4J9', 4, '2015-07-10 03:43:30', 800000, 250000, 'Ani Setya', 'Jl. Baru No. 08', '52310', '085352003221', '0000-00-00 00:00:00', '', '');
 
 -- --------------------------------------------------------
 
@@ -384,19 +390,19 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
   `idpesan` varchar(7) NOT NULL,
   `gid` int(1) NOT NULL,
   `jml` int(3) NOT NULL,
-  `subtotal` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `ukuran` varchar(30) NOT NULL,
+  `warna` varchar(30) NOT NULL,
+  `subtotal` int(11) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_detail`
 --
 
-INSERT INTO `order_detail` (`oid`, `idpesan`, `gid`, `jml`, `subtotal`) VALUES
-(1, '2-Q3W64', 7, 1, 7410000),
-(2, '2-Q3W64', 1, 5, 514500),
-(3, '7-BV3MC', 4, 1, 35000),
-(4, '7-BV3MC', 1, 1, 102900),
-(5, '7-BV3MC', 3, 1, 36100);
+INSERT INTO `order_detail` (`oid`, `idpesan`, `gid`, `jml`, `ukuran`, `warna`, `subtotal`, `status`) VALUES
+(13, '4-ZV4J9', 8, 1, 'M', 'Merah', 125000, 0),
+(14, '4-ZV4J9', 9, 5, 'M', ' Kuning', 675000, 0);
 
 -- --------------------------------------------------------
 
@@ -553,7 +559,7 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `siup` varchar(100) NOT NULL,
   `golongan` int(1) NOT NULL,
   `poinseller` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `seller`
@@ -561,7 +567,8 @@ CREATE TABLE IF NOT EXISTS `seller` (
 
 INSERT INTO `seller` (`id_seller`, `idpkt`, `jenis`, `nama_toko`, `username`, `password`, `tgl_registrasi`, `nama`, `alamat`, `status_system`, `nohp`, `pin`, `token`, `negara`, `provinsi`, `namabank`, `cabang`, `pemilikrek`, `kat`, `newsletter`, `SMS`, `website`, `norek`, `email`, `ket`, `passtrx`, `kota`, `kecamatan`, `kodepos`, `gbr_ktp`, `foto`, `npwp`, `siup`, `golongan`, `poinseller`) VALUES
 (1, 1, 1, 'Toko Kita', 'penjual@gmail.com', '25d55ad283aa400af464c76d713c07ad', '2015-07-03', 'penjual satu', 'Loksumawe', '1', '085232000121', 0, 0, 8, '1', 'Mandiri', 'loksumawe', 'Penjual Satu', '', '', '', '', '1030002501236', 'penjual@gmail.com', '', '', '29', 'aceh besar', 12345, NULL, 'penjual_satu.jpeg', NULL, '', 2, 55),
-(2, 2, 3, 'Binner Code Comp', 'budi@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-07-07', 'Budi Sasongko', 'Jl. Kelud Raya', '1', '085251300125', 0, 0, 8, '1', 'Mandiri', 'Loksumawe', 'Budi Sasongko', '', '', '', '', '1360001236200', 'budi@yahoo.com', '', '', '29', '-', 23666, NULL, 'nopic.png', NULL, '', 2, 10);
+(2, 2, 3, 'Binner Code Comp', 'budi@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-07-07', 'Budi Sasongko', 'Jl. Kelud Raya', '1', '085251300125', 0, 0, 8, '1', 'Mandiri', 'Loksumawe', 'Budi Sasongko', '', '', '', '', '1360001236200', 'budi@yahoo.com', '', '', '29', '-', 23666, NULL, 'nopic.png', NULL, '', 2, 10),
+(3, 2, 1, 'Toko Muslimah', 'elsya@yahoo.com', '25d55ad283aa400af464c76d713c07ad', '2015-07-10', 'elsya winata', 'Jl. Baru No. 34', '1', '085352021321', 7, 0, 8, '1', 'BCA', 'Aceh tengah', 'elsya winata', '', '', '', '', '681330002156', 'elsya@yahoo.com', '', '', '29', 'Aceh Tengah', 52123, NULL, 'nopic.png', NULL, '', 2, 10);
 
 -- --------------------------------------------------------
 
@@ -737,12 +744,12 @@ MODIFY `idbank` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-MODIFY `idbrand` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `idbrand` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `detail_kategori`
 --
 ALTER TABLE `detail_kategori`
-MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `histori_member`
 --
@@ -782,12 +789,12 @@ MODIFY `id_kab` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `negara`
 --
@@ -797,12 +804,12 @@ MODIFY `id_neg` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT for table `ongkos_kirim`
 --
 ALTER TABLE `ongkos_kirim`
-MODIFY `id_ongkir` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id_ongkir` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `paketan`
 --
@@ -827,7 +834,7 @@ MODIFY `id_prop` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_seller` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

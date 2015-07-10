@@ -1,13 +1,15 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
-class pembeli extends CI_Controller{
+class Pembeli extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		
 		if($this->session->userdata('username')==""){
 			redirect(base_url().'login');
 		}
+		
 		$this->load->model('member/model_member');
 		$this->load->model('model_city');
+		$this->load->model('model_transaksi');
 	}
 	
 	function index(){
@@ -212,10 +214,9 @@ class pembeli extends CI_Controller{
 	/*end of up ktp*/
 	
 	function view_transaksi(){
-		$this->load->model('model_transaksi');
 		
 		$idmember	= $this->session->userdata('idmember');
-		$order		= $this->model_transaksi->viewtrans($idmember);
+		$order		= $this->model_transaksi->viewtrans($idmember)->result_array();
 		
 		$data	= array(
 			'title'		=> 'Tabel Pesanan',
@@ -293,7 +294,9 @@ class pembeli extends CI_Controller{
 				$data	= array(
 					'idpesan'	=> $this->input->post('idpesan'),
 					'bank'		=> $this->input->post('bank'),
-					'bukti'		=> $bukti['file_name']
+					'bukti'		=> $bukti['file_name'],
+					'status'	=> 1,
+					'tglkonfirm'=> date('Y-m-d H:i:s')
 				);
 				
 				$this->model_transaksi->poskonfirm($data);

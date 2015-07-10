@@ -206,7 +206,7 @@ if(!isset($super)){
 			$i	= 0;
 			$j	= $this->cart->contents();
 			
-			echo "<table>
+			echo "<table class='large-12 columns'>
 				<thead>
 				<tr>
 					<th>Barang</th>

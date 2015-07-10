@@ -1,5 +1,5 @@
 <?php
-class jajal_model extends CI_Model{
+class Jajal_model extends CI_Model{
 	public function __construct(){
 		$this->load->database();
 	}

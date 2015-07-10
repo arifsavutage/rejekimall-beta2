@@ -16,25 +16,23 @@
     <div class="" data-equalizer-watch="foo">
       
       <!-- ALL PRODUCT -->
-      <div class="row fullscreen" style="padding-top:30px;font-size:1.5em;border-bottom:solid 1px #EFEFEF;">
+      <div class="row fullscreen" style="padding-top:30px;font-size:1.5em;">
         <div class="large-12 medium-12 small-12 columns" >
         <h4><?php echo $detail['nama'];?></h4>
+		<hr />
         </div>
       </div>
 
       <div class="row fullscreen" data-equalizer="foo" style="background:transparent;padding:0px;margin:0px;border:0px;">
       <div class="medium-6 columns" style="background:transparent;border:0px;">
         <div class="" data-equalizer-watch="foo" >
-          <center>      
-
             <ul class="clearing-thumbs clearing-feature" data-clearing>
               <li class="clearing-featured-img">
 				<a href="#">
-					<img style="width:475px;height:350px;" src="<?php echo base_url().'asset/img/seller/produk/'.$detail['gambar'];?>">
+					<img style="width:475px" src="<?php echo base_url().'asset/img/seller/produk/'.$detail['gambar'];?>">
 				</a>
 			  </li>
             </ul>
-</center>
       </div>
       </div>
 

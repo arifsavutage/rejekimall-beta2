@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class register extends CI_Controller{
+class Register extends CI_Controller{
 	
 	public function __construct(){
 		parent::__construct();
@@ -61,13 +61,13 @@ class register extends CI_Controller{
 	public function pembeli(){
 		
 		$query	= $this->paket_member->viewpaket();
-		$jenis	= $this->paketan_model->
-		$data	= array('title'=>'Rejeki Mall : Register Pembeli',
-		'menu'=>'etalase/menu_etalase',
-		'kategori'=>$this->model_utama->kategori(),
-		'pktmember'=> $query,
-		'isi'=>'register/registerpembeli'
-		);
-		$this->load->view('layout/wrapper',$data);
+		$data	= array(
+			'title'		=>'Rejeki Mall : Register Pembeli',
+			'menu'		=>'etalase/menu_etalase',
+			'kategori'	=>$this->model_utama->kategori(),
+			'pktmember'	=> $query,
+			'isi'		=>'register/registerpembeli'
+			);
+			$this->load->view('layout/wrapper',$data);
 	}
 }

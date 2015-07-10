@@ -27,8 +27,24 @@
 				$total	= $list['totalbayar']+$list['ongkoskirim'];
 				echo "Rp. ".number_format($total,0,',','.');
 			echo "</td>
-				<td>
-					<a href='".base_url()."pembeli/konfirm/$list[idpesan]' class='button tiny'>Konfirmasi</a>
+				<td>";
+				if($list['status'] == 0){
+					$status	= "<a href='".base_url()."pembeli/konfirm/$list[idpesan]' class='button tiny'>Konfirmasi</a>";
+				}
+				else if($list['status'] == 1)
+				{
+					$status = "<a href='#' class='button disabled tiny' title='Menunggu Verifikasi Admin'>Menunggu</a>";
+				}
+				else if($list['status'] == 2)
+				{
+					$status = "<a href='#' class='button disabled tiny'>Packing</a>";
+				}
+				else if($list['status'] == 3)
+				{
+					$status = "<a href='#' class='button disabled tiny secondary'>Shipping</a>";
+				}
+			echo "
+					$status
 					<a href='".base_url()."pembeli/detailtrans/$list[idpesan]' class='button tiny alert'>Detail</a>
 				</td>
 			</tr>

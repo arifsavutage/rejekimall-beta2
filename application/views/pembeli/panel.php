@@ -9,7 +9,7 @@
 		<li><a href="<?php echo base_url().'pembeli/akun'?>">Ubah Password</a></li>
 		<li class="divider"></li>
 		<li>
-			<a href="<?php echo base_url().'pembeli/view_transaksi'?>">Konfirmasi Pembayaran</a>
+			<a href="<?php echo base_url().'pembeli/view_transaksi'?>">Konfirmasi Pembayaran </a>
 		</li>
 	</ul>
 </div>

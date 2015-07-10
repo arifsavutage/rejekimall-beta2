@@ -5,6 +5,7 @@ class Konfirmasi extends CI_Controller{
 		parent::__construct();
 		$this->load->model('admin/bank_model');
 		$this->load->model('model_konfirmasi');
+		$this->load->model('penjual/model_penjualan');
 	}
 	
 	function index(){
@@ -136,5 +137,15 @@ class Konfirmasi extends CI_Controller{
 			}
 			
 		}
+	}
+	
+	function packing(){
+		$data	= array(
+			'status'	=> $this->input->post('status'),
+			'idpesan'	=> $this->input->post('idpesan'),
+		);
+		
+		$this->model_penjualan->updateorder($data);
+		redirect(base_url().'toko/packing/'.$this->input->post('idpesan'));
 	}
 }

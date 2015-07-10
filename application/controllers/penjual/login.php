@@ -1,7 +1,7 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 #class controller ini untuk mengatur proses auth. login seller
 
-class login extends CI_Controller{
+class Login extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('penjual/model_seller');

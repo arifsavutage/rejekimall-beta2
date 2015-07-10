@@ -1,5 +1,5 @@
 <?php
-class paket_member extends CI_Model{
+class Paket_member extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}

@@ -1,5 +1,5 @@
 <?php if(!defined('BASEPATH')) exit('No direct access script allowed');
-class bayar extends CI_Controller{
+class Bayar extends CI_Controller{
 	
 	function __construct(){
 		parent::__construct();

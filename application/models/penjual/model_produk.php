@@ -1,5 +1,5 @@
 <?php
-class model_produk extends CI_Model{
+class Model_produk extends CI_Model{
 	
 	function __construct(){
 		parent::__construct();
@@ -13,6 +13,15 @@ class model_produk extends CI_Model{
 	function editproduk($data){
 		$this->db->where('gid', $data['gid']);
 		return $this->db->update('detail_kategori', $data);
+	}
+	
+	function kurangistok($data){
+		$query	= $this->db->query(
+			"UPDATE detail_kategori SET stok = stok - ".$data['jml']." 
+			WHERE gid = ".$data['gid'].""
+		);
+		
+		return $query;
 	}
 	
 	function allproduk($dari, $sampai){
